@@ -2,9 +2,126 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="985555ff-71fd-4286-8d45-24e155398256" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/themes/yilia/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/yilia/_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/share.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/share.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/yilia/source/main.0cf68a.css" beforeDir="false" afterPath="$PROJECT_DIR$/themes/yilia/source/main.0cf68a.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/.babelrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/_config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/languages/default.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/languages/fr.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/languages/nl.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/languages/no.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/languages/ru.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/languages/zh-CN.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/languages/zh-tw.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/after-footer.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/archive-post.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/archive.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/article.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/aside.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/baidu-analytics.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/css.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/footer.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/google-analytics.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/head.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/header.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/left-col.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/mathjax.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/mobile-nav.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/category.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/changyan.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/date.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/duoshuo.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/gitment.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/nav.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/share.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/tag.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/title.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/post/wangyiyun.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/script.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/toc.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/tools.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/_partial/viewer.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/archive.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/category.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/index.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/layout.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/page.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/post.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/layout/tag.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/_core.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/_function.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/archive.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/article-inner.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/article-main.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/article-nav.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/article.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/aside.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/comment.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/core/_animation.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/core/_media-queries.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/core/_mixin.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/core/_reset.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/core/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/fonts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/fonts/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/fonts/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/fonts/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/fonts/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/footer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/global.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/grid.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/highlight.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/img/checkered-pattern.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/img/scrollbar_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/img/tooltip.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/left.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/main.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/mobile-slider.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/mobile.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/page.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/reward.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/scroll.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/share.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/social.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/tags-cloud.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/tags.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/tools.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/css/tooltip.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/Q.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/anm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/aside.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/fix.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/mobile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/report.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/share.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/slider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/js/viewer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source-src/script.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/fonts/default-skin.b257fa.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/fonts/iconfont.16acc2.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/fonts/iconfont.45d7ee.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/fonts/iconfont.8c627f.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/fonts/iconfont.b322fa.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/fonts/tooltip.4004ff.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/img/default-skin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/img/preloader.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/img/scrollbar_arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/main.0cf68a.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/main.0cf68a.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/mobile.992cbe.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/source/slider.e37972.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/themes/yilia/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/blog-build.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/blog-build.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,7 +129,29 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/themes/yilia/layout/tag.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/_posts/blog-build.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="548">
+                <caret line="165" column="51" selection-start-line="165" selection-start-column="51" selection-end-line="165" selection-end-column="51" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.15.5/libexec" />
   <component name="Git.Settings">
@@ -27,6 +166,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/source/_posts/2020阴阳师式神一览表.md" />
+        <option value="$PROJECT_DIR$/source/_posts/blog-build.md" />
       </list>
     </option>
   </component>
@@ -46,13 +186,30 @@
         <subPane>
           <expand>
             <path>
-              <item name="sunct.github.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sunct.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="sunct2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunct2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="sunct.github.io" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sunct.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="sunct2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunct2" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sunct2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunct2" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sunct2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunct2" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="_posts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sunct2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sunct2" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -62,11 +219,17 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="editor.config.ad.shown" value="true" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -82,6 +245,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="810" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -127,14 +291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/blog-build.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-2133" />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -159,6 +315,23 @@
             <element signature="n#style#0;n#pre#0;n#ul#0;n#section#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#1;n#div#0;n#div#1;n#div#1;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/yilia/layout/tag.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/blog-build.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="548">
+            <caret line="165" column="51" selection-start-line="165" selection-start-column="51" selection-end-line="165" selection-end-column="51" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

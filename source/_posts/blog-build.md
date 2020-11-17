@@ -163,3 +163,11 @@ git pull origin master --allow-unrelated-histories
 在 `/source/_posts/`目录下写自己的博客就可以了。
 写完后再构建即可，可现在本地预览一下 [http://localhost:4000](http://localhost:4000)。把构建完的`public`文件夹上传到github就可以了。
 
+也可以使用命令把 `pubic` 文件夹下的文件 同步到 远端`gh-pages`分支，以便维护使用。
+```linux
+git subtree push --prefix public origin  gh-pages
+```
+
+<div align="center" style= "height:400px" ><img  style= "height:400px"  src="/assets/articleImg/1605591636896.jpg" /></div>
+
+
