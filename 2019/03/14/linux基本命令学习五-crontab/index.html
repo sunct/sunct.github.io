@@ -16,7 +16,7 @@
 <meta property="og:description" content="Linux crontab是用来定期执行程序的命令。 当安装完成操作系统之后，默认便会启动此任务调度命令。 crond命令每分钟会定期检查是否有要执行的工作，如果有要执行的工作便会自动执行该工作。 而linux任务调度的工作主要分为以下两类：  1、系统执行的工作：系统周期性所要执行的工作，如备份系统数据、清理缓存 2、个人执行的工作：某个用户定期要做的工作，例如每隔10分钟检查邮件服务器是否有新">
 <meta property="og:locale" content="zn">
 <meta property="article:published_time" content="2019-03-14T15:19:04.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.494Z">
+<meta property="article:modified_time" content="2020-12-03T11:15:20.999Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="命令">
@@ -187,9 +187,9 @@
 <p>而linux任务调度的工作主要分为以下两类：</p>
 <ul>
 <li>1、系统执行的工作：系统周期性所要执行的工作，如备份系统数据、清理缓存</li>
-<li>2、个人执行的工作：某个用户定期要做的工作，例如每隔10分钟检查邮件服务器是否有新信，这些工作可由每个用户自行设置</li>
+<li>2、个人执行的工作：某个用户定期要做的工作，例如每隔10分钟检查邮件服务器是否有新信，这些工作可由每个用户自行设置<a id="more"></a> 
+crontab [ -u user ] file  </li>
 </ul>
-<p>crontab [ -u user ] file  </p>
 <p>crontab [ -u user ] { -l  -r  -e }<br><strong>说明：</strong><br>crontab 是用来让使用者在固定时间或固定间隔执行程序之用，换句话说，也就是类似使用者的时程表。<br>-u user 是指设定指定 user 的时程表，这个前提是你必须要有其权限(比如说是 root)才能够指定他人的时程表。如果不使用 -u user 的话，就是表示设定自己的时程表。<br><strong>参数说明</strong>：<br>-e : 执行文字编辑器来设定时程表，内定的文字编辑器是 VI，如果你想用别的文字编辑器，则请先设定 VISUAL 环境变数来指定使用那个文字编辑器(比如说 setenv VISUAL joe)<br>-r : 删除目前的时程表<br>-l : 列出目前的时程表</p>
 <p>时程表的格式如下：</p>
 <p>f1 f2 f3 f4 f5 program</p>

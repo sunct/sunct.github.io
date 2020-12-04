@@ -205,19 +205,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p><strong>依次比较相邻的两个元素，</strong>每次比较完毕最大的一个字跑到本轮的末尾。</p>
-<p>例如：$arr=[26,76,43,41,86,1,45,49,71,4];</p>
-<p>第一轮比较相邻两个元素，如果左边元素大于右边元素，则交换。 </p>
-<p>26和76比较的结果就是，26在前，76在后；<br>然后76和43比较的结果，43在前，76在后；<br>然后76和41比较的结果，41在前，76在后；<br>然后76和86比较的结果，76在前，86在后；<br>然后86和1比较的结果，1在前，86在后；<br>然后86和45比较的结果，45在前，86在后；<br>然后86和49比较的结果，49在前，86在后；<br>然后86和71比较的结果，71在前，86在后；<br>然后86和4比较的结果，4在前，86在后；  </p>
-<p>以此类推，第一轮比较之后的结果是：26，43，41，76，1，45，49，71，4，86。经过第一轮比较，最大的元素跑到了最后一个，所以第二轮比较，最后一个元素不需要进行比较了。  第三轮还是从索引0和1开始比较，最后两个不比较了。第四轮、第五轮以此类推。</p>
-<p>$arr=[26,76,43,41,86,1,45,49,71,4];<br>// 冒泡排序<br><strong>function</strong> maopao(<strong>array</strong> $arr) :<strong>array</strong>{<br>$len=count($arr);<br><strong>for</strong> ($i=0; $i &lt;$len ; $i++) {<br>    # code…<br>    <strong>for</strong> ($j=0; $j &lt;$len-$i-1; $j++) {<br>        # code…<br>        <strong>if</strong> ($arr[$j]&gt;$arr[$j+1]) {<br>            # code…<br>            $t=$arr[$j];<br>            $arr[$j]=$arr[$j+1];<br>            $arr[$j+1]=$t;<br>        }<br>    }<br>    var_dump($arr);<br>}<br><strong>return</strong> $arr;<br>}<br>var_dump(maopao($arr));  </p>
-<p>每次比较结果：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-157-807x1024.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-158-580x1024.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-159-518x1024.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-160-608x1024.png" alt=""></p>
-<h4 id="时间复杂度："><a href="#时间复杂度：" class="headerlink" title="时间复杂度："></a>时间复杂度：</h4><p>从代码中可以看出一共遍历了n-1 + n-2 + … + 2 + 1 = n * (n-1) / 2 = 0.5 * n ^ 2 - 0.5 * n，那么时间复杂度是<strong>O(N^2)。</strong></p>
-<h4 id="稳定性："><a href="#稳定性：" class="headerlink" title="稳定性："></a>稳定性：</h4><p>因为arr[j]==arr[j+1]的时候，我们可以不移动arr[j]和arr[j++]，所以冒泡排序是<strong>稳定</strong>的。</p>
-
+<p>例如：$arr=[26,76,43,41,86,1,45,49,71,4];<br>
+        
+          <a class="article-more-a" href="/2019/04/19/php%E5%86%99%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/#more">more >></a>
+        
       
 
       
@@ -312,105 +303,10 @@
         <p>该节内容为漫谈，内容相对比较多。</p>
 <p>首先说明一下：事务不只是关系型数据库独有，非关系型数据库也有事务。只要在高并发或在短时间内操作做多条（批量，状态改变）数据的情况下，大都，注意是大都，而不是全部。</p>
 <p>说事务，但解决问题的最好的办法是避免使用事务。在日常开发中要是迫不得己那就用下事务吧。目前大型国企在事务处理上大都选择orical ，一般私营企业还是选择MySQL，使用MySQL来处理事务，在MySQL中用的最多的存储引擎有：innodb，bdb，myisam ,memory 等。其中innodb和bdb支持事务而myisam等不支持事务。这也是 innodb和myisam的重要区别之一。</p>
-<h4 id="一、那什么是事务？"><a href="#一、那什么是事务？" class="headerlink" title="一、那什么是事务？"></a>一、那什么是事务？</h4><p>在数据库中事务是工作的逻辑单元，一个事务是由一个或多个完成一组的相关行为的SQL语句组成，通过事务机制确保这一组SQL语句所作的操作要么都成功执行，完成整个工作单元操作，要么一个也不执行。</p>
-<p>如：网上转帐就是典型的要用事务来处理，用以保证数据的一致性。</p>
-<p>事务就像是一个整体，执行的目的是要完整。要么都成功执行，要么都不执行。</p>
-<hr>
-<h4 id="那事务有什么特性？"><a href="#那事务有什么特性？" class="headerlink" title="那事务有什么特性？"></a>那事务有什么特性？</h4><p>特性就是更好的来描述事务。事务具体四大特性，也就是经常说的ACID 。ACID是原子性（atomicity）、一致性（consistency）、隔离性（isolation）、持久性（durability）的缩写。<em><strong>重要的知识点要默念三遍。</strong></em></p>
-<p><strong>1、原子性（atomicity）</strong></p>
-<p>即不可分割，事务要么全部被执行，要么全部不执行。如果事务的所有子事务全部提交成功，则所有的数据库操作被提交，数据库状态发生变化；如果有子事务失败，则其他子事务的数据库操作被回滚，即数据库回到事务执行前的状态，不会发生状态转换。</p>
-<p><strong>2、一致性（consistency）</strong></p>
-<p>事务的执行使得数据从一种正确状态转换成另外一种正确状态。</p>
-<p><strong>3、隔离性（isolation）</strong></p>
-<p>在事务正确提交之前，不允许把事务对该数据的改变提供给任何其他事务，即在事务正确提交之前，它可能的结果不应该显示给其他事务。</p>
-<p>在进行事务查看数据时数据所处的状态，要么是被另一并发事务修改之前的状态，要么是被另一并发事务修改之后的状态，即当前事务不会查看由另外一个并发事务正在修改的数据。这种特性主要由锁机制实现。</p>
-<p><strong>4、持久性（durability）</strong></p>
-<p>事务正确提交之后，其结果将永远保存在数据库之中，即使在事务提交之后有了其他故障，事务的处理结果也会得到保存。</p>
-<hr>
-<h4 id="二、有了事务的机制，那么在并发情况下会出现什么问题？"><a href="#二、有了事务的机制，那么在并发情况下会出现什么问题？" class="headerlink" title="二、有了事务的机制，那么在并发情况下会出现什么问题？"></a>二、有了事务的机制，那么在并发情况下会出现什么问题？</h4><p>举个例子，事务A和事务B操纵的是同一个资源，事务A有若干个子事务，事务B也有若干个子事务，事务A和事务B在高并发的情况下，会出现各种各样的问题。”各种各样的问题”，常出现的有三种：脏读、不可重复读、幻读。</p>
-<p><strong>1、脏读</strong></p>
-<p>所谓脏读，就是指<strong>事务A读到了事务B还没有提交的数据</strong>，比如银行取钱，事务A开启事务，此时切换到事务B，事务B开启事务–&gt;取走100元，此时切换回事务A，事务A读取的肯定是数据库里面的原始数据，因为事务B取走了100块钱，并没有提交，数据库里面的账务余额肯定还是原始余额，这就是脏读。</p>
-<p><strong>2、不可重复读</strong></p>
-<p>所谓不可重复读，就是指<strong>在一个事务里面读取了两次某个数据，读出来的数据不一致</strong>。（在同一事务中重复读取数据，读取的结果不一致，导致数据不可重复读）。读取的还是以银行取钱为例，事务A开启事务–&gt;查出银行卡余额为1000元，此时切换到事务B，事务B开启事务–&gt;事务B取走100元–&gt;提交，数据库里面余额变为900元，此时切换回事务A，事务A再查一次查出账户余额为900元，这样对事务A而言，在同一个事务内两次读取账户余额数据不一致，这就是不可重复读。</p>
-<p><strong>3、幻读</strong></p>
-<p>所谓幻读，就是指<strong>在一个事务里面的操作中发现了未被操作的数据</strong>。比如学生信息，事务A开启事务–&gt;修改所有学生当天签到状况为false，此时切换到事务B，事务B开启事务–&gt;事务B插入了一条学生数据，此时切换回事务A，事务A提交的时候发现了一条自己没有修改过的数据，这就是幻读，就好像发生了幻觉一样。幻读出现的前提是并发的事务中有事务发生了插入、删除操作。</p>
-<h4 id="三、那在事务中怎么出现或避免这些情况的呢？这就需要了解事务隔离级别。"><a href="#三、那在事务中怎么出现或避免这些情况的呢？这就需要了解事务隔离级别。" class="headerlink" title="三、那在事务中怎么出现或避免这些情况的呢？这就需要了解事务隔离级别。"></a>三、那在事务中怎么出现或避免这些情况的呢？<strong>这就需要了解事务隔离级别。</strong></h4><p>SQL标准定义了4种隔离级别，包括了一些具体规则，用来限定事务内外哪些改变是可见的，哪些是不可见的。低级别的隔离级一般支持更高的并发处理，并拥有更低的系统开销。</p>
-<p>以本地数据库为例：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-131-1024x485.png" alt=""></p>
-<p><strong>1、第1级别：Read Uncommitted(读未提交)</strong></p>
-<p>通过名字可以看出，就是一个事务读取了另一个事务未提交的内容。该级别引发的问题是——<strong><em>脏读(Dirty Read)：</em></strong>读取到了未提交的数据。</p>
-<p>举例：</p>
-<p>设置事务隔离为：READ-UNCOMMITTED</p>
-<p>set tx_isolation=’READ-UNCOMMITTED’;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-130.png" alt=""></p>
-<p>事务A：启动事务</p>
-<p>start transaction;<br>select * from my_user;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-132.png" alt=""></p>
-<p>事务B：也启动一个事务(那么两个事务交叉了)。在事务B中执行更新语句，且不提交。</p>
-<p>start transaction;<br>update my_user set sex=’0’ where id=1;<br>select * from my_user;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-133.png" alt=""></p>
-<p>事务A：回到事务A查看数据情况，两次操作前后对比：</p>
-<p>select * from my_user;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-134-853x1024.png" alt=""></p>
-<p>数据改变了，<strong>说明我们读到了事务B还没有提交的数据。</strong></p>
-<p>事务B：事务B回滚，仍然未提交</p>
-<p>rollback;<br>select * from my_user;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-135.png" alt=""></p>
-<p>事务A：回到事务A，在事务A里面看到的也是B没有提交的数据。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-136-757x1024.png" alt=""></p>
-<p><strong>脏读意味着我在这个事务中(A中)，事务B虽然没有提交，但它任何一条数据变化，我都可以看到！</strong></p>
-<p><strong>2、第2级别：Read Committed(读已提交)</strong></p>
-<p>还是从名字上看出，这个级别是指：一个事务只能读取其他事物已经提交的数据。这个级别隔离这是大多数数据库系统的默认隔离级别（但不是MySQL默认的）<br>。而这种隔离级别出现的问题是——_<strong>不可重复读(Nonrepeatable Read)：</strong>_不可重复读意味着我们在同一个事务中执行完全相同的select语句时可能看到不一样的结果。导致这种情况的原因可能有：(1)有一个交叉的事务有新的commit，导致了数据的改变；(2)一个数据库被多个实例操作时，同一事务的其他实例在该实例处理其间可能会有新的commit。<strong>总之就是有其他事务comment了，导致当前事务读取前后不一致。</strong></p>
-<p>修改隔离级别</p>
-<p>set tx_isolation=’read-committed’; </p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-137.png" alt=""></p>
-<p>事务A：启动一个事务</p>
-<p>start transaction;<br>select * from my_user;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-138.png" alt=""></p>
-<p>事务B：也启动一个事务(那么两个事务交叉了)。在这事务中更新数据，且未提交。</p>
-<p>start transaction;<br>select * from my_user;<br>update my_user set sex=’0’ where id=1;<br>select * from my_user;  </p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-139-719x1024.png" alt=""></p>
-<p>事务A：回到事务A，这个时候我们在事务A中能看到数据的变化吗?</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-140-1024x961.png" alt=""></p>
-<p>这说明，事务A读取不到事务B未提交的数据，避免了上种情况的脏读。但是，把事务B commit 之后：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-141-1024x635.png" alt=""></p>
-<p>再来看事务A:</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-142-1024x890.png" alt=""></p>
-<p><strong>3、第3级别：Repeatable Read(可重读)</strong></p>
-<p>顾名思义，在同一个事务中，读取的数据是不会发生变化的，不受其他事务的影响。这是MySQL的默认事务隔离级别。此级别可能出现的问题——幻读(Phantom Read)：当用户读取某一范围的数据行时，另一个事务又在该范围内插入了新行，当用户再读取该范围的数据行时，会发现有新的“幻影” 行。  </p>
-<p>InnoDB和Falcon存储引擎通过多版本并发控制(MVCC，Multiversion Concurrency Control)机制解决了该问题，<strong><em>下节再讲关于MVCC 的内容。</em></strong></p>
-<p>更改隔离级别</p>
-<p>set tx_isolation=’repeatable-read’;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-143.png" alt=""></p>
-<p>事务A：启动一个事务</p>
-<p>start transaction;<br>select * from my_user;  </p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-144.png" alt=""></p>
-<p>事务B：开启一个新事务(那么这两个事务交叉了)，在事务B中增加一条数据，并提交 。</p>
-<p>start transaction;<br>insert into my_user (<code>name</code>,<code>sex</code>) values (‘杨十三’,’1’);<br>select * from my_user;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-146-1024x669.png" alt=""></p>
-<p>commit;</p>
-<p>事务A：这时候即使事务B已经提交了，但A能不能看到数据变化？</p>
-<p>select * from my_user;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-147-946x1024.png" alt=""></p>
-<p>事务A：只有当事务A也提交了，它才能够看到数据变化</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-148-790x1024.png" alt=""></p>
-<p><strong>4、第4级别：Serializable(可串行化)</strong></p>
-<p>可串行化是指，在同一个事务中要完全从头到尾一连串的执行完，不能在此过程中有其他事务改变数据。此级别的隔离是最高的隔离级别。它通过强制事务排序，使之不可能相互冲突，从而解决幻读问题。简言之，它是在每个读的数据行上加上共享锁。但在这个级别，可能导致大量的超时现象和锁竞争。<strong><em>随后章节说一下锁的内容。</em></strong></p>
-<p>修改隔离界别</p>
-<p>set tx_isolation=’serializable’;   </p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-149.png" alt=""></p>
-<p>事务A：开启一个新事务</p>
-<p>start transaction;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-150.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-153-941x1024.png" alt=""></p>
-<p>在事务A中遇到了问题，只能插入数据，而不能查看数据。当事务A提交之后可select查看。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-154.png" alt=""></p>
-<p>虽然出错了，但?????????奇怪的是，事务B怎么插入数据成功了？和预期的不一样？哪里出了问题呢？</p>
-<p>原来 在 <strong>Serializable(可串行化) 级别下，表加的锁不是表锁而是行锁，在select 中加上where 条件就可查询出来。</strong></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-155-1024x354.png" alt=""></p>
-<p>而update 语句也执行错误。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-156-1024x349.png" alt=""></p>
-
+<h4 id="一、那什么是事务？"><a href="#一、那什么是事务？" class="headerlink" title="一、那什么是事务？"></a>一、那什么是事务？</h4>
+        
+          <a class="article-more-a" href="/2019/04/16/%E6%BC%AB%E8%B0%88%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BA%8B%E5%8A%A1/#more">more >></a>
+        
       
 
       
@@ -511,63 +407,10 @@
 <p>为了一起杀死这些连续的端口，特意写了一个shell脚本。</p>
 <h4 id="建shell文件："><a href="#建shell文件：" class="headerlink" title="建shell文件："></a>建shell文件：</h4><p>sudo vi kill_port.sh</p>
 <p>sudo chmod 755 kill_port.sh</p>
-<h4 id="shell内容："><a href="#shell内容：" class="headerlink" title="shell内容："></a>shell内容：</h4><p>!/bin/bash<br> read -p “输入 你要kill的端口号起始值(例如: 8081 8082,若只输入一个则只操作当前端口号): “ a b<br> #判断变量是否输入<br> if [[ -z $a &amp;&amp; -z $b ]]; then<br>   echo “请输入至少一个端口号”;<br> fi<br> #如果不输入其中一个则只生效另一个<br> if [ -z $a ]; then<br>     a=$b;<br> fi<br> if [ -z $b ]; then<br>     b=$a;<br> fi<br> #k 计数变量<br> let N=0;<br> for ((i=$a; i&lt;=$b; i ++))<br> do<br>     for j in <code>lsof -i:$i  awk &#39;{print $2}&#39;  grep -v &#39;PID&#39;</code>;<br>     do<br>         kill -9 $j;<br>         N=<code>expr $N + 1</code>;<br>         echo -e “\033[37m $i port kill done! \033[0m”;<br>     done<br> done<br> echo -e “\033[41;37m 共关闭 $N 个端口号 \033[0m”;</p>
-<p>操作实例：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-127-1024x225.png" alt=""></p>
-<p>不熟悉shell的朋友可以继续看下去，了解shell的朋友可绕过。</p>
-<p>接下来，我详细说明一下这个shell内容：</p>
-<p>1、起始行就不用说了</p>
-<p>#!/bin/bash</p>
-<p><strong>2、read</strong></p>
-<p>read命令 -p(提示语句) -n(字符个数) -t(等待时间) -s(不回显)</p>
-<p><strong>3、if</strong>[[ ]]</p>
-<blockquote>
-<p>在命令行里test expr和[ expr ]的效果相同。<br>test的三个基本作用是判断文件、判断字符串、判断整数。支持使用 ”与或非“ 将表达式连接起来。<br>test中可用的比较运算符只有==和!=，两者都是用于字符串比较的，不可用于整数比较，整数比较只能使用-eq, -gt这种形式。<br>无论是字符串比较还是整数比较都千万不要使用大于号小于号。当然，如果你实在想用也是可以的，对于字符串比较可以使用尖括号的转义形式， 如果比较”ab”和”bc”：[ ab \&lt; bc ]，结果为真，也就是返回状态为0.  </p>
-</blockquote>
-<blockquote>
-<p>[[ ]] 在shell中的一个命令，它就比test强大的多了。支持字符串的模式匹配（使用=~操作符时甚至支持shell的正则表达 式）。逻辑组合可以不使用test的-a,-o而使用&amp;&amp; 。<br>字符串比较时可以把右边的作为一个模式（这是右边的字符串不加双引号的情况下。如果右边的字符串加了双引号，则认为是一个文本字符串。），而不仅仅是一个字符串，比如[[ hello == hell? ]]，结果为真。</p>
-</blockquote>
-<p><strong>4、-z</strong></p>
-<p>[ -z STRING ] “STRING” 的长度为零则为真。</p>
-<p>[ -n STRING ] or [ STRING ] “STRING” 的长度为非零 non-zero则为真。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:$i  awk &#39;&#123;print $2&#125;&#39;  grep -v &#39;PID&#39;</span><br></pre></td></tr></table></figure>
-
-<p>这个是linux 命令。</p>
-<p><strong>5、lsof -i :8082</strong> 知道8082端口被哪个进程占用</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-129-1024x68.png" alt=""></p>
-<p><strong>6、awk ‘{print $2}’</strong> </p>
-<p>$2：表示第二个字段<br>print $2 ： 打印第二个字段</p>
-<p>grep 是查找含有指定文本行的意思，比如grep cpu 就是查找含有cpu的文本的行</p>
-<p>grep -v 是反向查找的意思，比如 grep -v ‘PID’ 就是查找不含有 PID 字段的行</p>
-<p>整个命令的意思就是：从查找的端口返回的内容中，找到每行的第二个字段，那就是 PID 和4218，再通过反向查找，去掉 PID，那就只剩下4218了。赋值给j</p>
-<p> 7、<strong>kill -15 $j;kill -9 $j</strong></p>
-<p>kill - 9 表示强制杀死该进程；而 kill 则有局限性，例如后台进程，守护进程等；</p>
-<p>   1) 关闭socket链接</p>
-<p>   2) 清理临时文件</p>
-<p>   3) 将自己将要被销毁的消息通知给子进程</p>
-<p>   4) 重置自己的终止状态</p>
-<p>再说一下：</p>
-<blockquote>
-<p>SIGNKILL（9） 和 SIGNTERM（15） 的区别在于：<br>SIGNKILL（9） 的效果是立即杀死进程. 该信号不能被阻塞, 处理和忽略。<br>SIGNTERM（15） 的效果是正常退出进程，退出前可以被阻塞或回调处理。并且它是Linux缺省的程序中断信号。</p>
-</blockquote>
-<p>建议做法：先使用kill -15，然后再使用kill -9 </p>
-<p><strong>8、expr</strong></p>
-<p>‘expr’支持普通的算术操作，算术表达式优先级低于字符串表达式，高于逻辑关系表达式。</p>
-<p>expr 对<code>表达式</code>的格式有几点特殊的要求：</p>
-<ul>
-<li>出现在<code>表达式</code>中的运算符、数字、变量和小括号的左右两边至少要有一个空格，否则会报错。</li>
-<li>有些特殊符号必须用反斜杠<code>\</code>进行转义（屏蔽其特殊含义），比如乘号<code>*</code>和小括号<code>()</code>，如果不用<code>\</code>转义，那么 Shell 会把它们误解为正则表达式中的符号（<code>*</code>对应通配符，<code>()</code>对应分组）。</li>
-<li>使用变量时要加<code>$</code>前缀。</li>
-</ul>
-<p><strong>9、echo -e</strong></p>
-<p>-e：激活转义字符。使用-e选项时，若字符串中出现以下字符，则特别加以处理，而不会将它当成一般文字输出：</p>
-<p>•\a 发出警告声；<br>•\b 删除前一个字符；<br>•\c 最后不加上换行符号；<br>•\f 换行但光标仍旧停留在原来的位置；<br>•\n 换行且光标移至行首；<br>•\r 光标移至行首，但不换行；<br>•\t 插入tab；<br>•\v 与\f相同；<br>•\\ 插入\字符；<br>•\nnn 插入nnn（八进制）所代表的ASCII字符；</p>
-<p>格式: echo -e “\033[字背景颜色;字体颜色m字符串\033[0m”<br>例如：echo -e “\033[37m $i port kill done! \033[0m”;<br>其中37代表字的颜色。 白色<br>例如：echo -e “\033[41;37m 共关闭 $N 个端口号 \033[0m”;<br>其中41的位置代表底色, 37的位置是代表字的颜色。 41 红色。  </p>
-<p>字背景颜色范围:40—-49<br>40:黑<br>41:深红<br>42:绿<br>43:黄色<br>44:蓝色<br>45:紫色<br>46:深绿<br>47:白色 </p>
-<p>字颜色:30———–39<br>30:黑<br>31:红<br>32:绿<br>33:黄<br>34:蓝色<br>35:紫色<br>36:深绿<br>37:白色 </p>
-<p>下载该shell脚本</p>
-<p><a href="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/kill_port.sh_.zip" target="_blank" rel="noopener">kill_port.sh</a><a href="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/kill_port.sh_.zip" target="_blank" rel="noopener">下载</a></p>
-
+<h4 id="shell内容："><a href="#shell内容：" class="headerlink" title="shell内容："></a>shell内容：</h4>
+        
+          <a class="article-more-a" href="/2019/04/16/shell-%E6%89%B9%E9%87%8F%E5%85%B3%E9%97%AD%E7%AB%AF%E5%8F%A3/#more">more >></a>
+        
       
 
       
@@ -667,19 +510,10 @@
 <p>定义跳转方式，使用@click 触发。</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-120-1024x357.png" alt=""></p>
 <p>或者</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-121-1024x234.png" alt=""></p>
-<p>以第二个写留言为例，做跳转</p>
-<p>定义方法并传递参数：</p>
-<p>// 写留言<br>comment (e) {<br>  console.log(e)<br>  <strong>let</strong> sid = e.currentTarget.id<br>  console.log(sid)<br>  wx.navigateTo({ url: ‘../comment/main?sid=’ + sid })<br>},</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-122-1024x353.png" alt=""></p>
-<p>接收参数</p>
-<p>在 comment.vue 的 onLoad 的 options 接收：</p>
-<p>onLoad (options) {<br>  console.log(options)<br>  <strong>let</strong> islogin = <strong>false<br>  this</strong>.sid = options.sid  </p>
-<p>……</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-124-1024x279.png" alt=""></p>
-<p>测试结果：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-125-1024x675.png" alt=""></p>
-
+<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-121-1024x234.png" alt=""><br>
+        
+          <a class="article-more-a" href="/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%8D%81%EF%BC%89%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%E4%BC%A0%E5%8F%82/#more">more >></a>
+        
       
 
       
@@ -782,27 +616,10 @@
 <p>2、单独页面局部配置</p>
 <p>没有main.json 自己新建一个即可。</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-110-1024x555.png" alt=""></p>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>和methods 平级使用</p>
-<p>onPullDownRefresh () {<br>  // to doing..<br>  console.log(‘shuaxin’)<br>  // 停止下拉刷新<br>  wx.stopPullDownRefresh()</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-111-1024x473.png" alt=""></p>
-<p>模板中使用也是如此：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-112-1024x489.png" alt=""></p>
-<p><strong>重新编译</strong>，下拉刷新一下，结果：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-113-1024x734.png" alt=""></p>
-<p>执行顺序， 当前页面 -&gt; 模板页面。</p>
-<p>我们用模板 sinfo.vue 来测试下拉加载。</p>
-<p>onPullDownRefresh () {<br>  console.log(‘下拉刷新1’)<br>  <strong>let</strong> that = <strong>this<br>** wx.showNavigationBarLoading() // 在标题栏中显示加载<br>  // 模拟加载<br>  setTimeout(</strong>function** () {<br>    // complete<br>    that.getTodaySinfo()<br>    wx.hideNavigationBarLoading() // 完成停止加载<br>    wx.stopPullDownRefresh() // 停止下拉刷新<br>  }, 1500)<br>},</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-118-1024x421.png" alt=""></p>
-<p>先去写留言，再返回首页，下拉加载。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-114-1024x520.png" alt=""></p>
-<p>返点左上角返回是不会更新的：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-115-1024x643.png" alt=""></p>
-<p>下拉一下：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-116-1024x493.png" alt=""></p>
-<p>下拉松手</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-117-1024x883.png" alt=""></p>
-<p>完美！</p>
-
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>和methods 平级使用<br>
+        
+          <a class="article-more-a" href="/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B9%9D%EF%BC%89%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0/#more">more >></a>
+        
       
 
       
@@ -900,26 +717,10 @@
       
         <p>在开发的过程中，用到全局变量的问题，搜了很多，方法五花八门，有的推荐使用vuex ，如果你想折腾一番可以自己尝试的使用。</p>
 <p>下面，我用的是最原始的方式来介绍一下全局变量的使用方法。</p>
-<p>首先，在配置文件src / mian.js 中进行开启和全局配置。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-100-1024x395.png" alt=""></p>
-<p>我的配置文件内容：</p>
-<p><strong>import</strong> Vue <strong>from</strong> ‘vue’<br><strong>import</strong> App <strong>from</strong> ‘./App’<br><strong>import</strong> ‘mpvue-calendar/src/style.css’<br>Vue.config.productionTip = *<em>false<br>*</em>App.mpType = ‘app’  </p>
-<p><strong>const</strong> app = <strong>new</strong> Vue(App)<br>app.$mount()<br>getApp().globalData = {uid: ‘123456’}<br>Vue.prototype.globalData = getApp().globalData</p>
-<p>放到 app.$mount() 后面。</p>
-<p>为了直观的配置，先给getApp().globalData 赋值。再给Vue.prototype.globalData，当然，你也可以直接赋值给Vue.prototype.globalData。效果一样。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-103-1024x484.png" alt=""></p>
-<p>调用全局变量</p>
-<p>使用 <strong>this</strong>.globalData.uid 调用即可。小程序重新编译：</p>
-<p>执行过程</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-107-1024x913.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-106-1024x437.png" alt=""></p>
-<p>改变全局变量的值：</p>
-<p><strong>在写留言界面 改变值：this</strong>.globalData.test = ‘我已经改变了全局变量测试值’</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-105-1024x398.png" alt=""></p>
-<p>返回首页下拉刷新：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-108-1024x490.png" alt=""></p>
-<p>改变成功！</p>
-
+<p>首先，在配置文件src / mian.js 中进行开启和全局配置。<br>
+        
+          <a class="article-more-a" href="/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%85%AB%EF%BC%89%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/#more">more >></a>
+        
       
 
       
@@ -1017,41 +818,10 @@
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-85-1024x344.png" alt=""></p>
 <p>把模板配置到组成部分 components</p>
 <p>名字和import 时的名字一致</p>
-<p>components: {<br>  Sinfo<br>},</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-86-1024x273.png" alt=""></p>
-<p>如果不使用会报错误</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-88-1024x312.png" alt=""></p>
-<p>页面代码中调用模板</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-87-1024x404.png" alt=""></p>
-<p>说明：模板标签不区分大小写 可以使用 sinfo 也可以使用 Sinfo</p>
-<p>根据个人使用习惯和增加区分度，定义使用大写字母开头的标签。如图：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-89-1024x430.png" alt=""></p>
-<p>其中 ：</p>
-<p>:timeDate=”timeDate” 是定义传给模板的参数。</p>
-<p>ref=”sinfo” 是模板回调使用。 和调用时使用的名字一致即可。</p>
-<p>回调是当前文件调用模板里的方法（函数）使用。</p>
-<p><strong>this</strong>.$refs.sinfo.getTodaySinfo(time, 1)</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-90-1024x505.png" alt=""></p>
-<p>模板函数：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-91-1024x401.png" alt=""></p>
-<p>如果名称不一致，则报 undefined 错误</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-92-1024x202.png" alt=""></p>
-<p>当我点选日历日期时，就可以调取模板中的方法，加载新的数据。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-96-1024x356.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-97-572x1024.png" alt=""></p>
-<h4 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h4><p>为了测试，写死数据为 1111</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-94-1024x371.png" alt=""></p>
-<p>接收参数：</p>
-<p>// 增加一个可从外部传入的属性<br>props: {<br>  timeDate: {<br>    type: String,<br>    <strong>default</strong>: []<br>  }<br>},</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-95-1024x627.png" alt=""></p>
-<p>小程序开发工具编译一下，在调试器中打印：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-93-1024x368.png" alt=""></p>
-<p>如何使用传递的参数默认加载模板数据呢？</p>
-<p>在模板中，使用 mounted 或 onLoad 方法,调用自定义的函数。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-99-1024x450.png" alt=""></p>
-<p>为了更好的体现出 传递参数的作用，修改了一下 getTodaySinfo ( )，在 mounted 调用时就可以不用传递参数，没有参数默认是 timeDate 的值。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-98-1024x542.png" alt=""></p>
-
+<p>components: {<br>  Sinfo<br>},<br>
+        
+          <a class="article-more-a" href="/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B8%83%EF%BC%89%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF/#more">more >></a>
+        
       
 
       
@@ -1147,15 +917,10 @@
 <p>名字自己起，其中我的api.js文件中主要放的是和接口相关的文件：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-79-1024x280.png" alt=""></p>
 <p>我的index.js 里放的是常用函数：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-80-1024x367.png" alt=""></p>
-<p>暴露给外部调用方法（函数）：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-83-1024x470.png" alt=""></p>
-<h4 id="文件调用"><a href="#文件调用" class="headerlink" title="文件调用"></a>文件调用</h4><p>和调用插件方法一样，写相对路径即可。</p>
-<p><strong>import</strong> util <strong>from</strong> ‘../../utils/index.js’</p>
-<p>使用方法</p>
-<p><strong>let</strong> today = util.formatDate(<strong>new</strong> Date())</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-82-1024x347.png" alt=""></p>
-
+<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-80-1024x367.png" alt=""><br>
+        
+          <a class="article-more-a" href="/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%85%AD%EF%BC%89%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E9%85%8D%E7%BD%AE/#more">more >></a>
+        
       
 
       
@@ -1254,23 +1019,10 @@
 <p>或者</p>
 <p>yarn add  mpvue-calendar</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-65-1024x317.png" alt=""></p>
-<p>下载完成，在需要的页面进行插件引用</p>
-<p><strong>import</strong> Calendar <strong>from</strong> ‘mpvue-calendar’</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-73-1024x317.png" alt=""></p>
-<p>components: {<br>  Calendar<br>},</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-74-1024x348.png" alt=""></p>
-<p>具体的可参照文档，不在此一一说明，文档地址：<a href="https://www.npmjs.com/package/mpvue-calendar" target="_blank" rel="noopener">https://www.npmjs.com/package/mpvue-calendar</a></p>
-<p>当你引用完但是界面并不是源文档所说的那样，那么还需要进一步引用样式：</p>
-<p>在src / main.js 中配置即可。</p>
-<p><strong>import</strong> ‘mpvue-calendar/src/style.css’</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-75-1024x378.png" alt=""></p>
-<p>插件原始样式：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-76-1024x977.png" alt=""></p>
-<p>如果自己想修改样式，可以在自己文件中写style，设定为最高级 !importent</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-77-1024x587.png" alt=""></p>
-<p>我现在使用的情况为：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-78-596x1024.png" alt=""></p>
-
+<p>下载完成，在需要的页面进行插件引用<br>
+        
+          <a class="article-more-a" href="/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BA%94%EF%BC%89%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AEmpvue-calendar/#more">more >></a>
+        
       
 
       
@@ -1373,22 +1125,10 @@
         <p><a href="https://www.sunsanmiao.cn/archives/376" target="_blank" rel="noopener">使用mpvue重构个人小程序（三）使用Vue的语法编写</a></p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-62-1024x774.png" alt=""></p>
 <p>如何把右侧的小程序通过mpvue 进行重构呢？</p>
-<p>为了干净，可以把pp.json里的 tabBar等数据清掉</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-68-1024x765.png" alt=""></p>
-<p>只保留下图数据</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-67-1024x586.png" alt=""></p>
-<h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h4><p>在src / app.json 配置 全局属性：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-69-1024x463.png" alt=""></p>
-<p>pages 是页面配置，加一个页面就配置一个。</p>
-<p>window 是页面全局配置</p>
-<p>“enablePullDownRefresh”: <strong>true</strong>, // 开启下拉<br>“backgroundTextStyle”: “dark”, // 头部背景主题颜色类型，包括 dark 和 light<br>“navigationBarBackgroundColor”: “#3F3F47”,// 头部背景颜色<br>“navigationBarTitleText”: “雨豆”,// 头部文本内容<br>“navigationBarTextStyle”: “white” // 头部文本颜色</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-70-1024x542.png" alt=""></p>
-<h4 id="局部配置"><a href="#局部配置" class="headerlink" title="局部配置"></a>局部配置</h4><p>在相关页面新建 main.json 文件</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-71-1024x708.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-72-1024x462.png" alt=""></p>
-<p>是否支持下拉操作，也可以可以在单独页面配置，避免全局配置影响其他不需要下拉操作的页面。</p>
-<p>其他配置在后续文章中陆续介绍。</p>
-
+<p>为了干净，可以把pp.json里的 tabBar等数据清掉<br>
+        
+          <a class="article-more-a" href="/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%9B%9B%EF%BC%89%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE/#more">more >></a>
+        
       
 
       
@@ -1466,9 +1206,10 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">« Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next »</a>
     </nav>
   
+
 
 
           </div>

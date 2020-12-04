@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> MySQL 语句举例（一） | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="举例：有10个用户，输出在订单表中下单数最多的5个人的名字。 my_user 表数据  my_order，uid对应my_user表的id  测试数据生成 写一个存储过程，随机插入10000条数据： CREATE DEFINER&#x3D;root@localhost PROCEDURE test_loop( ) BEGIN DECLARE     i INT DEFAULT 1; WHILE     i">
+  <meta name="description" content="举例：有10个用户，输出在订单表中下单数最多的5个人的名字。 my_user 表数据  my_order，uid对应my_user表的id  测试数据生成 写一个存储过程，随机插入10000条数据：">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" MySQL 语句举例（一）">
 <meta property="og:url" content="https://sunct.github.io/2019/03/12/mysql-%E8%AF%AD%E5%8F%A5%E4%B8%BE%E4%BE%8B%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="举例：有10个用户，输出在订单表中下单数最多的5个人的名字。 my_user 表数据  my_order，uid对应my_user表的id  测试数据生成 写一个存储过程，随机插入10000条数据： CREATE DEFINER&#x3D;root@localhost PROCEDURE test_loop( ) BEGIN DECLARE     i INT DEFAULT 1; WHILE     i">
+<meta property="og:description" content="举例：有10个用户，输出在订单表中下单数最多的5个人的名字。 my_user 表数据  my_order，uid对应my_user表的id  测试数据生成 写一个存储过程，随机插入10000条数据：">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-22-149x300.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-24-300x298.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-25-300x289.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-26-168x300.png">
 <meta property="article:published_time" content="2019-03-12T11:12:19.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.493Z">
+<meta property="article:modified_time" content="2020-12-03T11:21:09.187Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="MySQL">
 <meta property="article:tag" content="group by">
@@ -194,15 +194,15 @@
 <p>my_order，uid对应my_user表的id</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-24-300x298.png" alt=""></p>
 <p>测试数据生成</p>
-<p>写一个存储过程，随机插入10000条数据：</p>
-<p>CREATE DEFINER=<code>root</code>@<code>localhost</code> PROCEDURE <code>test_loop</code>( )<br> BEGIN<br> DECLARE<br>     i INT DEFAULT 1;<br> WHILE<br>     i &lt; 10000 DO<br>     INSERT INTO my_order ( oid, uid )<br> VALUES<br>     (<br>     CONCAT( ‘o_‘, DATE_FORMAT( now( ), ‘%Y%m%d%h%i%s’ ), FLOOR(1000 + RAND( )*(9999-1000) )),<br>     FLOOR( 1 + RAND( ) * 10 )<br>     );<br> SET i = i + 1;<br> END WHILE;<br> END</p>
+<p>写一个存储过程，随机插入10000条数据：<br> <a id="more"></a> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CREATE DEFINER&#x3D;&#96;root&#96;@&#96;localhost&#96; PROCEDURE &#96;test_loop&#96;( )  </span><br><span class="line"> BEGIN  </span><br><span class="line"> DECLARE  </span><br><span class="line">     i INT DEFAULT 1;  </span><br><span class="line"> WHILE  </span><br><span class="line">     i &lt; 10000 DO  </span><br><span class="line">     INSERT INTO my\_order ( oid, uid )  </span><br><span class="line"> VALUES  </span><br><span class="line">     (  </span><br><span class="line">     CONCAT( &#39;o\_&#39;, DATE\_FORMAT( now( ), &#39;%Y%m%d%h%i%s&#39; ), FLOOR(1000 + RAND( )\*(9999-1000) )),  </span><br><span class="line">     FLOOR( 1 + RAND( ) \* 10 )   </span><br><span class="line">     );  </span><br><span class="line"> SET i &#x3D; i + 1;  </span><br><span class="line"> END WHILE;  </span><br><span class="line"> END</span><br></pre></td></tr></table></figure>
 <p>查询语句：</p>
-<p>SELECT<br>    count( o.uid ) count_num,<br>    u.NAME<br>FROM<br>    my_user u<br>    JOIN my_order o ON u.id = o.uid<br>GROUP BY<br>    o.uid<br>HAVING<br>    COUNT( o.uid )<br>ORDER BY<br>    COUNT( o.uid ) DESC<br>    LIMIT 5;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SELECT  </span><br><span class="line">    count( o.uid ) count\_num,  </span><br><span class="line">    u.NAME   </span><br><span class="line">FROM  </span><br><span class="line">    my\_user u  </span><br><span class="line">    JOIN my\_order o ON u.id &#x3D; o.uid   </span><br><span class="line">GROUP BY  </span><br><span class="line">    o.uid   </span><br><span class="line">HAVING  </span><br><span class="line">    COUNT( o.uid )   </span><br><span class="line">ORDER BY  </span><br><span class="line">    COUNT( o.uid ) DESC   </span><br><span class="line">    LIMIT 5;</span><br></pre></td></tr></table></figure>
 <p>查询结果：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-25-300x289.png" alt=""></p>
 <p>统计所有的用户订单数，结果如下：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-26-168x300.png" alt=""></p>
-<p>SELECT<br>    count( o.uid ) count_num,<br>    u.NAME<br>FROM<br>    my_user u<br>    JOIN my_order o ON u.id = o.uid<br>GROUP BY<br>    o.uid<br>HAVING<br>    COUNT( o.uid )<br>ORDER BY<br>    COUNT( o.uid ) DESC </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">SELECT  </span><br><span class="line">    count( o.uid ) count\_num,  </span><br><span class="line">    u.NAME   </span><br><span class="line">FROM  </span><br><span class="line">    my\_user u  </span><br><span class="line">    JOIN my\_order o ON u.id &#x3D; o.uid   </span><br><span class="line">GROUP BY  </span><br><span class="line">    o.uid   </span><br><span class="line">HAVING  </span><br><span class="line">    COUNT( o.uid )   </span><br><span class="line">ORDER BY  </span><br><span class="line">    COUNT( o.uid ) DESC</span><br></pre></td></tr></table></figure>
 <p>该sql 主要考察 group by 和 having 的使用，然后 order by 和 desc 排序。</p>
 <p><strong>★sql 的执行顺序如下：</strong></p>
 <ul>

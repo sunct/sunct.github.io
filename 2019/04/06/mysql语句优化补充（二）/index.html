@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> MySQL语句优化补充（二） | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="除了增加索引外，还有很多注意的问题。 1、不要在语句中出现计算 2、查询条件数据类型一致为了测试把其中的一个订单id 改为 201903121704170005，看下图不同的查询：  显然oid&#x3D;201903121704170005比 oid&#x3D;’201903121704170005’长很多,因为原来的oid 的字段类型是varchar，而不是数值型。分析一下：  类型不一致的第一条，没有走索引。">
+  <meta name="description" content="除了增加索引外，还有很多注意的问题。 1、不要在语句中出现计算 2、查询条件数据类型一致为了测试把其中的一个订单id 改为 201903121704170005，看下图不同的查询：">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" MySQL语句优化补充（二）">
 <meta property="og:url" content="https://sunct.github.io/2019/04/06/mysql%E8%AF%AD%E5%8F%A5%E4%BC%98%E5%8C%96%E8%A1%A5%E5%85%85%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="除了增加索引外，还有很多注意的问题。 1、不要在语句中出现计算 2、查询条件数据类型一致为了测试把其中的一个订单id 改为 201903121704170005，看下图不同的查询：  显然oid&#x3D;201903121704170005比 oid&#x3D;’201903121704170005’长很多,因为原来的oid 的字段类型是varchar，而不是数值型。分析一下：  类型不一致的第一条，没有走索引。">
+<meta property="og:description" content="除了增加索引外，还有很多注意的问题。 1、不要在语句中出现计算 2、查询条件数据类型一致为了测试把其中的一个订单id 改为 201903121704170005，看下图不同的查询：">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-24.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-26-1024x498.png">
@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-37-1024x473.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-38-1024x120.png">
 <meta property="article:published_time" content="2019-04-06T10:42:08.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.522Z">
+<meta property="article:modified_time" content="2020-12-03T11:21:45.465Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="MySQL">
 <meta property="article:tag" content="优化">
@@ -196,8 +196,7 @@
       
         <p>除了增加索引外，还有很多注意的问题。</p>
 <h4 id="1、不要在语句中出现计算"><a href="#1、不要在语句中出现计算" class="headerlink" title="1、不要在语句中出现计算"></a>1、不要在语句中出现计算</h4><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-24.png" alt=""></p>
-<h4 id="2、查询条件数据类型一致"><a href="#2、查询条件数据类型一致" class="headerlink" title="2、查询条件数据类型一致"></a>2、查询条件数据类型一致</h4><p>为了测试把其中的一个订单id 改为 201903121704170005，看下图不同的查询：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-26-1024x498.png" alt=""></p>
+<h4 id="2、查询条件数据类型一致"><a href="#2、查询条件数据类型一致" class="headerlink" title="2、查询条件数据类型一致"></a>2、查询条件数据类型一致</h4><p>为了测试把其中的一个订单id 改为 201903121704170005，看下图不同的查询：<br> <a id="more"></a><br><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-26-1024x498.png" alt=""></p>
 <p>显然oid=201903121704170005比 oid=’201903121704170005’长很多,因为原来的oid 的字段类型是varchar，而不是数值型。分析一下：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-27-1024x680.png" alt=""></p>
 <p>类型不一致的第一条，没有走索引。</p>

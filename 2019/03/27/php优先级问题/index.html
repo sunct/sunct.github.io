@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> php优先级问题 | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="结合方向 运算符 附加信息 非结合 clone new clone 和 new 左 [ array() 非结合 ++ – 递增／递减运算符 非结合 ~ - (int) (float) (string) (array) (object) (bool) @ 类型 非结合 instanceof 类型 右结合 ! 逻辑操作符 左 * &#x2F; % 算术运算符 左 + - . 算术运算符和字符串运算符 左 &amp;lt">
+  <meta name="description" content="结合方向 运算符 附加信息    非结合 clone new clone 和 new   |左|[|array()| |非结合|++ –| 递增／递减运算符| |非结合|~ - (int) (float) (string) (array) (object) (bool) @|类型 |非结合|instanceof|类型 |右结合|!|逻辑操作符|左|* &#x2F; %|算术运算符|左|+ - .|算术">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" php优先级问题">
 <meta property="og:url" content="https://sunct.github.io/2019/03/27/php%E4%BC%98%E5%85%88%E7%BA%A7%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="结合方向 运算符 附加信息 非结合 clone new clone 和 new 左 [ array() 非结合 ++ – 递增／递减运算符 非结合 ~ - (int) (float) (string) (array) (object) (bool) @ 类型 非结合 instanceof 类型 右结合 ! 逻辑操作符 左 * &#x2F; % 算术运算符 左 + - . 算术运算符和字符串运算符 左 &amp;lt">
+<meta property="og:description" content="结合方向 运算符 附加信息    非结合 clone new clone 和 new   |左|[|array()| |非结合|++ –| 递增／递减运算符| |非结合|~ - (int) (float) (string) (array) (object) (bool) @|类型 |非结合|instanceof|类型 |右结合|!|逻辑操作符|左|* &#x2F; %|算术运算符|左|+ - .|算术">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-32-300x90.png">
 <meta property="article:published_time" content="2019-03-27T10:47:11.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.512Z">
+<meta property="article:modified_time" content="2020-12-03T11:30:09.310Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="php优先级">
 <meta name="twitter:card" content="summary">
@@ -181,77 +181,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>结合方向</p>
-<p>运算符</p>
-<p>附加信息</p>
-<p>非结合</p>
-<p>clone new</p>
-<p><a href="http://phpstudy.php.cn/php/92.html" target="_blank" rel="noopener">clone</a> 和 <a href="http://phpstudy.php.cn/php/76.html#language.oop5.basic.new" target="_blank" rel="noopener">new</a></p>
-<p>左</p>
-<p>[</p>
-<p><a href="http://phpstudy.php.cn/php/155.html" target="_blank" rel="noopener">array()</a></p>
-<p>非结合</p>
-<p>++ –</p>
-<p><a href="http://phpstudy.php.cn/php/42.html" target="_blank" rel="noopener">递增／递减运算符</a></p>
-<p>非结合</p>
-<p>~ - (int) (float) (string) (array) (object) (bool) @</p>
-<p><a href="http://phpstudy.php.cn/php/12.html" target="_blank" rel="noopener">类型</a></p>
-<p>非结合</p>
-<p>instanceof</p>
-<p><a href="http://phpstudy.php.cn/php/12.html" target="_blank" rel="noopener">类型</a></p>
-<p>右结合</p>
-<p>!</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑操作符</a></p>
-<p>左</p>
-<p>* / %</p>
-<p><a href="http://phpstudy.php.cn/php/36.html" target="_blank" rel="noopener">算术运算符</a></p>
-<p>左</p>
-<p>+ - .</p>
-<p><a href="http://phpstudy.php.cn/php/36.html" target="_blank" rel="noopener">算术运算符</a>和<a href="http://phpstudy.php.cn/php/44.html" target="_blank" rel="noopener">字符串运算符</a></p>
-<p>左</p>
-<p>&lt;&lt; &gt;&gt;</p>
-<p><a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a></p>
-<p>非结合</p>
-<p>&lt; &lt;= &gt; &gt;= &lt;&gt;</p>
-<p><a href="http://phpstudy.php.cn/php/39.html" target="_blank" rel="noopener">比较运算符</a></p>
-<p>非结合</p>
-<p>== != === !==</p>
-<p><a href="http://phpstudy.php.cn/php/39.html" target="_blank" rel="noopener">比较运算符</a></p>
-<p>左</p>
-<p>&amp;</p>
-<p><a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a>和引用</p>
-<p>左</p>
-<p>^</p>
-<p><a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a></p>
-<p>左</p>
-<p><a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a></p>
-<p>左</p>
-<p>&amp;&amp;</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a></p>
-<p>左</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a></p>
-<p>左</p>
-<p>? :</p>
-<p><a href="http://phpstudy.php.cn/php/39.html#language.operators.comparison.ternary" target="_blank" rel="noopener">三元运算符</a></p>
-<p>右</p>
-<p>= += -= *= /= .= %= &amp;= = ^= &lt;&lt;= &gt;&gt;=</p>
-<p><a href="http://phpstudy.php.cn/php/37.html" target="_blank" rel="noopener">赋值运算符</a></p>
-<p>左</p>
-<p>and</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a></p>
-<p>左</p>
-<p>xor</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a></p>
-<p>左</p>
-<p>or</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a></p>
-<p>左</p>
-<p>,</p>
-<p>多处用到</p>
-<p>左联表示表达式从左向右求值，右联相反</p>
+        <table>
+<thead>
+<tr>
+<th>结合方向</th>
+<th>运算符</th>
+<th>附加信息</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非结合</td>
+<td>clone new</td>
+<td><a href="http://phpstudy.php.cn/php/92.html" target="_blank" rel="noopener">clone</a> 和 <a href="http://phpstudy.php.cn/php/76.html#language.oop5.basic.new" target="_blank" rel="noopener">new</a></td>
+</tr>
+</tbody></table>
+<p>|左|[|<a href="http://phpstudy.php.cn/php/155.html" target="_blank" rel="noopener">array()</a>|</p>
+<p>|非结合|++ –| <a href="http://phpstudy.php.cn/php/42.html" target="_blank" rel="noopener">递增／递减运算符</a>|</p>
+<p>|非结合|~ - (int) (float) (string) (array) (object) (bool) @|<a href="http://phpstudy.php.cn/php/12.html" target="_blank" rel="noopener">类型</a></p>
+<p>|非结合|instanceof|<a href="http://phpstudy.php.cn/php/12.html" target="_blank" rel="noopener">类型</a></p>
+<p>|右结合|!|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑操作符</a><br>|左|* / %|<a href="http://phpstudy.php.cn/php/36.html" target="_blank" rel="noopener">算术运算符</a><br>|左|+ - .|<a href="http://phpstudy.php.cn/php/36.html" target="_blank" rel="noopener">算术运算符</a>和<a href="http://phpstudy.php.cn/php/44.html" target="_blank" rel="noopener">字符串运算符</a><br>|左|&lt;&lt; &gt;&gt;|<a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a><br>|非结合|&lt; &lt;= &gt; &gt;= &lt;&gt;|<a href="http://phpstudy.php.cn/php/39.html" target="_blank" rel="noopener">比较运算符</a><br>|非结合|== != === !==|<a href="http://phpstudy.php.cn/php/39.html" target="_blank" rel="noopener">比较运算符</a><br>|左|&amp;|<a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a>和引用<br>|左|^|<a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a><br>|左| | |<a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a><br>|左|&amp;&amp;|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a><br>|左|&amp;&amp;|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a><br>|左|? :|<a href="http://phpstudy.php.cn/php/39.html#language.operators.comparison.ternary" target="_blank" rel="noopener">三元运算符</a><br>|右|= += -= *= /= .= %= &amp;= = ^= &lt;&lt;= &gt;&gt;=|<a href="http://phpstudy.php.cn/php/37.html" target="_blank" rel="noopener">赋值运算符</a><br>|左|and|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a><br>|左|xor|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a><br>|左|or|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a><br>|左|,|多处用到左联表示表达式从左向右求值，右联相反</p>
 <p>举例：</p>
-<p>$a=1;<br>$b=2;<br>$c=3;<br><strong>if</strong>($a=4  $b=5 &amp;&amp; $c=6){<br>    $a++;<br>    $b++;<br>}  </p>
-<p>var_dump($a);<br>var_dump($b);<br>var_dump($c);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$a&#x3D;1;  </span><br><span class="line">$b&#x3D;2;  </span><br><span class="line">$c&#x3D;3;  </span><br><span class="line">**if**($a&#x3D;4  $b&#x3D;5 &amp;&amp; $c&#x3D;6)&#123;  </span><br><span class="line">    $a++;  </span><br><span class="line">    $b++;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">var\_dump($a);  </span><br><span class="line">var\_dump($b);  </span><br><span class="line">var\_dump($c);</span><br></pre></td></tr></table></figure>
 <p>输出结果：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-32-300x90.png" alt=""></p>
 <p>说明：先运算 5&amp;&amp;$c ,结果是true，再运算 4 ,结果也是true， 后面的就不再执行，最后 再赋值运算$a=true; 进入if语句体进行运算，所以结果就是$a=true,$b=3,$c=3</p>

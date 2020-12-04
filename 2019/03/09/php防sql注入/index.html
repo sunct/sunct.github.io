@@ -16,7 +16,7 @@
 <meta property="og:description" content="什么是SQL注入攻击sql注入_百度百科：  所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意）的SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。  SQL注入攻">
 <meta property="og:locale" content="zn">
 <meta property="article:published_time" content="2019-03-09T12:17:51.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.478Z">
+<meta property="article:modified_time" content="2020-12-03T11:39:00.636Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="php">
 <meta property="article:tag" content="SQL注入">
@@ -187,8 +187,7 @@
 <p>所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到<strong>欺骗服务器执行恶意的SQL命令</strong>。具体来说，它是利用现有应用程序，将（恶意）的SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。</p>
 </blockquote>
 <p>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</p>
-<h4 id="防范SQL注入攻击的方法："><a href="#防范SQL注入攻击的方法：" class="headerlink" title="防范SQL注入攻击的方法："></a><strong>防范SQL注入攻击的方法：</strong></h4><p>除了一些框架自带的过滤方法外，在php开发中，常用的函数有：</p>
-<p>1、<strong>addslashes($string):用反斜线引用字符串中的特殊字符’ “ \</strong></p>
+<h4 id="防范SQL注入攻击的方法："><a href="#防范SQL注入攻击的方法：" class="headerlink" title="防范SQL注入攻击的方法："></a><strong>防范SQL注入攻击的方法：</strong></h4><p>除了一些框架自带的过滤方法外，在php开发中，常用的函数有：<br> <a id="more"></a><br>1、<strong>addslashes($string):用反斜线引用字符串中的特殊字符’ “ \</strong></p>
 <p>$username=addslashes($username);</p>
 <p><strong>2、htmlspecialchars($str);</strong>此函数只转换5个字符，和号（&amp;），双引号（“），单引号（‘），小于（&lt;），大于（&gt;），转换为实体形式，输出时浏览器会自动还原的，如果有意识的转换回来使用htmlspecialchars_decode();</p>
 <p><strong>3、mysql_escape_string($string)：用反斜杠转义字符串中的特殊字符，用于mysql_query()查询。</strong></p>

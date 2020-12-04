@@ -210,30 +210,10 @@
 <p>my_order，uid对应my_user表的id</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-24-300x298.png" alt=""></p>
 <p>测试数据生成</p>
-<p>写一个存储过程，随机插入10000条数据：</p>
-<p>CREATE DEFINER=<code>root</code>@<code>localhost</code> PROCEDURE <code>test_loop</code>( )<br> BEGIN<br> DECLARE<br>     i INT DEFAULT 1;<br> WHILE<br>     i &lt; 10000 DO<br>     INSERT INTO my_order ( oid, uid )<br> VALUES<br>     (<br>     CONCAT( ‘o_‘, DATE_FORMAT( now( ), ‘%Y%m%d%h%i%s’ ), FLOOR(1000 + RAND( )*(9999-1000) )),<br>     FLOOR( 1 + RAND( ) * 10 )<br>     );<br> SET i = i + 1;<br> END WHILE;<br> END</p>
-<p>查询语句：</p>
-<p>SELECT<br>    count( o.uid ) count_num,<br>    u.NAME<br>FROM<br>    my_user u<br>    JOIN my_order o ON u.id = o.uid<br>GROUP BY<br>    o.uid<br>HAVING<br>    COUNT( o.uid )<br>ORDER BY<br>    COUNT( o.uid ) DESC<br>    LIMIT 5;</p>
-<p>查询结果：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-25-300x289.png" alt=""></p>
-<p>统计所有的用户订单数，结果如下：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-26-168x300.png" alt=""></p>
-<p>SELECT<br>    count( o.uid ) count_num,<br>    u.NAME<br>FROM<br>    my_user u<br>    JOIN my_order o ON u.id = o.uid<br>GROUP BY<br>    o.uid<br>HAVING<br>    COUNT( o.uid )<br>ORDER BY<br>    COUNT( o.uid ) DESC </p>
-<p>该sql 主要考察 group by 和 having 的使用，然后 order by 和 desc 排序。</p>
-<p><strong>★sql 的执行顺序如下：</strong></p>
-<ul>
-<li>1、FORM: 对FROM左边的表和右边的表计算笛卡尔积，产生虚表VT1。</li>
-<li>2、ON: 对虚表VT1进行ON过滤，只有那些符合的行才会被记录在虚表VT2中。</li>
-<li>3、JOIN： 如果指定了OUTER JOIN（比如left join、 right join），那么保留表中未匹配的行就会作为外部行添加到虚拟表VT2中，产生虚拟表VT3。</li>
-<li>4、WHERE： 对虚拟表VT3进行WHERE条件过滤。只有符合的记录才会被插入到虚拟表VT4中。</li>
-<li>5、GROUP BY: 根据group by子句中的列，对VT4中的记录进行分组操作，产生VT5。</li>
-<li>6、HAVING： 对虚拟表VT5应用having过滤，只有符合的记录才会被 插入到虚拟表VT6中。</li>
-<li>7、SELECT： 执行select操作，选择指定的列，插入到虚拟表VT7中。</li>
-<li>8、DISTINCT： 对VT7中的记录进行去重。产生虚拟表VT8.</li>
-<li>9、ORDER BY: 将虚拟表VT8中的记录按照进行排序操作，产生虚拟表VT9.</li>
-<li>10、LIMIT：取出指定行的记录，产生虚拟表VT10, 并将结果返回。</li>
-</ul>
-
+<p>写一个存储过程，随机插入10000条数据：<br>
+        
+          <a class="article-more-a" href="/2019/03/12/mysql-%E8%AF%AD%E5%8F%A5%E4%B8%BE%E4%BE%8B%EF%BC%88%E4%B8%80%EF%BC%89/#more">more >></a>
+        
       
 
       
@@ -338,44 +318,10 @@
 <p>2、请说明什么是传统的消息传递方法?</p>
 <p>传统的消息传递方法包括两种：</p>
 <p>·排队：在队列中，一组用户可以从服务器中读取消息，每条消息都发送给其中一个人。</p>
-<p>·发布-订阅：在这个模型中，消息被广播给所有的用户。</p>
-<p>3、请说明Kafka相对传统技术有什么优势?</p>
-<p>Apache Kafka与传统的消息传递技术相比优势之处在于：</p>
-<p>快速:单一的Kafka代理可以处理成千上万的客户端，每秒处理数兆字节的读写操作。</p>
-<p>可伸缩:在一组机器上对数据进行分区和简化，以支持更大的数据</p>
-<p>持久:消息是持久性的，并在集群中进行复制，以防止数据丢失。</p>
-<p>设计:它提供了容错保证和持久性</p>
-<p>4、在Kafka中broker的意义是什么?</p>
-<p>在Kafka集群中，broker术语用于引用服务器。</p>
-<p>5、Kafka服务器能接收到的最大信息是多少?</p>
-<p>Kafka服务器可以接收到的消息的最大大小是1000000字节。</p>
-<p>6、解释Kafka的Zookeeper是什么?我们可以在没有Zookeeper的情况下使用Kafka吗?</p>
-<p>Zookeeper是一个开放源码的、高性能的协调服务，它用于Kafka的分布式应用。</p>
-<p>不，不可能越过Zookeeper，直接联系Kafka broker。一旦Zookeeper停止工作，它就不能服务客户端请求。</p>
-<p>·Zookeeper主要用于在集群中不同节点之间进行通信</p>
-<p>·在Kafka中，它被用于提交偏移量，因此如果节点在任何情况下都失败了，它都可以从之前提交的偏移量中获取</p>
-<p>·除此之外，它还执行其他活动，如: leader检测、分布式同步、配置管理、识别新节点何时离开或连接、集群、节点实时状态等等。</p>
-<p>7、解释Kafka的用户如何消费信息?</p>
-<p>在Kafka中传递消息是通过使用sendfile API完成的。它支持将字节从套接口转移到磁盘，通过内核空间保存副本，并在内核用户之间调用内核。</p>
-<p>8、解释如何提高远程用户的吞吐量?</p>
-<p>如果用户位于与broker不同的数据中心，则可能需要调优套接口缓冲区大小，以对长网络延迟进行摊销。</p>
-<p>9、解释一下，在数据制作过程中，你如何能从Kafka得到准确的信息?</p>
-<p>在数据中，为了精确地获得Kafka的消息，你必须遵循两件事: 在数据消耗期间避免重复，在数据生产过程中避免重复。</p>
-<p>这里有两种方法，可以在数据生成时准确地获得一个语义:</p>
-<p>·每个分区使用一个单独的写入器，每当你发现一个网络错误，检查该分区中的最后一条消息，以查看您的最后一次写入是否成功</p>
-<p>·在消息中包含一个主键(UUID或其他)，并在用户中进行反复制</p>
-<p>10、解释如何减少ISR中的扰动?broker什么时候离开ISR?</p>
-<p>ISR是一组与leaders完全同步的消息副本，也就是说ISR中包含了所有提交的消息。ISR应该总是包含所有的副本，直到出现真正的故障。如果一个副本从leader中脱离出来，将会从ISR中删除。</p>
-<p>11、Kafka为什么需要复制?</p>
-<p>Kafka的信息复制确保了任何已发布的消息不会丢失，并且可以在机器错误、程序错误或更常见些的软件升级中使用。</p>
-<p>12、如果副本在ISR中停留了很长时间表明什么?</p>
-<p>如果一个副本在ISR中保留了很长一段时间，那么它就表明，跟踪器无法像在leader收集数据那样快速地获取数据。</p>
-<p>13、请说明如果首选的副本不在ISR中会发生什么?</p>
-<p>如果首选的副本不在ISR中，控制器将无法将leadership转移到首选的副本。</p>
-<p>14、有可能在生产后发生消息偏移吗?</p>
-<p>在大多数队列系统中，作为生产者的类无法做到这一点，它的作用是触发并忘记消息。broker将完成剩下的工作，比如使用id进行适当的元数据处理、偏移量等。</p>
-<p>作为消息的用户，你可以从Kafka broker中获得补偿。如果你注视SimpleConsumer类，你会注意到它会获取包括偏移量作为列表的MultiFetchResponse对象。此外，当你对Kafka消息进行迭代时，你会拥有包括偏移量和消息发送的MessageAndOffset对象。</p>
-
+<p>·发布-订阅：在这个模型中，消息被广播给所有的用户。<br>
+        
+          <a class="article-more-a" href="/2019/03/12/apache-kafka/#more">more >></a>
+        
       
 
       
@@ -465,135 +411,10 @@
       
         <p>消息队列中间件是分布式系统中重要的组件，主要解决<strong>应用耦合</strong>，<strong>异步消息</strong>，<strong>流量削锋,日志处理</strong>等问题，实现高性能，高可用，可伸缩和最终一致性的架构。</p>
 <p>使用较多的消息队列有ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ。</p>
-<h4 id="1、消息队列应用场景"><a href="#1、消息队列应用场景" class="headerlink" title="1、消息队列应用场景"></a>1、消息队列应用场景</h4><p>以下介绍消息队列在实际应用中常用的使用场景。异步处理，应用解耦，流量削锋和消息通讯四个场景</p>
-<h4 id="1-1异步处理"><a href="#1-1异步处理" class="headerlink" title="1.1异步处理"></a>1.1异步处理</h4><p>场景说明：用户注册后，需要发注册邮件和注册短信。传统的做法有两种 1.串行的方式；2.并行方式</p>
-<p>（1）串行方式：将注册信息写入数据库成功后，发送注册邮件，再发送注册短信。以上三个任务全部完成后，返回给客户端</p>
-<p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124211106000-2080222350.png" alt=""></p>
-<p>（2）并行方式：将注册信息写入数据库成功后，发送注册邮件的同时，发送注册短信。以上三个任务完成后，返回给客户端。与串行的差别是，并行的方式可以提高处理的时间</p>
-<p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124211115703-218873208.png" alt=""></p>
-<p>假设三个业务节点每个使用50毫秒钟，不考虑网络等其他开销，则串行方式的时间是150毫秒，并行的时间可能是100毫秒。</p>
-<p>因为CPU在单位时间内处理的请求数是一定的，假设CPU1秒内吞吐量是100次。则串行方式1秒内CPU可处理的请求量是7次（1000/150）。并行方式处理的请求量是10次（1000/100）</p>
-<blockquote>
-<p>小结：如以上案例描述，传统的方式系统的性能（并发量，吞吐量，响应时间）会有瓶颈。如何解决这个问题呢？</p>
-</blockquote>
-<p>引入消息队列，将不是必须的业务逻辑，异步处理。改造后的架构如下：</p>
-<p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124211131625-1083908699.png" alt=""></p>
-<p>按照以上约定，用户的响应时间相当于是注册信息写入数据库的时间，也就是50毫秒。注册邮件，发送短信写入消息队列后，直接返回，因此写入消息队列的速度很快，基本可以忽略，因此用户的响应时间可能是50毫秒。因此架构改变后，系统的吞吐量提高到每秒20 QPS。比串行提高了3倍，比并行提高了两倍</p>
-<h4 id="2-2应用解耦"><a href="#2-2应用解耦" class="headerlink" title="2.2应用解耦"></a>2.2应用解耦</h4><p>场景说明：用户下单后，订单系统需要通知库存系统。传统的做法是，订单系统调用库存系统的接口。如下图</p>
-<p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124211254187-1511483255.png" alt=""></p>
-<p>传统模式的缺点：</p>
-<ul>
-<li>假如库存系统无法访问，则订单减库存将失败，从而导致订单失败</li>
-<li>订单系统与库存系统耦合</li>
-</ul>
-<blockquote>
-<p>如何解决以上问题呢？引入应用消息队列后的方案，如下图：</p>
-</blockquote>
-<p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124211307687-1914946501.png" alt=""></p>
-<ul>
-<li>订单系统：用户下单后，订单系统完成持久化处理，将消息写入消息队列，返回用户订单下单成功</li>
-<li>库存系统：订阅下单的消息，采用拉/推的方式，获取下单信息，库存系统根据下单信息，进行库存操作</li>
-<li>假如：在下单时库存系统不能正常使用。也不影响正常下单，因为下单后，订单系统写入消息队列就不再关心其他的后续操作了。实现订单系统与库存系统的应用解耦</li>
-</ul>
-<h4 id="2-3流量削锋"><a href="#2-3流量削锋" class="headerlink" title="2.3流量削锋"></a>2.3流量削锋</h4><p>流量削锋也是消息队列中的常用场景，一般在秒杀或团抢活动中使用广泛</p>
-<p>应用场景：秒杀活动，一般会因为流量过大，导致流量暴增，应用挂掉。为解决这个问题，一般需要在应用前端加入消息队列。</p>
-<ul>
-<li>可以控制活动的人数</li>
-<li>可以缓解短时间内高流量压垮应用</li>
-</ul>
-<p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124211333125-923847962.png" alt=""></p>
-<ul>
-<li>用户的请求，<a href="https://www.baidu.com/s?wd=%E6%9C%8D%E5%8A%A1%E5%99%A8&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">服务器</a>接收后，首先写入消息队列。假如消息队列长度超过最大数量，则直接抛弃用户请求或跳转到错误页面</li>
-<li>秒杀业务根据消息队列中的请求信息，再做后续处理</li>
-</ul>
-<h4 id="2-4日志处理"><a href="#2-4日志处理" class="headerlink" title="2.4日志处理"></a>2.4日志处理</h4><p>日志处理是指将消息队列用在日志处理中，比如Kafka的应用，解决大量日志传输的问题。架构简化如下</p>
-<p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124211436718-1054529852.png" alt=""></p>
-<ul>
-<li>日志采集客户端，负责日志数据采集，定时写受写入Kafka队列</li>
-<li>Kafka消息队列，负责日志数据的接收，存储和转发</li>
-<li>日志处理应用：订阅并消费kafka队列中的日志数据</li>
-</ul>
-<p>以下是新浪kafka日志处理应用案例：转自（<a href="http://cloud.51cto.com/art/201507/484338.htm）" target="_blank" rel="noopener">http://cloud.51cto.com/art/201507/484338.htm）</a></p>
-<p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124211447875-1251492581.png" alt=""></p>
-<p>(1)Kafka：接收用户日志的消息队列</p>
-<p>(2)Logstash：做日志解析，统一成JSON输出给Elasticsearch</p>
-<p>(3)Elasticsearch：实时日志分析服务的核心技术，一个schemaless，实时的数据存储服务，通过index组织数据，兼具强大的搜索和统计功能</p>
-<p>(4)Kibana：基于Elasticsearch的数据可视化组件，超强的数据可视化能力是众多公司选择ELK stack的重要原因</p>
-<h4 id="2-5消息通讯"><a href="#2-5消息通讯" class="headerlink" title="2.5消息通讯"></a>2.5消息通讯</h4><p>消息通讯是指，消息队列一般都内置了高效的通信机制，因此也可以用在纯的消息通讯。比如实现点对点消息队列，或者聊天室等</p>
-<p>点对点通讯：</p>
-<p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124211500718-1411703435.png" alt=""></p>
-<p>客户端A和客户端B使用同一队列，进行消息通讯。</p>
-<p>聊天室通讯：</p>
-<p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124211511859-1166529202.png" alt=""></p>
-<p>客户端A，客户端B，客户端N订阅同一主题，进行消息发布和接收。实现类似聊天室效果。</p>
-<p>以上实际是消息队列的两种消息模式，点对点或发布订阅模式。模型为示意图，供参考。</p>
-<h3 id="三、消息中间件示例"><a href="#三、消息中间件示例" class="headerlink" title="三、消息中间件示例"></a>三、<a href="https://www.baidu.com/s?wd=%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">消息中间件</a>示例</h3><h4 id="3-1电商系统"><a href="#3-1电商系统" class="headerlink" title="3.1电商系统"></a>3.1电商系统</h4><p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124220821515-1142658553.jpg" alt=""></p>
-<p>消息队列采用高可用，可持久化的消息中间件。比如Active MQ，Rabbit MQ，Rocket Mq。</p>
-<p>（1）应用将主干逻辑处理完成后，写入消息队列。消息发送是否成功可以开启消息的确认模式。（消息队列返回消息接收成功状态后，应用再返回，这样保障消息的完整性）</p>
-<p>（2）扩展流程（发短信，配送处理）订阅队列消息。采用推或拉的方式获取消息并处理。</p>
-<p>（3）消息将应用解耦的同时，带来了数据一致性问题，可以采用最终一致性方式解决。比如主数据写入数据库，扩展应用根据消息队列，并结合数据库方式实现基于消息队列的后续处理。</p>
-<h4 id="3-2日志收集系统"><a href="#3-2日志收集系统" class="headerlink" title="3.2日志收集系统"></a>3.2日志收集系统</h4><p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124220830750-1886187340.jpg" alt=""></p>
-<p>分为Zookeeper注册中心，日志收集客户端，Kafka集群和Storm集群（OtherApp）四部分组成。</p>
-<ul>
-<li>Zookeeper注册中心，提出负载均衡和地址查找服务</li>
-<li>日志收集客户端，用于采集应用系统的日志，并将数据推送到kafka队列</li>
-<li>Kafka集群：接收，路由，存储，转发等消息处理</li>
-</ul>
-<p>Storm集群：与OtherApp处于同一级别，采用拉的方式消费队列中的数据</p>
-<h3 id="四、JMS消息服务"><a href="#四、JMS消息服务" class="headerlink" title="四、JMS消息服务"></a>四、JMS消息服务</h3><p>讲消息队列就不得不提JMS 。JMS（<a href="http://lib.csdn.net/base/java" target="_blank" rel="noopener">Java</a> Message Service,<a href="http://lib.csdn.net/base/javase" target="_blank" rel="noopener">Java</a>消息服务）API是一个消息服务的标准/规范，允许应用程序组件基于JavaEE平台创建、发送、接收和读取消息。它使分布式通信耦合度更低，消息服务更加可靠以及异步性。</p>
-<p>在EJB架构中，有消息bean可以无缝的与JM消息服务集成。在J2EE架构模式中，有消息服务者模式，用于实现消息与应用直接的解耦。</p>
-<h4 id="4-1消息模型"><a href="#4-1消息模型" class="headerlink" title="4.1消息模型"></a>4.1消息模型</h4><p>在JMS标准中，有两种消息模型P2P（Point to Point）,Publish/Subscribe(Pub/Sub)。4.1.1 P2P模式</p>
-<p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124221143281-46837068.png" alt=""></p>
-<p>P2P模式包含三个角色：消息队列（Queue），发送者(Sender)，接收者(Receiver)。每个消息都被发送到一个特定的队列，接收者从队列中获取消息。队列保留着消息，直到他们被消费或超时。</p>
-<p>P2P的特点</p>
-<ul>
-<li>每个消息只有一个消费者（Consumer）(即一旦被消费，消息就不再在消息队列中)</li>
-<li>发送者和接收者之间在时间上没有依赖性，也就是说当发送者发送了消息之后，不管接收者有没有正在运行，它不会影响到消息被发送到队列</li>
-<li>接收者在成功接收消息之后需向队列应答成功 </li>
-</ul>
-<p>如果希望发送的每个消息都会被成功处理的话，那么需要P2P模式。（架构KKQ：466097527，欢迎加入）</p>
-<h4 id="4-1-2-Pub-sub模式"><a href="#4-1-2-Pub-sub模式" class="headerlink" title="4.1.2 Pub/sub模式"></a>4.1.2 Pub/sub模式</h4><p><img src="http://images2015.cnblogs.com/blog/820332/201601/820332-20160124221155968-1666724216.png" alt=""></p>
-<p>包含三个角色主题（Topic），发布者（Publisher），订阅者（Subscriber） 多个发布者将消息发送到Topic,系统将这些消息传递给多个订阅者。</p>
-<p>Pub/Sub的特点</p>
-<ul>
-<li>每个消息可以有多个消费者</li>
-<li>发布者和订阅者之间有时间上的依赖性。针对某个主题（Topic）的订阅者，它必须创建一个订阅者之后，才能消费发布者的消息</li>
-<li>为了消费消息，订阅者必须保持运行的状态</li>
-</ul>
-<p>为了缓和这样严格的时间相关性，JMS允许订阅者创建一个可持久化的订阅。这样，即使订阅者没有被激活（运行），它也能接收到发布者的消息。</p>
-<p>如果希望发送的消息可以不被做任何处理、或者只被一个消息者处理、或者可以被多个消费者处理的话，那么可以采用Pub/Sub模型。</p>
-<h4 id="4-2消息消费"><a href="#4-2消息消费" class="headerlink" title="4.2消息消费"></a>4.2消息消费</h4><p>在JMS中，消息的产生和消费都是异步的。对于消费来说，JMS的消息者可以通过两种方式来消费消息。</p>
-<p>（1）同步</p>
-<p>订阅者或接收者通过receive方法来接收消息，receive方法在接收到消息之前（或超时之前）将一直阻塞；</p>
-<p>（2）异步</p>
-<p>订阅者或接收者可以注册为一个消息<a href="https://www.baidu.com/s?wd=%E7%9B%91%E5%90%AC%E5%99%A8&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">监听器</a>。当消息到达之后，系统自动调用监听器的onMessage方法。</p>
-<p>JNDI：Java命名和目录接口,是一种标准的Java命名系统接口。可以在网络上查找和访问服务。通过指定一个资源名称，该名称对应于数据库或命名服务中的一个记录，同时返回资源连接建立所必须的信息。</p>
-<p>JNDI在JMS中起到查找和访问发送目标或消息来源的作用。</p>
-<h4 id="4-3JMS编程模型"><a href="#4-3JMS编程模型" class="headerlink" title="4.3JMS编程模型"></a>4.3JMS编程模型</h4><p>(1) ConnectionFactory</p>
-<p>创建Connection对象的工厂，针对两种不同的jms消息模型，分别有QueueConnectionFactory和TopicConnectionFactory两种。可以通过JNDI来查找ConnectionFactory对象。</p>
-<p>(2) Destination</p>
-<p>Destination的意思是消息生产者的消息发送目标或者说消息消费者的消息来源。对于消息生产者来说，它的Destination是某个队列（Queue）或某个主题（Topic）;对于消息消费者来说，它的Destination也是某个队列或主题（即消息来源）。</p>
-<p>所以，Destination实际上就是两种类型的对象：Queue、Topic可以通过JNDI来查找Destination。</p>
-<p>(3) Connection</p>
-<p>Connection表示在客户端和JMS系统之间建立的链接（对TCP/IP socket的包装）。Connection可以产生一个或多个Session。跟ConnectionFactory一样，Connection也有两种类型：QueueConnection和TopicConnection。</p>
-<p>(4) Session</p>
-<p>Session是操作消息的接口。可以通过session创建生产者、消费者、消息等。Session提供了事务的功能。当需要使用session发送/接收多个消息时，可以将这些发送/接收动作放到一个事务中。同样，也分QueueSession和TopicSession。</p>
-<p>(5) 消息的生产者</p>
-<p>消息生产者由Session创建，并用于将消息发送到Destination。同样，消息生产者分两种类型：QueueSender和TopicPublisher。可以调用消息生产者的方法（send或publish方法）发送消息。</p>
-<p>(6) 消息消费者</p>
-<p>消息消费者由Session创建，用于接收被发送到Destination的消息。两种类型：QueueReceiver和TopicSubscriber。可分别通过session的createReceiver(Queue)或createSubscriber(Topic)来创建。当然，也可以session的creatDurableSubscriber方法来创建持久化的订阅者。</p>
-<p>(7) MessageListener</p>
-<p>消息监听器。如果注册了消息监听器，一旦消息到达，将自动调用监听器的onMessage方法。EJB中的MDB（Message-Driven Bean）就是一种MessageListener。</p>
-<p>深入学习JMS对掌握JAVA架构，EJB架构有很好的帮助，消息中间件也是大型分布式系统必须的组件。本次分享主要做全局性介绍，具体的深入需要大家学习，实践，总结，领会。</p>
-<h3 id="五、常用消息队列"><a href="#五、常用消息队列" class="headerlink" title="五、常用消息队列"></a>五、常用消息队列</h3><p>一般商用的容器，比如WebLogic，JBoss，都支持JMS标准，开发上很方便。但免费的比如Tomcat，Jetty等则需要使用第三方的消息中间件。本部分内容介绍常用的消息中间件（Active MQ,Rabbit MQ，Zero MQ,Kafka）以及他们的特点。</p>
-<h4 id="5-1-ActiveMQ"><a href="#5-1-ActiveMQ" class="headerlink" title="5.1 ActiveMQ"></a>5.1 ActiveMQ</h4><p>ActiveMQ 是Apache出品，最流行的，能力强劲的开源消息总线。ActiveMQ 是一个完全支持JMS1.1和J2EE 1.4规范的 JMS Provider实现，尽管JMS规范出台已经是很久的事情了，但是JMS在当今的J2EE应用中间仍然扮演着特殊的地位。</p>
-<p>ActiveMQ特性如下：</p>
-<p>⒈ 多种语言和协议编写客户端。语言: Java,C,C++,C#,Ruby,Perl,<a href="http://lib.csdn.net/base/python" target="_blank" rel="noopener">Python</a>,<a href="http://lib.csdn.net/base/php" target="_blank" rel="noopener">PHP</a>。应用协议： OpenWire,Stomp REST,WS Notification,XMPP,AMQP</p>
-<p>⒉ 完全支持JMS1.1和J2EE 1.4规范 （持久化，XA消息，事务)</p>
-<p>⒊ 对<a href="http://lib.csdn.net/base/javaee" target="_blank" rel="noopener">spring</a>的支持，Activ</p>
-<p>原文地址：</p>
-<p><a href="https://blog.csdn.net/seven__________7/article/details/70225830" target="_blank" rel="noopener">https://blog.csdn.net/seven__________7/article/details/70225830</a></p>
-
+<h4 id="1、消息队列应用场景"><a href="#1、消息队列应用场景" class="headerlink" title="1、消息队列应用场景"></a>1、消息队列应用场景</h4><p>以下介绍消息队列在实际应用中常用的使用场景。异步处理，应用解耦，流量削锋和消息通讯四个场景<br>
+        
+          <a class="article-more-a" href="/2019/03/12/%E5%85%B3%E4%BA%8E%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E7%9A%84%E4%BD%BF%E7%94%A8/#more">more >></a>
+        
       
 
       
@@ -680,25 +501,9 @@
         <p>百度百科：《夏目友人帐》是漫画家<a href="https://baike.baidu.com/item/%E7%BB%BF%E5%B7%9D%E5%B9%B8/5861299" target="_blank" rel="noopener">绿川幸</a>著作的漫画。故事讲述了<a href="https://baike.baidu.com/item/%E5%A4%8F%E7%9B%AE%E8%B4%B5%E5%BF%97/3901632" target="_blank" rel="noopener">夏目贵志</a>从外祖母<a href="https://baike.baidu.com/item/%E5%A4%8F%E7%9B%AE%E7%8E%B2%E5%AD%90/4512976" target="_blank" rel="noopener">夏目玲子</a>的遗物中得到了那些由契约书所做成的“<a href="https://baike.baidu.com/item/%E5%8F%8B%E4%BA%BA%E5%B8%90/10270102" target="_blank" rel="noopener">友人帐</a>”，他决定将友人帐中妖怪们的名字一一归还。在夏目身边，开始聚集起各种各样的妖怪们。能看到妖怪的少年夏目贵志，与招财猫外表的妖怪斑一起，为大家讲述一个个奇异、悲伤、怀念、令人感动的温馨故事。</p>
 <ul>
 <li><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/WechatIMG6-512x1024.jpeg" alt=""></p>
-</li>
-<li><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/WechatIMG7-512x1024.jpeg" alt=""></p>
-</li>
-<li><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/WechatIMG8-512x1024.jpeg" alt=""></p>
-</li>
-<li><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/WechatIMG9-512x1024.jpeg" alt=""></p>
-</li>
-<li><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/WechatIMG10-512x1024.jpeg" alt=""></p>
-</li>
-<li><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/WechatIMG11-512x1024.jpeg" alt=""></p>
-</li>
-<li><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/WechatIMG12-512x1024.jpeg" alt=""></p>
-</li>
-<li><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/WechatIMG13-512x1024.jpeg" alt=""></p>
-</li>
-<li><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/WechatIMG15-512x1024.jpeg" alt=""></p>
-</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2019/03/11/%E5%A4%8F%E7%9B%AE%E5%8F%8B%E4%BA%BA%E5%B8%90%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8/#more">more >></a>
+        
       
 
       
@@ -798,42 +603,10 @@
 <li>t 设定档案的时间记录，格式与 date 指令相同。</li>
 <li>--no-create 不会建立新档案。</li>
 <li>--help 列出指令格式。</li>
-<li>--version 列出版本讯息。</li>
-</ul>
-<p>$ touch testfile                #修改文件的时间属性 </p>
-<p>使用指令”touch”时，如果指定的文件不存在，则将创建一个新的空白文件。例如，在当前目录下，使用该指令创建一个空白文件”file”，输入如下命令：</p>
-<p>$ touch file            #创建一个名为“file”的新的空白文件 </p>
-<h4 id="2、chmod-Linux-Unix-的文件调用权限分为三级-文件拥有者、群组、其他。利用-chmod-可以藉以控制文件如何被他人所调用。"><a href="#2、chmod-Linux-Unix-的文件调用权限分为三级-文件拥有者、群组、其他。利用-chmod-可以藉以控制文件如何被他人所调用。" class="headerlink" title="2、chmod Linux/Unix 的文件调用权限分为三级 : 文件拥有者、群组、其他。利用 chmod 可以藉以控制文件如何被他人所调用。"></a>2、chmod Linux/Unix 的文件调用权限分为三级 : 文件拥有者、群组、其他。利用 chmod 可以藉以控制文件如何被他人所调用。</h4><p>chmod [-cfvR] [–help] [–version] mode file…</p>
-<p>参数说明</p>
-<p>mode : 权限设定字串，格式如下 :</p>
-<p>[ugoa…][[+-=][rwxX]…][,…]</p>
-<p>其中：</p>
-<ul>
-<li>u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。</li>
-<li>+ 表示增加权限、- 表示取消权限、= 表示唯一设定权限。</li>
-<li>r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。</li>
-</ul>
-<p>其他参数说明：</p>
-<ul>
-<li>-c : 若该文件权限确实已经更改，才显示其更改动作</li>
-<li>-f : 若该文件权限无法被更改也不要显示错误讯息</li>
-<li>-v : 显示权限变更的详细资料</li>
-<li>-R : 对目前目录下的所有文件与子目录进行相同的权限变更(即以递回的方式逐个变更)</li>
-<li>--help : 显示辅助说明</li>
-<li>--version : 显示版本</li>
-</ul>
-<p>将文件 file1.txt 设为所有人皆可读取 :</p>
-<p>chmod ugo+r file1.txt</p>
-<p>将文件 file1.txt 设为所有人皆可读取 :</p>
-<p>chmod a+r file1.txt</p>
-<p>将文件 file1.txt 与 file2.txt 设为该文件拥有者，与其所属同一个群体者可写入，但其他以外的人则不可写入 :</p>
-<p>chmod ug+w,o-w file1.txt file2.txt</p>
-<p>将 ex1.py 设定为只有该文件拥有者可以执行 :</p>
-<p>chmod u+x ex1.py</p>
-<p>将目前目录下的所有文件与子目录皆设为任何人可读取 :</p>
-<p>chmod -R a+r *</p>
-<p>chmod ugo+rwx directory1 设置目录的所有人(u)、群组(g)以及其他人(o)以读（r ）、写(w)和执行(x)的权限<br>chmod go-rwx directory1 删除群组(g)与其他人(o)对目录的读写执行权限<br>chown user1 file1 改变一个文件的所有人属性<br>chown -R user1 directory1 改变一个目录的所有人属性并同时改变改目录下所有文件的属性</p>
-
+<li>--version 列出版本讯息。
+        
+          <a class="article-more-a" href="/2019/03/11/linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E4%B8%89-touch%E3%80%81/#more">more >></a>
+        
       
 
       
@@ -925,51 +698,10 @@
 <p>当我们需要在不同的目录，用到相同的文件时，我们不需要在每一个需要的目录下都放一个必须相同的文件，我们只要在某个固定的目录，放上该文件，然后在 其它的目录下用ln命令链接（link）它就可以，不必重复的占用磁盘空间。</p>
 <p> ln [参数][源文件或目录][目标文件或目录]</p>
 <p>Linux文件系统中，有所谓的链接(link)，我们可以将其视为档案的别名，而链接又可分为两种 : 硬链接(hard link)与软链接(symbolic link)，硬链接的意思是一个档案可以有多个名称，而软链接的方式则是产生一个特殊的档案，该档案的内容是指向另一个档案的位置。硬链接是存在同一个文件系统中，而软链接却可以跨越不同的文件系统。</p>
-<p>不论是硬链接或软链接都不会将原本的档案复制一份，只会占用非常少量的磁碟空间。</p>
-<p>软硬链接的区别：</p>
-<p><strong>软链接</strong>：</p>
-<ul>
-<li><p>软链接，以路径的形式存在。类似于Windows操作系统中的快捷方式</p>
-</li>
-<li><p>软链接可以对一个不存在的文件名进行链接</p>
-</li>
-<li><p>软链接可以对目录进行链接</p>
-</li>
-<li><p>软链接文件和被链接文件可以位于不同的文件系统，甚至可以跨越机器</p>
-</li>
-<li><p>软链接一旦原始文件被删除，链接文件立马失效</p>
-</li>
-</ul>
-<p><strong>硬链接</strong>：</p>
-<ul>
-<li>硬链接，以文件副本的形式存在。但不占用实际空间。</li>
-<li>不允许给目录创建硬链接</li>
-<li>硬链接只有在同一个文件系统中才能创建</li>
-<li>硬链接指向一个原始文件时，及时原始文件被删除，链接文件依然有效，</li>
-</ul>
-<p><strong>必要参数</strong>：</p>
-<ul>
-<li>-b 删除，覆盖以前建立的链接</li>
-<li>-d 允许超级用户制作目录的硬链接</li>
-<li>-f 强制执行</li>
-<li>-i 交互模式，文件存在则提示用户是否覆盖</li>
-<li>-n 把符号链接视为一般目录</li>
-<li><strong>-s 软链接(符号链接)</strong></li>
-<li>-v 显示详细的处理过程</li>
-</ul>
-<p><strong>选择参数</strong>：</p>
-<ul>
-<li>-S “-S&lt;字尾备份字符串&gt; “或 “–suffix=&lt;字尾备份字符串&gt;”</li>
-<li>-V “-V&lt;备份方式&gt;”或”–version-control=&lt;备份方式&gt;”</li>
-<li>--help 显示帮助信息</li>
-<li>--version 显示版本信息</li>
-</ul>
-<p>ln -s file1 lnk1 创建一个指向文件或目录的软链接<br>ln file1 lnk1 创建一个指向文件或目录的物理链接 </p>
-<p>给文件创建软链接，为log2019.log文件创建软链接link2019，如果log2019.log丢失，link2019将失效：</p>
-<p>ln -s log2019.log link2019</p>
-<p>给文件创建硬链接，为log2019.log创建硬链接ln2019，log2019.log与ln2019的各项属性相同</p>
-<p>ln log2019.log ln2019</p>
-
+<p>不论是硬链接或软链接都不会将原本的档案复制一份，只会占用非常少量的磁碟空间。<br>
+        
+          <a class="article-more-a" href="/2019/03/11/linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E4%B8%89-ln/#more">more >></a>
+        
       
 
       
@@ -1058,51 +790,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="1、mkdir命令用于建立名称为-dirName-之子目录。"><a href="#1、mkdir命令用于建立名称为-dirName-之子目录。" class="headerlink" title="1、mkdir命令用于建立名称为 dirName 之子目录。"></a>1、mkdir命令用于建立名称为 dirName 之子目录。</h4><p>mkdir [-p] dirName   其中： -p 确保目录名称存在，不存在的就建一个。</p>
-<p>mkdir dir1 创建一个叫做 ‘dir1’ 的目录’<br>mkdir dir1 dir2 同时创建两个目录<br>mkdir -p /tmp/dir1/dir2 创建一个目录树 </p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-15-1024x322.png" alt=""></p>
-<h4 id="2、rm-命令用于删除一个文件或者目录。"><a href="#2、rm-命令用于删除一个文件或者目录。" class="headerlink" title="2、rm 命令用于删除一个文件或者目录。"></a>2、rm 命令用于删除一个文件或者目录。</h4><p>rm [options] name…</p>
-<ul>
-<li>-i 删除前逐一询问确认。</li>
-<li>-f 即使原档案属性设为唯读，亦直接删除，无需逐一确认。</li>
-<li>-r 将目录及以下之档案亦逐一删除。</li>
-</ul>
-<p># rm  test.txt  rm：是否删除 一般文件 “test.txt”? y<br># rm  homework   rm: 无法删除目录”homework”: 是一个目录<br># rm  -r  homework   rm：是否删除 目录 “homework”? y 先用</p>
-<p>rm -rf dir1 删除一个叫做 ‘dir1’ 的目录并同时删除其内容<br>rm -rf dir1 dir2 同时删除两个目录及它们的内容 </p>
-<p>先用 vi 命令创建文件</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-16.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-17.png" alt=""></p>
-<p>然后用 rm 命令删除</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-18.png" alt=""></p>
-<h4 id="3、rmdir命令删除空的目录。"><a href="#3、rmdir命令删除空的目录。" class="headerlink" title="3、rmdir命令删除空的目录。"></a>3、rmdir命令删除空的目录。</h4><p>rmdir [-p] dirName</p>
-<p>-p 是当子目录被删除后使它也成为空目录的话，则顺便一并删除。</p>
-<p>先用mkdir 命令创建目录 BBB/Text</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-19.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-20.png" alt=""></p>
-<p>rmdir -p BBB/Text 在工作目录下的 BBB 目录中，删除名为 Text 的子目录。若 Text 删除后，BBB 目录成为空目录，则 BBB 亦予删除。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-21-1024x73.png" alt=""></p>
-<h4 id="4、mv命令用来为文件或目录改名、或将文件或目录移入其它位置。"><a href="#4、mv命令用来为文件或目录改名、或将文件或目录移入其它位置。" class="headerlink" title="4、mv命令用来为文件或目录改名、或将文件或目录移入其它位置。"></a>4、mv命令用来为文件或目录改名、或将文件或目录移入其它位置。</h4><p>命令格式</p>
-<p>运行结果</p>
-<p>mv 文件名 文件名</p>
-<p>将源文件名改为目标文件名</p>
-<p>mv 文件名 目录名</p>
-<p>将文件移动到目标目录</p>
-<p>mv 目录名 目录名</p>
-<p>目标目录已存在，将源目录<br>移动到目标目录；目标<br>目录不存在则改名</p>
-<p>mv 目录名 文件名</p>
-<p>出错</p>
-<h4 id="5、cp命令主要用于复制文件或目录。"><a href="#5、cp命令主要用于复制文件或目录。" class="headerlink" title="5、cp命令主要用于复制文件或目录。"></a>5、cp命令主要用于复制文件或目录。</h4><p>cp file1 file2 复制一个文件<br>cp dir/* . 复制一个目录下的所有文件到当前工作目录<br>cp -a /tmp/dir1 . 复制一个目录到当前工作目录<br>cp -a dir1 dir2 复制一个目录 </p>
-<ul>
-<li>-a：此选项通常在复制目录时使用，它保留链接、文件属性，并复制目录下的所有内容。其作用等于dpR参数组合。</li>
-<li>-d：复制时保留链接。这里所说的链接相当于Windows系统中的快捷方式。</li>
-<li>-f：覆盖已经存在的目标文件而不给出提示。</li>
-<li>-i：与-f选项相反，在覆盖目标文件之前给出提示，要求用户确认是否覆盖，回答”y”时目标文件将被覆盖。</li>
-<li>-p：除复制文件的内容外，还把修改时间和访问权限也复制到新文件中。</li>
-<li>-r：若给出的源文件是一个目录文件，此时将复制该目录下所有的子目录和文件。</li>
-<li>-l：不复制文件，只是生成链接文件。</li>
-</ul>
-<p>使用指令”cp”将当前目录”test/“下的所有文件复制到新目录”newtest”下，输入如下命令：</p>
-<p>$ cp –r test/ newtest</p>
-
+<p>mkdir dir1 创建一个叫做 ‘dir1’ 的目录’<br>mkdir dir1 dir2 同时创建两个目录<br>mkdir -p /tmp/dir1/dir2 创建一个目录树<br>
+        
+          <a class="article-more-a" href="/2019/03/11/linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E4%BA%8C/#more">more >></a>
+        
       
 
       
@@ -1191,39 +882,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="1、ifconfig-IP查询"><a href="#1、ifconfig-IP查询" class="headerlink" title="1、ifconfig　　IP查询"></a>1、ifconfig　　IP查询</h4><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-2-1024x457.png" alt=""></p>
-<h4 id="2、cd-目录名-切换当前目录至dirName"><a href="#2、cd-目录名-切换当前目录至dirName" class="headerlink" title="2、cd [目录名] 切换当前目录至dirName"></a>2、cd [目录名] 切换当前目录至dirName</h4><p>cd /home 进入 ‘/ home’ 目录’<br>cd .. 返回上一级目录<br>cd ../.. 返回上两级目录<br>cd 进入个人的主目录<br>cd ~user1 进入个人的主目录<br>cd - 返回上次所在的目录 </p>
-<h4 id="3、ls-option-目录名称-显示制定目录下的内容"><a href="#3、ls-option-目录名称-显示制定目录下的内容" class="headerlink" title="3、ls [-option] 目录名称　　显示制定目录下的内容"></a>3、ls [-option] 目录名称　　显示制定目录下的内容</h4><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-3-1024x111.png" alt=""></p>
-<p>　　-a　　显示所有文件和目录，包含隐藏文件和目录</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-4-1024x150.png" alt=""></p>
-<p>　　-A　　显示所有文件和目录，包含隐藏文件和目录，但是不包含“.”,”..”</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-5-1024x123.png" alt=""></p>
-<p>　　-t　　根据时间排序</p>
-<p>　　-l　　显示文件和目录的完整属性 等同于命令 ll</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-6-1024x867.png" alt=""></p>
-<p>　　完整属性信息包含七部分：</p>
-<p>　　第一部分：由10列组成，第一列（“d”表示目录，“l”表示链接文件，“-”表示普通文件）</p>
-<p>　　　　　　   后九列，3个位一组，分为三组（“r”，read,可读；“w”,write,可写；“x”,execute,可执行）</p>
-<p>　　　　　　　　　　第一组：文件拥有者所拥有的权限</p>
-<p>　　　　　　　　　　第二组：文件拥有者所在群组成员所拥有的权限</p>
-<p>　　　　　　　　　　第三组：其他人所拥有的权限</p>
-<p>　　第二部分：节点，每增加一个硬链接，节点数加1</p>
-<p>　　第三部分：拥有着</p>
-<p>　　第四部分：群组（文件或者目录所在的群组）</p>
-<p>　　第五部分：大小（单位：B）</p>
-<p>　　第六部分：最新修改时间</p>
-<p>　　第七部分：文件名</p>
-<h4 id="4、vi-文件名-如果vi后面的文件夹不存在，则新建文件夹；如果存在，则修改"><a href="#4、vi-文件名-如果vi后面的文件夹不存在，则新建文件夹；如果存在，则修改" class="headerlink" title="4、vi 文件名　如果vi后面的文件夹不存在，则新建文件夹；如果存在，则修改"></a>4<strong>、vi 文件名</strong>　如果vi后面的文件夹不存在，则新建文件夹；如果存在，则修改</h4><p>　　vi详细步骤：</p>
-<p>　　　　（1）vi 文件名（进入一般模式）</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-10-1024x54.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-11-1024x498.png" alt=""></p>
-<p>　　　　（2）按字母“i”(进入vi编辑模式，左下角出现insert)</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-12-1024x498.png" alt=""></p>
-<p>　　　　（3）对文件进行编辑</p>
-<p>　　　　（4）按“esc”（退出编辑模式，进入一般模式，左下角insert消失）</p>
-<p>　　　　（5）输入：（进入命令模式）wq 保存退出；q! 强制退出不保存；w 文件另存为</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-13-1024x498.png" alt=""></p>
-<h4 id="5、pwd-显示工作路径"><a href="#5、pwd-显示工作路径" class="headerlink" title="5、pwd 显示工作路径"></a>5、pwd 显示工作路径</h4><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-14.png" alt=""></p>
-
+<h4 id="2、cd-目录名-切换当前目录至dirName"><a href="#2、cd-目录名-切换当前目录至dirName" class="headerlink" title="2、cd [目录名] 切换当前目录至dirName"></a>2、cd [目录名] 切换当前目录至dirName</h4><p>cd /home 进入 ‘/ home’ 目录’<br>cd .. 返回上一级目录<br>cd ../.. 返回上两级目录<br>cd 进入个人的主目录<br>cd ~user1 进入个人的主目录<br>cd - 返回上次所在的目录<br>
+        
+          <a class="article-more-a" href="/2019/03/11/linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E4%B8%80/#more">more >></a>
+        
       
 
       
@@ -1412,28 +1074,10 @@
 <p>所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到<strong>欺骗服务器执行恶意的SQL命令</strong>。具体来说，它是利用现有应用程序，将（恶意）的SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。</p>
 </blockquote>
 <p>SQL注入攻击指的是通过构建特殊的输入作为参数传入Web应用程序，而这些输入大都是SQL语法里的一些组合，通过执行SQL语句进而执行攻击者所要的操作，其主要原因是程序没有细致地过滤用户输入的数据，致使非法数据侵入系统。</p>
-<h4 id="防范SQL注入攻击的方法："><a href="#防范SQL注入攻击的方法：" class="headerlink" title="防范SQL注入攻击的方法："></a><strong>防范SQL注入攻击的方法：</strong></h4><p>除了一些框架自带的过滤方法外，在php开发中，常用的函数有：</p>
-<p>1、<strong>addslashes($string):用反斜线引用字符串中的特殊字符’ “ \</strong></p>
-<p>$username=addslashes($username);</p>
-<p><strong>2、htmlspecialchars($str);</strong>此函数只转换5个字符，和号（&amp;），双引号（“），单引号（‘），小于（&lt;），大于（&gt;），转换为实体形式，输出时浏览器会自动还原的，如果有意识的转换回来使用htmlspecialchars_decode();</p>
-<p><strong>3、mysql_escape_string($string)：用反斜杠转义字符串中的特殊字符，用于mysql_query()查询。</strong></p>
-<p>$username=mysql_escape_string($username);</p>
-<p><strong>4、mysql_real_escape_string($string)：转义SQL语句中使用的字符串中的特殊字符，并考虑到连接的当前字符集，需要保证当前是连接状态才能用该函数，否则会报警告。 不转义%与_</strong></p>
-<p>$username=mysql_real_escape_string($username);</p>
-<p>下面是一个封装防SQL注入函数，可参考。</p>
-<p>mysql_escape_string(strip_tags($arr[“$val”])); /** * 函数名称：post_check() * 函数作用：对提交的编辑内容进行处理 * 参　　数：$post: 要提交的内容 * 返 回 值：$post: 返回过滤后的内容 */ function post_check($post){ if(!get_magic_quotes_gpc()){// 判断magic_quotes_gpc是否为打开 $post = addslashes($post);// 进行magic_quotes_gpc没有打开的情况对提交数据的过滤 } $post = str_replace(“_“,”\_“,$post);// 把 ‘_‘过滤掉 $post = str_replace(“%”,”\%”,$post);// 把 ‘%’过滤掉 $post = nl2br($post);// 回车转换 $post =htmlspecialchars($post);// html标记转换 return $post; }</p>
-<p>注意：php.ini中有一个设置：magic_quotes_gpc = Off这个默认是关闭的，打开magic_quotes_gpc来防止SQL注入。</p>
-<p>其他环境设置：</p>
-<ul>
-<li>1、php.ini 中把safe_mode 打开</li>
-<li>2、safe_mode_gid = off</li>
-<li>3、关闭危险函数 disable_functions = chdir,chroot,dir,getcwd,opendir,readdir,scandir,fopen,unlink,delete,copy,mkdir, rmdir,rename,file,file_get_contents,fputs,fwrite,chgrp,chmod,chown</li>
-<li>4、关闭PHP版本信息在http头中的泄漏  expose_php = Off</li>
-<li>5、<em><strong>打开magic_quotes_gpc来防止SQL注入  magic_quotes_gpc = On 这个默认是关闭的，如果它打开后将自动把用户提交对sql的查询进行转换 比如把 ‘ 转为 \‘等，这对防止sql注入有重大作用。</strong></em></li>
-<li>6、错误信息控制 error_reporting = E_WARNING &amp; E_ERROR 只显示警告以上</li>
-<li>7、错误日志 建议在关闭display_errors后能够把错误信息记录下来，便于查找服务器运行的原因 log_errors = On</li>
-</ul>
-
+<h4 id="防范SQL注入攻击的方法："><a href="#防范SQL注入攻击的方法：" class="headerlink" title="防范SQL注入攻击的方法："></a><strong>防范SQL注入攻击的方法：</strong></h4><p>除了一些框架自带的过滤方法外，在php开发中，常用的函数有：<br>
+        
+          <a class="article-more-a" href="/2019/03/09/php%E9%98%B2sql%E6%B3%A8%E5%85%A5/#more">more >></a>
+        
       
 
       
@@ -1511,9 +1155,10 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">« Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next »</a>
     </nav>
   
+
 
 
           </div>

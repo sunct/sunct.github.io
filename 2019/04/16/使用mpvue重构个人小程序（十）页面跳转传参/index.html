@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> 使用mpvue重构个人小程序（十）页面跳转传参 | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前面已经使用到页面跳转，在此简单说明一下页面跳转和参数传递。 定义跳转方式，使用@click 触发。  或者  以第二个写留言为例，做跳转 定义方法并传递参数： &#x2F;&#x2F; 写留言comment (e) {  console.log(e)  let sid &#x3D; e.currentTarget.id  console.log(sid)  wx.navigateTo({ url: ‘..&#x2F;comment&#x2F;m">
+  <meta name="description" content="前面已经使用到页面跳转，在此简单说明一下页面跳转和参数传递。 定义跳转方式，使用@click 触发。  或者">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 使用mpvue重构个人小程序（十）页面跳转传参">
 <meta property="og:url" content="https://sunct.github.io/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%8D%81%EF%BC%89%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%E4%BC%A0%E5%8F%82/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="前面已经使用到页面跳转，在此简单说明一下页面跳转和参数传递。 定义跳转方式，使用@click 触发。  或者  以第二个写留言为例，做跳转 定义方法并传递参数： &#x2F;&#x2F; 写留言comment (e) {  console.log(e)  let sid &#x3D; e.currentTarget.id  console.log(sid)  wx.navigateTo({ url: ‘..&#x2F;comment&#x2F;m">
+<meta property="og:description" content="前面已经使用到页面跳转，在此简单说明一下页面跳转和参数传递。 定义跳转方式，使用@click 触发。  或者">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-120-1024x357.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-121-1024x234.png">
@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-124-1024x279.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-125-1024x675.png">
 <meta property="article:published_time" content="2019-04-16T06:22:21.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.542Z">
+<meta property="article:modified_time" content="2020-12-03T11:39:00.634Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="mpvue">
 <meta property="article:tag" content="小程序">
@@ -191,8 +191,7 @@
 <p>定义跳转方式，使用@click 触发。</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-120-1024x357.png" alt=""></p>
 <p>或者</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-121-1024x234.png" alt=""></p>
-<p>以第二个写留言为例，做跳转</p>
+<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-121-1024x234.png" alt=""><br> <a id="more"></a><br>以第二个写留言为例，做跳转</p>
 <p>定义方法并传递参数：</p>
 <p>// 写留言<br>comment (e) {<br>  console.log(e)<br>  <strong>let</strong> sid = e.currentTarget.id<br>  console.log(sid)<br>  wx.navigateTo({ url: ‘../comment/main?sid=’ + sid })<br>},</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-122-1024x353.png" alt=""></p>

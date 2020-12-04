@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> 浏览器报错 net::ERR_CONTENT_LENGTH_MISMATCH 200 (OK) 解决办法 | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="​  一、发现问题  ​ 在开发过程中，遇到前端页面加载css，js或woff，ttf  文件的时候，经常出现 ERR_CONTENT_LENGTH_MISMATCH 的报错情况。但不是所有的js或css 报错，报错的文件较没报错的文件偏大。并且报错的文件也可以单独在浏览器中打开,所以排除了最简单的地址错误。前端项目是由nginx代理的，所以可以查看nginx的日志，看看有无线索。   二、解决">
+  <meta name="description" content="​  一、发现问题  ​ 在开发过程中，遇到前端页面加载css，js或woff，ttf  文件的时候，经常出现 ERR_CONTENT_LENGTH_MISMATCH 的报错情况。但不是所有的js或css 报错，报错的文件较没报错的文件偏大。并且报错的文件也可以单独在浏览器中打开,所以排除了最简单的地址错误。前端项目是由nginx代理的，所以可以查看nginx的日志，看看有无线索。">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 浏览器报错 net::ERR_CONTENT_LENGTH_MISMATCH 200 (OK) 解决办法">
 <meta property="og:url" content="https://sunct.github.io/2019/10/16/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8A%A5%E9%94%99-neterr-content-length-mismatch-200-ok-%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="​  一、发现问题  ​ 在开发过程中，遇到前端页面加载css，js或woff，ttf  文件的时候，经常出现 ERR_CONTENT_LENGTH_MISMATCH 的报错情况。但不是所有的js或css 报错，报错的文件较没报错的文件偏大。并且报错的文件也可以单独在浏览器中打开,所以排除了最简单的地址错误。前端项目是由nginx代理的，所以可以查看nginx的日志，看看有无线索。   二、解决">
+<meta property="og:description" content="​  一、发现问题  ​ 在开发过程中，遇到前端页面加载css，js或woff，ttf  文件的时候，经常出现 ERR_CONTENT_LENGTH_MISMATCH 的报错情况。但不是所有的js或css 报错，报错的文件较没报错的文件偏大。并且报错的文件也可以单独在浏览器中打开,所以排除了最简单的地址错误。前端项目是由nginx代理的，所以可以查看nginx的日志，看看有无线索。">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly90aW1nc2EuYmFpZHUuY29tL3RpbWc_aW1hZ2UmcXVhbGl0eT04MCZzaXplPWI5OTk5XzEwMDAwJnNlYz0xNTcxMjMwMzYzMjEyJmRpPTc3ZWUwOTNlNjRmN2EzYTk0ZGVlYTkxY2NjMzM3NDAzJmltZ3R5cGU9MCZzcmM9aHR0cCUzQSUyRiUyRmltZzMuZHVpdGFuZy5jb20lMkZ1cGxvYWRzJTJGaXRlbSUyRjIwMTYwNCUyRjI0JTJGMjAxNjA0MjQxNjMxMTBfUkszTlcudGh1bWIuNzAwXzAuanBlZw?x-oss-process=image/format,png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2020/03/image-12.gif">
@@ -37,7 +37,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20191016180103181.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2020/03/image-26.gif">
 <meta property="article:published_time" content="2019-10-16T08:50:37.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.586Z">
+<meta property="article:modified_time" content="2020-12-03T11:32:52.393Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="sunct">
 <meta property="article:tag" content="孙三苗">
@@ -233,6 +233,8 @@
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2020/03/image-15.gif" alt=""></p>
 <p>​</p>
 <p>在开发过程中，遇到前端页面加载css，js或woff，ttf  文件的时候，经常出现 <code>ERR_CONTENT_LENGTH_MISMATCH</code> 的报错情况。但不是所有的js或css 报错，报错的文件较没报错的文件偏大。并且报错的文件也可以单独在浏览器中打开,所以排除了最简单的地址错误。前端项目是由nginx代理的，所以可以查看nginx的日志，看看有无线索。  </p>
+<a id="more"></a> 
+
 <h1 id="二、解决问题"><a href="#二、解决问题" class="headerlink" title="二、解决问题"></a>二、解决问题</h1><p>查找nginx 错误日志文件</p>
 <h2 id="1、查找nginx配置文件"><a href="#1、查找nginx配置文件" class="headerlink" title="1、查找nginx配置文件"></a>1、查找nginx配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef  grep nginx</span><br></pre></td></tr></table></figure>
 

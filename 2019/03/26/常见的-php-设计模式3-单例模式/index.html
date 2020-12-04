@@ -17,7 +17,7 @@
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-31.png">
 <meta property="article:published_time" content="2019-03-26T12:59:11.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.509Z">
+<meta property="article:modified_time" content="2020-12-03T11:35:00.268Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="模式">
 <meta property="article:tag" content="单例模式">
@@ -193,44 +193,8 @@
 <p>PHP一个主要应用场合就是应用程序与数据库打交道的场景，在一个应用中会存在大量的数据库操作，针对数据库句柄连接数据库的行为，使用<strong>单例模式可以避免大量的new操作</strong>。因为每一次new操作都会消耗系统和内存的资源。</p>
 <p>1. 为什么必须是静态的?因为静态成员属于类,并被类所有实例所共享<br>2. 为什么必须是私有的?不允许外部直接访问,仅允许通过类方法控制方法<br>3. 为什么要有初始值null,因为类内部访问接口需要检测实例的状态,判断是否需要实例化  </p>
 <p>知识点：<br>一、三私一公：<br>①、私有静态属性，又来储存生成的唯一对象<br>②、私有构造函数<br>③、私有克隆函数，防止克隆——clone<br>④、公共静态方法，用来访问静态属性储存的对象，如果没有对象，则生成此单例<br>二、关键词instanceof<br>检查此变量是否为该类的对象、子类、或是实现接口。</p>
-<p> <strong>&lt;?php<br><em><em>_/\</em>\</em><br> *这是一个单例模式 demo<br> *<br> *此文件程序用来做什么的（详细说明，可选。）。<br> * Created by PhpStorm<br> *_ **<em>@author</em></strong> <em>sunct<br> *</em> <strong><em>@version</em></strong> <em>$Id$<br> *</em> <strong><em>@since</em></strong> _1.0<br> */  </p>
-<p>_<strong>class</strong> Mysql<br>{  </p>
-<pre><code>_/\*\*  
- \*  
- \*_ **_@var_** _self\[该属性用来保存实例\] need  
- \*/_ **private static** _$instance_;  
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">&#x2F;**</span><br><span class="line"> *这是一个单例模式 demo</span><br><span class="line"> *</span><br><span class="line"> *此文件程序用来做什么的（详细说明，可选。）。</span><br><span class="line"> * Created by PhpStorm</span><br><span class="line"> * @author    sunct</span><br><span class="line"> * @version   $Id$</span><br><span class="line"> * @since     1.0</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">class Mysql</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     *</span><br><span class="line">     * @var self[该属性用来保存实例] need</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private static $instance;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     *</span><br><span class="line">     * @var mixed</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public $mix;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * Return self instance[创建一个用来实例化对象的方法] need</span><br><span class="line">     *</span><br><span class="line">     * @return self</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static function getInstance()</span><br><span class="line">    &#123;</span><br><span class="line">        if (! (self::$instance instanceof self)) &#123;</span><br><span class="line">            self::$instance &#x3D; new self();</span><br><span class="line">        &#125;</span><br><span class="line">        return self::$instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 构造函数为private,防止创建对象 need</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private function __construct()</span><br><span class="line">    &#123;&#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 防止对象被复制</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private function __clone() need</span><br><span class="line">    &#123;</span><br><span class="line">        trigger_error(&#39;Clone is not allowed !&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; @test</span><br><span class="line">$firstMysql &#x3D; Mysql::getInstance();</span><br><span class="line">$secondMysql &#x3D; Mysql::getInstance();</span><br><span class="line"></span><br><span class="line">$firstMysql-&gt;mix &#x3D; &quot;this_one&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">$secondMysql-&gt;mix &#x3D; &quot;this_two&lt;br&#x2F;&gt;&quot;;</span><br><span class="line"></span><br><span class="line">print_r($firstMysql-&gt;mix);</span><br><span class="line">&#x2F;&#x2F; 输出： this_two</span><br><span class="line">print_r($secondMysql-&gt;mix);</span><br><span class="line">&#x2F;&#x2F; 输出： this_two</span><br></pre></td></tr></table></figure>
 
-_/\*\*  
- \*  
- \*_ **_@var_** _mixed  
- \*/_ **public** $mix;  
-
-_/\*\*  
- \* Return self instance\[创建一个用来实例化对象的方法\] need  
- \*  
- \*_ **_@return_** _self  
- \*/_ **public static function** getInstance()  
-{  
-    **if** (! (**self**::_$instance_ **instanceof self**)) {  
-        **self**::_$instance_ \= **new self**();  
-    }  
-    **return self**::_$instance_;  
-}  
-
-_/\*\*  
- \* 构造函数为private,防止创建对象 need  
- \*/_ **private function** \_\_construct()  
-{}  
-
-_/\*\*  
- \* 防止对象被复制  
- \*/_ **private function** \_\_clone() need  
-{  
-    trigger\_error(&apos;Clone is not allowed !&apos;);  
-}  </code></pre><p>}  </p>
-<p>// @test<br>$firstMysql = Mysql::<em>getInstance</em>();<br>$secondMysql = Mysql::<em>getInstance</em>();  </p>
-<p>$firstMysql-&gt;mix = “this_one<br/>“;<br>$secondMysql-&gt;mix = “this_two<br/>“;  </p>
-<p>print_r($firstMysql-&gt;mix);<br>// 输出： this_two<br>print_r($secondMysql-&gt;mix);<br>// 输出： this_two</p>
 <p>输出结果：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-31.png" alt=""></p>
 <p><strong>优点</strong></p>

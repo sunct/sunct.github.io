@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> 使用mpvue重构个人小程序（二）文件结构 | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用mpvue重构个人小程序（一）安装  package.json文件package.json是项目的主配置文件，里面包含了mpvue项目的基本描述信息、项目所依赖的各种第三方库以及版本信息、以及可执行的脚本信息。  我们看到该文件中的scripts部分配置了4个可执行的命令： 1234&quot;dev&quot;: &quot;node build&#x2F;dev-server.js&amp;quo">
+  <meta name="description" content="使用mpvue重构个人小程序（一）安装  package.json文件package.json是项目的主配置文件，里面包含了mpvue项目的基本描述信息、项目所依赖的各种第三方库以及版本信息、以及可执行的脚本信息。">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 使用mpvue重构个人小程序（二）文件结构">
 <meta property="og:url" content="https://sunct.github.io/2019/04/13/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BA%8C%EF%BC%89%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="使用mpvue重构个人小程序（一）安装  package.json文件package.json是项目的主配置文件，里面包含了mpvue项目的基本描述信息、项目所依赖的各种第三方库以及版本信息、以及可执行的脚本信息。  我们看到该文件中的scripts部分配置了4个可执行的命令： 1234&quot;dev&quot;: &quot;node build&#x2F;dev-server.js&amp;quo">
+<meta property="og:description" content="使用mpvue重构个人小程序（一）安装  package.json文件package.json是项目的主配置文件，里面包含了mpvue项目的基本描述信息、项目所依赖的各种第三方库以及版本信息、以及可执行的脚本信息。">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-45-1024x633.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-46-1024x710.png">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-50-1024x584.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-51-1024x737.png">
 <meta property="article:published_time" content="2019-04-13T07:36:33.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.529Z">
+<meta property="article:modified_time" content="2020-12-03T11:39:00.645Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="mpvue">
 <meta property="article:tag" content="小程序">
@@ -191,8 +191,7 @@
         <p><a href="https://www.sunsanmiao.cn/archives/360" target="_blank" rel="noopener">使用mpvue重构个人小程序（一）安装</a></p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-45-1024x633.png" alt=""></p>
 <h4 id="package-json文件"><a href="#package-json文件" class="headerlink" title="package.json文件"></a>package.json文件</h4><p>package.json是项目的主配置文件，里面包含了mpvue项目的基本描述信息、项目所依赖的各种第三方库以及版本信息、以及可执行的脚本信息。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-46-1024x710.png" alt=""></p>
-<p>我们看到该文件中的<code>scripts</code>部分配置了4个可执行的命令：</p>
+<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-46-1024x710.png" alt=""><br> <a id="more"></a><br>我们看到该文件中的<code>scripts</code>部分配置了4个可执行的命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;dev&quot;: &quot;node build&#x2F;dev-server.js&quot;,</span><br><span class="line">&quot;start&quot;: &quot;node build&#x2F;dev-server.js&quot;,</span><br><span class="line">&quot;build&quot;: &quot;node build&#x2F;build.js&quot;,</span><br><span class="line">&quot;lint&quot;: &quot;eslint --ext .js,.vue src&quot;</span><br></pre></td></tr></table></figure>
 
 <p><code>dev</code>和<code>start</code>是两个等价的命令，执行其中之一都可以将项目以开发模式启动。执行方式是：</p>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="前面的文章说到数据库的事务问题，在innodb引擎四个隔离级别（读未提交RU；读已提交RC；可重复读RR；可串行化Serializable）中，而MVCC只适用于RC和RR。 什么是MVCC?Multi-Version Concurrency Control，就是在事务执行过程中加入“版本”这个概念、MVCC的实现，通过保存数据在某个时间点的快照来实现的。 MVCC优缺点：MVCC在大多数情况下代">
 <meta property="og:locale" content="zn">
 <meta property="article:published_time" content="2019-04-24T02:34:58.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.562Z">
+<meta property="article:modified_time" content="2020-12-03T11:15:21.003Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="MVCC">
 <meta property="article:tag" content="undo log">
@@ -183,7 +183,7 @@
         <p>前面的文章说到数据库的事务问题，在innodb引擎四个隔离级别（读未提交RU；读已提交RC；可重复读RR；可串行化<strong>Serializable</strong>）中，而MVCC只适用于RC和RR。</p>
 <h4 id="什么是MVCC"><a href="#什么是MVCC" class="headerlink" title="什么是MVCC?"></a>什么是MVCC?</h4><p>Multi-Version Concurrency Control，就是在事务执行过程中加入“版本”这个概念、MVCC的实现，通过保存数据在某个时间点的快照来实现的。</p>
 <h4 id="MVCC优缺点："><a href="#MVCC优缺点：" class="headerlink" title="MVCC优缺点："></a>MVCC优缺点：</h4><p>MVCC在大多数情况下<strong>代替了行锁</strong>，实现了对<strong>读的非阻塞</strong>，<strong>读不加锁</strong>，<strong>读写不冲突</strong>。缺点是每行记录都需要<strong><em>额外的存储空间</em></strong>，需要做更多的行维护和检查工作。</p>
-<p>innodb 在事务上离不开undo log，那什么是undo log？</p>
+<p>innodb 在事务上离不开undo log，那什么是undo log？<br> <a id="more"></a> </p>
 <blockquote>
 <p>在数据库中有三种日志形式，binlog/redo log /undo log。  </p>
 <p><code>binlog</code>二进制日志是<strong>server层</strong>的，主要是左<strong>主从复制，时间点恢复</strong>使用，保存的是<strong>逻辑日志-&gt;执行的sql语句。</strong><br><code>redo log</code>重做日志是<strong>InnoDB存储引擎层</strong>的，用来保证<strong>事务安全，</strong>保存的是<strong>物理日志-&gt;数据。</strong><br><code>undo log</code>回滚日志保存了事务发生<strong>之前的数据的一个版本</strong>，可以用于<strong>回滚</strong>，同时可以提供<strong>多版本并发控制下的读（MVCC）</strong>，也即非锁定读。保存的是<strong>逻辑日志-&gt;数据前一个版本。</strong>  </p>
@@ -191,20 +191,38 @@
 </blockquote>
 <p>通过以上知识点可以大体理解为：MVCC通过undo log 日志形式在事务中标记一个时间点形成快照，通过这个时间点的日志可以对事务进行回滚操作。</p>
 <p>在不考虑redo log 的情况下利用undo log工作的简化过程为：</p>
-<p>序号</p>
-<p>动作</p>
-<p>1</p>
-<p>开始事务</p>
-<p>2</p>
-<p>记录数据行数据快照到undo log</p>
-<p>3</p>
-<p>更新数据</p>
-<p>4</p>
-<p>将undo log写到磁盘</p>
-<p>5</p>
-<p>将数据写到磁盘</p>
-<p>6</p>
-<p>提交事务</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>动作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>开始事务</td>
+</tr>
+<tr>
+<td>2</td>
+<td>记录数据行数据快照到undo log</td>
+</tr>
+<tr>
+<td>3</td>
+<td>更新数据</td>
+</tr>
+<tr>
+<td>4</td>
+<td>将undo log写到磁盘</td>
+</tr>
+<tr>
+<td>5</td>
+<td>将数据写到磁盘</td>
+</tr>
+<tr>
+<td>6</td>
+<td>提交事务</td>
+</tr>
+</tbody></table>
 <p>1）为了保证数据的持久性数据要在事务提交之前持久化<br>2）undo log的持久化必须在在数据持久化之前，这样才能保证系统崩溃时，可以用undo log来回滚事务</p>
 <h4 id="InnoDB存储引擎是如何记录事务操作的呢？"><a href="#InnoDB存储引擎是如何记录事务操作的呢？" class="headerlink" title="InnoDB存储引擎是如何记录事务操作的呢？"></a>InnoDB存储引擎是如何记录事务操作的呢？</h4><p>InnoDB存储引擎在数据库每行数据的后面添加了三个字段。事务id+回滚指针+自增id</p>
 <p>6字节的<code>事务ID</code>(<code>DB_TRX_ID</code>)字段: <strong>用来标识最近一次对本行记录做修改</strong>(insertupdate)的事务的标识符, 即最后一次修改(insertupdate)本行记录的事务id。至于delete操作，在innodb看来也不过是一次update操作，更新行中的一个特殊位将行表示为deleted, <strong>并非真正删除</strong>。</p>

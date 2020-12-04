@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> PHP写排序算法（一）冒泡排序 | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="冒泡排序依次比较相邻的两个元素，每次比较完毕最大的一个字跑到本轮的末尾。 例如：$arr&#x3D;[26,76,43,41,86,1,45,49,71,4]; 第一轮比较相邻两个元素，如果左边元素大于右边元素，则交换。  26和76比较的结果就是，26在前，76在后；然后76和43比较的结果，43在前，76在后；然后76和41比较的结果，41在前，76在后；然后76和86比较的结果，76在前，86在后；然">
+  <meta name="description" content="冒泡排序依次比较相邻的两个元素，每次比较完毕最大的一个字跑到本轮的末尾。 例如：$arr&#x3D;[26,76,43,41,86,1,45,49,71,4];">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" PHP写排序算法（一）冒泡排序">
 <meta property="og:url" content="https://sunct.github.io/2019/04/19/php%E5%86%99%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="冒泡排序依次比较相邻的两个元素，每次比较完毕最大的一个字跑到本轮的末尾。 例如：$arr&#x3D;[26,76,43,41,86,1,45,49,71,4]; 第一轮比较相邻两个元素，如果左边元素大于右边元素，则交换。  26和76比较的结果就是，26在前，76在后；然后76和43比较的结果，43在前，76在后；然后76和41比较的结果，41在前，76在后；然后76和86比较的结果，76在前，86在后；然">
+<meta property="og:description" content="冒泡排序依次比较相邻的两个元素，每次比较完毕最大的一个字跑到本轮的末尾。 例如：$arr&#x3D;[26,76,43,41,86,1,45,49,71,4];">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-157-807x1024.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-158-580x1024.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-159-518x1024.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-160-608x1024.png">
 <meta property="article:published_time" content="2019-04-19T11:43:41.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.554Z">
+<meta property="article:modified_time" content="2020-12-03T11:39:00.623Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="冒泡排序">
 <meta property="article:tag" content="排序算法">
@@ -186,11 +186,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p><strong>依次比较相邻的两个元素，</strong>每次比较完毕最大的一个字跑到本轮的末尾。</p>
-<p>例如：$arr=[26,76,43,41,86,1,45,49,71,4];</p>
-<p>第一轮比较相邻两个元素，如果左边元素大于右边元素，则交换。 </p>
+<p>例如：$arr=[26,76,43,41,86,1,45,49,71,4];<br> <a id="more"></a><br>第一轮比较相邻两个元素，如果左边元素大于右边元素，则交换。 </p>
 <p>26和76比较的结果就是，26在前，76在后；<br>然后76和43比较的结果，43在前，76在后；<br>然后76和41比较的结果，41在前，76在后；<br>然后76和86比较的结果，76在前，86在后；<br>然后86和1比较的结果，1在前，86在后；<br>然后86和45比较的结果，45在前，86在后；<br>然后86和49比较的结果，49在前，86在后；<br>然后86和71比较的结果，71在前，86在后；<br>然后86和4比较的结果，4在前，86在后；  </p>
 <p>以此类推，第一轮比较之后的结果是：26，43，41，76，1，45，49，71，4，86。经过第一轮比较，最大的元素跑到了最后一个，所以第二轮比较，最后一个元素不需要进行比较了。  第三轮还是从索引0和1开始比较，最后两个不比较了。第四轮、第五轮以此类推。</p>
-<p>$arr=[26,76,43,41,86,1,45,49,71,4];<br>// 冒泡排序<br><strong>function</strong> maopao(<strong>array</strong> $arr) :<strong>array</strong>{<br>$len=count($arr);<br><strong>for</strong> ($i=0; $i &lt;$len ; $i++) {<br>    # code…<br>    <strong>for</strong> ($j=0; $j &lt;$len-$i-1; $j++) {<br>        # code…<br>        <strong>if</strong> ($arr[$j]&gt;$arr[$j+1]) {<br>            # code…<br>            $t=$arr[$j];<br>            $arr[$j]=$arr[$j+1];<br>            $arr[$j+1]=$t;<br>        }<br>    }<br>    var_dump($arr);<br>}<br><strong>return</strong> $arr;<br>}<br>var_dump(maopao($arr));  </p>
+<p>$arr=[26,76,43,41,86,1,45,49,71,4];<br>// 冒泡排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function maopao(array $arr) :array&#123;  </span><br><span class="line">$len&#x3D;count($arr);  </span><br><span class="line">for ($i&#x3D;0; $i &lt;$len ; $i++) &#123;  </span><br><span class="line">    # code...  </span><br><span class="line">    for ($j&#x3D;0; $j &lt;$len-$i-1; $j++) &#123;  </span><br><span class="line">        # code...  </span><br><span class="line">        if($arr[$j]&gt;$arr[$j+1]) &#123;  </span><br><span class="line">            # code...  </span><br><span class="line">            $t&#x3D;$arr[$j];  </span><br><span class="line">            $arr[$j]&#x3D;$arr[$j+1];  </span><br><span class="line">            $arr[$j+1]&#x3D;$t;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    var_dump($arr);  </span><br><span class="line">&#125;  </span><br><span class="line">return $arr;  </span><br><span class="line">&#125;  </span><br><span class="line">var_dump(maopao($arr));</span><br></pre></td></tr></table></figure>
+
 <p>每次比较结果：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-157-807x1024.png" alt=""></p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-158-580x1024.png" alt=""></p>
