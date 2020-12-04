@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> 使用mpvue重构个人小程序（六）封装组件配置 | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="自定义组件文件目录在utils 中书写自己的公共方法 名字自己起，其中我的api.js文件中主要放的是和接口相关的文件：  我的index.js 里放的是常用函数：  暴露给外部调用方法（函数）：  文件调用和调用插件方法一样，写相对路径即可。 import util from ‘..&#x2F;..&#x2F;utils&#x2F;index.js’ 使用方法 let today &#x3D; util.formatDate(new">
+  <meta name="description" content="自定义组件文件目录在utils 中书写自己的公共方法 名字自己起，其中我的api.js文件中主要放的是和接口相关的文件：  我的index.js 里放的是常用函数：">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 使用mpvue重构个人小程序（六）封装组件配置">
 <meta property="og:url" content="https://sunct.github.io/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%85%AD%EF%BC%89%E5%B0%81%E8%A3%85%E7%BB%84%E4%BB%B6%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="自定义组件文件目录在utils 中书写自己的公共方法 名字自己起，其中我的api.js文件中主要放的是和接口相关的文件：  我的index.js 里放的是常用函数：  暴露给外部调用方法（函数）：  文件调用和调用插件方法一样，写相对路径即可。 import util from ‘..&#x2F;..&#x2F;utils&#x2F;index.js’ 使用方法 let today &#x3D; util.formatDate(new">
+<meta property="og:description" content="自定义组件文件目录在utils 中书写自己的公共方法 名字自己起，其中我的api.js文件中主要放的是和接口相关的文件：  我的index.js 里放的是常用函数：">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-79-1024x280.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-80-1024x367.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-83-1024x470.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-82-1024x347.png">
 <meta property="article:published_time" content="2019-04-16T04:01:41.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.536Z">
+<meta property="article:modified_time" content="2020-12-03T11:39:00.651Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="mpvue">
 <meta property="article:tag" content="小程序">
@@ -190,8 +190,7 @@
 <p>名字自己起，其中我的api.js文件中主要放的是和接口相关的文件：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-79-1024x280.png" alt=""></p>
 <p>我的index.js 里放的是常用函数：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-80-1024x367.png" alt=""></p>
-<p>暴露给外部调用方法（函数）：</p>
+<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-80-1024x367.png" alt=""><br> <a id="more"></a><br>暴露给外部调用方法（函数）：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-83-1024x470.png" alt=""></p>
 <h4 id="文件调用"><a href="#文件调用" class="headerlink" title="文件调用"></a>文件调用</h4><p>和调用插件方法一样，写相对路径即可。</p>
 <p><strong>import</strong> util <strong>from</strong> ‘../../utils/index.js’</p>

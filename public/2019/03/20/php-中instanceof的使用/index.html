@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> php 中instanceof的使用 | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="作用： （1）判断一个对象是否是某个类的实例， （2）判断一个对象是否实现了某个接口。 第一种用法：   第二种用法：   输出结果：Yes, it is">
+  <meta name="description" content="作用： （1）判断一个对象是否是某个类的实例， （2）判断一个对象是否实现了某个接口。 第一种用法： 123456&lt;?php   $obj &#x3D; new A();   if ($obj instanceof A) &amp;#123;     echo &#39;A&#39;;   &amp;#125;  ?&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" php 中instanceof的使用">
 <meta property="og:url" content="https://sunct.github.io/2019/03/20/php-%E4%B8%ADinstanceof%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="作用： （1）判断一个对象是否是某个类的实例， （2）判断一个对象是否实现了某个接口。 第一种用法：   第二种用法：   输出结果：Yes, it is">
+<meta property="og:description" content="作用： （1）判断一个对象是否是某个类的实例， （2）判断一个对象是否实现了某个接口。 第一种用法： 123456&lt;?php   $obj &#x3D; new A();   if ($obj instanceof A) &amp;#123;     echo &#39;A&#39;;   &amp;#125;  ?&gt;">
 <meta property="og:locale" content="zn">
 <meta property="article:published_time" content="2019-03-20T13:50:20.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.502Z">
+<meta property="article:modified_time" content="2020-12-03T11:39:00.630Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="instanceof">
 <meta name="twitter:card" content="summary">
@@ -183,31 +183,10 @@
 <p>（1）判断一个对象是否是某个类的实例，</p>
 <p>（2）判断一个对象是否实现了某个接口。</p>
 <p><strong>第一种用法：</strong></p>
-<?php   
-$obj = new A();   
-if ($obj instanceof A) {   
-  echo 'A';   
-}  
-?>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php   </span><br><span class="line">$obj &#x3D; new A();   </span><br><span class="line">if ($obj instanceof A) &#123;   </span><br><span class="line">  echo &#39;A&#39;;   </span><br><span class="line">&#125;  </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+ <a id="more"></a> 
 <p><strong>第二种用法：</strong></p>
-<?php   
-interface ExampleInterface {   
-   public function interfaceMethod();    
-}    
-class ExampleClass implements ExampleInterface {      
-  public function interfaceMethod(){        
-   return 'Hello World!';     
- }    
-}   
-$exampleInstance = new ExampleClass();    
-if($exampleInstance instanceof ExampleInterface){      
-  echo 'Yes, it is';    
-}else{      
-  echo 'No, it is not';   
-}    
-?>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php   </span><br><span class="line">interface ExampleInterface &#123;   </span><br><span class="line">   public function interfaceMethod();    </span><br><span class="line">&#125;    </span><br><span class="line">class ExampleClass implements ExampleInterface &#123;      </span><br><span class="line">  public function interfaceMethod()&#123;        </span><br><span class="line">   return &#39;Hello World!&#39;;     </span><br><span class="line"> &#125;    </span><br><span class="line">&#125;   </span><br><span class="line">$exampleInstance &#x3D; new ExampleClass();    </span><br><span class="line">if($exampleInstance instanceof ExampleInterface)&#123;      </span><br><span class="line">  echo &#39;Yes, it is&#39;;    </span><br><span class="line">&#125;else&#123;      </span><br><span class="line">  echo &#39;No, it is not&#39;;   </span><br><span class="line">&#125;    </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <p>输出结果：Yes, it is</p>
 
       

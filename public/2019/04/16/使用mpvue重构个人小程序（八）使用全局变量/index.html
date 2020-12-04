@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> 使用mpvue重构个人小程序（八）使用全局变量 | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在开发的过程中，用到全局变量的问题，搜了很多，方法五花八门，有的推荐使用vuex ，如果你想折腾一番可以自己尝试的使用。 下面，我用的是最原始的方式来介绍一下全局变量的使用方法。 首先，在配置文件src &#x2F; mian.js 中进行开启和全局配置。  我的配置文件内容： import Vue from ‘vue’import App from ‘.&#x2F;App’import ‘mpvue-calenda">
+  <meta name="description" content="在开发的过程中，用到全局变量的问题，搜了很多，方法五花八门，有的推荐使用vuex ，如果你想折腾一番可以自己尝试的使用。 下面，我用的是最原始的方式来介绍一下全局变量的使用方法。 首先，在配置文件src &#x2F; mian.js 中进行开启和全局配置。">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 使用mpvue重构个人小程序（八）使用全局变量">
 <meta property="og:url" content="https://sunct.github.io/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%85%AB%EF%BC%89%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="在开发的过程中，用到全局变量的问题，搜了很多，方法五花八门，有的推荐使用vuex ，如果你想折腾一番可以自己尝试的使用。 下面，我用的是最原始的方式来介绍一下全局变量的使用方法。 首先，在配置文件src &#x2F; mian.js 中进行开启和全局配置。  我的配置文件内容： import Vue from ‘vue’import App from ‘.&#x2F;App’import ‘mpvue-calenda">
+<meta property="og:description" content="在开发的过程中，用到全局变量的问题，搜了很多，方法五花八门，有的推荐使用vuex ，如果你想折腾一番可以自己尝试的使用。 下面，我用的是最原始的方式来介绍一下全局变量的使用方法。 首先，在配置文件src &#x2F; mian.js 中进行开启和全局配置。">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-100-1024x395.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-103-1024x484.png">
@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-105-1024x398.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-108-1024x490.png">
 <meta property="article:published_time" content="2019-04-16T05:43:58.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.539Z">
+<meta property="article:modified_time" content="2020-12-03T11:39:00.642Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="mpvue">
 <meta property="article:tag" content="小程序">
@@ -190,8 +190,7 @@
       
         <p>在开发的过程中，用到全局变量的问题，搜了很多，方法五花八门，有的推荐使用vuex ，如果你想折腾一番可以自己尝试的使用。</p>
 <p>下面，我用的是最原始的方式来介绍一下全局变量的使用方法。</p>
-<p>首先，在配置文件src / mian.js 中进行开启和全局配置。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-100-1024x395.png" alt=""></p>
+<p>首先，在配置文件src / mian.js 中进行开启和全局配置。<br> <a id="more"></a><br><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-100-1024x395.png" alt=""></p>
 <p>我的配置文件内容：</p>
 <p><strong>import</strong> Vue <strong>from</strong> ‘vue’<br><strong>import</strong> App <strong>from</strong> ‘./App’<br><strong>import</strong> ‘mpvue-calendar/src/style.css’<br>Vue.config.productionTip = *<em>false<br>*</em>App.mpType = ‘app’  </p>
 <p><strong>const</strong> app = <strong>new</strong> Vue(App)<br>app.$mount()<br>getApp().globalData = {uid: ‘123456’}<br>Vue.prototype.globalData = getApp().globalData</p>

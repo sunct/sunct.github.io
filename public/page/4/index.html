@@ -208,43 +208,10 @@
 <p>我们将要对vue-cli生成的代码做一个清理工作，具体如下：</p>
 <p>删掉<code>src/components</code>、<code>src/pages</code>、<code>src/utils</code>三个目录下的所有代码文件</p>
 <p>提前说一下，微信开发者工具不支持打开vue文件，因为微信开发者工具只是一个用户代理(即显示网站用)，类似Google浏览器一样。所以编写的时候一般会选择一款编辑器，可以使用Sublime、webstorm、vs等。</p>
-<p>将<code>src/App.vue</code>文件中的内容重置：</p>
-<p>原来的文件：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-52-1024x591.png" alt=""></p>
-<p>重置成：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-53-1024x342.png" alt=""></p>
-<p>将<code>src/main.js</code>文件中添加内容;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line">  config: &#123;</span><br><span class="line">    pages: [],</span><br><span class="line">    window: &#123;</span><br><span class="line">      backgroundTextStyle: &#39;light&#39;,</span><br><span class="line">      navigationBarBackgroundColor: &#39;#fff&#39;,</span><br><span class="line">      navigationBarTitleText: &#39;第一个小程序&#39;,</span><br><span class="line">      navigationBarTextStyle: &#39;black&#39;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-54.png" alt=""></p>
-<h4 id="app-json"><a href="#app-json" class="headerlink" title="app.json"></a>app.json</h4><p><code>app.json</code>是小程序的全局配置文件，其包含了小程序的页面文件路径配置、窗口的全局样式信息、底部选项卡式菜单栏的配置，以及一些小程序网络超时的配置等等。</p>
-<p>在<code>src/main.js</code>中，我们就可以完整的进行这些信息的配置，具体可以查看上图文件刚添加的最底部代码。在该代码中通过<code>export default</code>导出的对象的<code>config</code>属性下的值，就是这些小程序的配置信息了。</p>
-<h4 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h4><p>每个小程序都需要至少有一个页面，第一个展示的页面被叫做_首页_。因为前面已经把所有的页面代码都删完了，所以我们现在要新建一个首页。在<code>src/pages</code>目录下，我们新建一个名为<code>index</code>的子目录（请遵循每个页面放入一个子目录的良好习惯），然后在该子目录下，新建2个文件：一个用于实现页面主体功能的<code>index.vue</code>组件，另一个则用于将这个页面组件生成Vue实例并加载的<code>main.js</code>。以后的每一个mpvue页面组件都会拥有这样的结构。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-55-1024x445.png" alt=""></p>
-<p>没有首页会在命令行中报错，如：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-56-1024x576.png" alt=""></p>
-<p>然后在<code>main.js</code>中编写如下代码，的功能是引入<code>index.vue</code>并创建Vue实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;index&#39;</span><br><span class="line"></span><br><span class="line">const app &#x3D; new Vue(App)</span><br><span class="line">app.$mount()</span><br></pre></td></tr></table></figure>
-
-<p>当然你也可以像在<code>src/main.js</code>中去导出一个页面级别的配置，因为小程序的每个页面都可以有一些单独的配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import App from &#39;.&#x2F;index&#39;</span><br><span class="line"></span><br><span class="line">const app &#x3D; new Vue(App)</span><br><span class="line">app.$mount()</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  config: &#123;</span><br><span class="line">    &#x2F;&#x2F; 注意，页面级可配置属性相当于只是&#96;src&#x2F;main.js&#96;中配置里的&#96;window&#96;部分</span><br><span class="line">    &quot;navigationBarTitleText&quot;: &quot;首页&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接着，我们需要实现<code>index.vue</code>页面组件，它的写法是最典型的Vue组件写法。</p>
-<p>当我们写到此时，在开发工具中编译运行，结果还不是我们想要的：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-57-1024x738.png" alt=""></p>
-<p>改了这么多，为啥还和最初的一样？原因是 我们还没有编译，这个编译不是小程序开发工具里的编译。我们最初运行了 npm run dev ，在dist 文件已编译。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-58-1024x368.png" alt=""></p>
-<p>先清空/wx/该目录，再运行：</p>
-<p>npm run dev</p>
-<p>当我们实现了这个<code>index.vue</code>页面组件后，其实还缺最后一个步骤，就是需要将这个页面组件指定为首页。如果我们的小程序只有一个页面的话，其实也可以省略这一步，因为mpvue会自动将<code>src/pages</code>目录下的页面组件路径添加到最终编译出来的小程序配置文件中去（可以打开<code>dist/app.json</code>文件观察一下）：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-59-1024x567.png" alt=""></p>
-<p>和 src/app.json</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-60-1024x496.png" alt=""></p>
-<p>点击 界面中的hello，变成了 Clicked，效果如下：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-61-589x1024.png" alt=""></p>
-
+<p>将<code>src/App.vue</code>文件中的内容重置：<br>
+        
+          <a class="article-more-a" href="/2019/04/13/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B8%89%EF%BC%89%E4%BD%BF%E7%94%A8vue%E7%9A%84%E8%AF%AD%E6%B3%95%E7%BC%96%E5%86%99/#more">more >></a>
+        
       
 
       
@@ -335,39 +302,10 @@
         <p><a href="https://www.sunsanmiao.cn/archives/360" target="_blank" rel="noopener">使用mpvue重构个人小程序（一）安装</a></p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-45-1024x633.png" alt=""></p>
 <h4 id="package-json文件"><a href="#package-json文件" class="headerlink" title="package.json文件"></a>package.json文件</h4><p>package.json是项目的主配置文件，里面包含了mpvue项目的基本描述信息、项目所依赖的各种第三方库以及版本信息、以及可执行的脚本信息。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-46-1024x710.png" alt=""></p>
-<p>我们看到该文件中的<code>scripts</code>部分配置了4个可执行的命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;dev&quot;: &quot;node build&#x2F;dev-server.js&quot;,</span><br><span class="line">&quot;start&quot;: &quot;node build&#x2F;dev-server.js&quot;,</span><br><span class="line">&quot;build&quot;: &quot;node build&#x2F;build.js&quot;,</span><br><span class="line">&quot;lint&quot;: &quot;eslint --ext .js,.vue src&quot;</span><br></pre></td></tr></table></figure>
-
-<p><code>dev</code>和<code>start</code>是两个等价的命令，执行其中之一都可以将项目以开发模式启动。执行方式是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-
-<p><code>lint</code>指令是使用ESLint来进行代码语法和格式检查，以及修复一些可自动修复的问题。执行方式是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm run lint  #检查语法和格式</span><br><span class="line">npm run lint -- --fix #检查代码语法和格式，并修复可自动修复的问题</span><br></pre></td></tr></table></figure>
-
-<p><code>build</code>指令是用于生成发布用代码的，它会对代码进行一些压缩优化处理。当小程序开发完成后，将要提交审核时，请使用<code>build</code>来生成发布的代码。</p>
-<h4 id="project-config-json文件"><a href="#project-config-json文件" class="headerlink" title="project.config.json文件"></a>project.config.json文件</h4><p><code>project.config.json</code>文件是用于管理微信开发者工具的小程序项目的配置文件，其中记录了小程序的appid、代码主目录、以及编译选项等等信息，在微信开发者工具中导入小程序项目的时候主要是通过该配置文件读取和写入配置信息。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-47-1024x573.png" alt=""></p>
-<h4 id="static目录"><a href="#static目录" class="headerlink" title="static目录"></a>static目录</h4><p><code>static</code>目录可以用于存放各种小程序本地静态资源，如图片、文本文件等。代码中可通过相对路径或绝对路径进行访问。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-48-1024x635.png" alt=""></p>
-<h4 id="build目录"><a href="#build目录" class="headerlink" title="build目录"></a>build目录</h4><p><code>build</code>目录下是一些用于项目编译打包的node.js脚本和webpack配置文件。一般情况下不需要修改。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-49-1024x677.png" alt=""></p>
-<h4 id="config目录"><a href="#config目录" class="headerlink" title="config目录"></a>config目录</h4><p><code>config</code>目录下包含了用于开发和生产环境下的不同配置，<code>dev.env.js</code>用于开发环境，<code>prod.env.js</code>用于生产环境，可以将开发阶段和生产阶段不一样的信息（如后台API的url地址等）配置到这两个文件中去，然后在代码中以变量的形式进行引用。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-50-1024x584.png" alt=""></p>
-<p>在编写请求后端API的代码时，你就可以使用这个环境配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const baseURL &#x3D; process.env.API_BASE_URL</span><br><span class="line">wx.request(&#123;</span><br><span class="line">  url: &#96;$&#123;baseURL&#125;&#x2F;about&#96;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>这样一来，可以清楚的区分开发阶段和上线发布阶段的环境。</p>
-<h4 id="src目录"><a href="#src目录" class="headerlink" title="src目录"></a>src目录</h4><p><code>src</code>目录是我们主要进行小程序功能编写的地方。默认生成的demo代码为我们创建了几个子目录：<code>components</code>、<code>pages</code>和<code>utils</code>，还有2个文件：<code>App.vue</code>和<code>main.js</code>。其实它们都不是必须的，可以按照自己的风格进行定义和配置。不过默认创建的这个结构基本上是一个约定俗成的结构了，比较易于理解，所以我们可以遵循这个结构进行开发。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-51-1024x737.png" alt=""></p>
-<ul>
-<li>components：在实际开发中，我们可以尽量将界面上可复用的部分，提取成vue组件放入该目录</li>
-<li>pages：存放小程序的页面。请遵循每个小程序页面放入一个单独子目录的组织形式</li>
-<li>utils：可选（可删）。可以将代码中一些公用工具函数组织成模块放入该目录下</li>
-<li>可新建其他目录，存放你希望组织起来的代码。比如公用的业务逻辑代码、请求后台API的代码等等</li>
-<li>main.js + App.vue：这两个是入口文件，相当于原生小程序框架中的<code>app.json</code>和<code>app.js</code>的复合体。</li>
-</ul>
-
+<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-46-1024x710.png" alt=""><br>
+        
+          <a class="article-more-a" href="/2019/04/13/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BA%8C%EF%BC%89%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/#more">more >></a>
+        
       
 
       
@@ -462,15 +400,10 @@
         <p>mpvue安装</p>
 <p><em># 全局安装 vue-cli</em><br>$ npm install –global vue-cli<br><em># 创建一个基于 mpvue-quickstart 模板的新项目</em><br>$ vue init mpvue/mpvue-quickstart my-project<br><em># 安装依赖</em><br>$ cd my-project<br>$ npm install<br><em># 启动构建</em><br>$ npm run dev  </p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-40-1024x158.png" alt=""></p>
-<p>我的微信小程序项目都在WeChatProjects目录下，根据提示输入相对应的内容。如下图：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-41-1024x407.png" alt=""></p>
-<p>根据上图的提示，cd 到项目目录下，cd WeChatProjects/my-project，执行安装</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-42-1024x141.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-43-1024x452.png" alt=""></p>
-<p>接下来，你只需要启动<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/quickstart/basic/getting-started.html#%E5%AE%89%E8%A3%85%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7" target="_blank" rel="noopener">微信开发者工具</a>，引入项目即可预览到你的第一个 <code>mpvue</code> 小程序</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-44-1024x823.png" alt=""></p>
-<p><a href="https://www.sunsanmiao.cn/archives/368" target="_blank" rel="noopener">使用mpvue重构个人小程序（二）文件结构</a></p>
-
+<p>我的微信小程序项目都在WeChatProjects目录下，根据提示输入相对应的内容。如下图：<br>
+        
+          <a class="article-more-a" href="/2019/04/13/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B8%80%EF%BC%89%E5%AE%89%E8%A3%85/#more">more >></a>
+        
       
 
       
@@ -664,33 +597,10 @@
       
         <p>除了增加索引外，还有很多注意的问题。</p>
 <h4 id="1、不要在语句中出现计算"><a href="#1、不要在语句中出现计算" class="headerlink" title="1、不要在语句中出现计算"></a>1、不要在语句中出现计算</h4><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-24.png" alt=""></p>
-<h4 id="2、查询条件数据类型一致"><a href="#2、查询条件数据类型一致" class="headerlink" title="2、查询条件数据类型一致"></a>2、查询条件数据类型一致</h4><p>为了测试把其中的一个订单id 改为 201903121704170005，看下图不同的查询：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-26-1024x498.png" alt=""></p>
-<p>显然oid=201903121704170005比 oid=’201903121704170005’长很多,因为原来的oid 的字段类型是varchar，而不是数值型。分析一下：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-27-1024x680.png" alt=""></p>
-<p>类型不一致的第一条，没有走索引。</p>
-<h4 id="3、不要使用like左模糊查询"><a href="#3、不要使用like左模糊查询" class="headerlink" title="3、不要使用like左模糊查询"></a>3、不要使用like左模糊查询</h4><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-28-1024x258.png" alt=""></p>
-<p>左模糊不走索引。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-29-1024x426.png" alt=""></p>
-<p>右模糊不影响索引的使用</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-30-1024x597.png" alt=""></p>
-<h4 id="4、select-避免使用-查询所需字段"><a href="#4、select-避免使用-查询所需字段" class="headerlink" title="4、select 避免使用*查询所需字段"></a>4、select 避免使用*查询所需字段</h4><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-31-1024x850.png" alt=""></p>
-<p>需要什么字段就查什么字段，避免使用*。</p>
-<h4 id="5、查询一条语句时加上limit-1"><a href="#5、查询一条语句时加上limit-1" class="headerlink" title="5、查询一条语句时加上limit 1"></a>5、查询一条语句时加上limit 1</h4><p>show profiles;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-33-1024x92.png" alt=""></p>
-<p>但是，并不是所有的查询加上limit 1，都能提高速度，我们再试一次：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-34-1024x189.png" alt=""></p>
-<p>显然，前者加上limit 1 的查询时间反而比后者没加limit 1 花费更长的时间，即使差距只有0.00006s。那么在什么时候需要一条数据加上limit 1 的时候才能达到优化的效果呢？</p>
-<p>请看下面的例子：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-35-1024x462.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-36-1024x507.png" alt=""></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-37-1024x473.png" alt=""></p>
-<p>通过简单的测试，当所选的记录id越靠前，使用limit 1 时，效果越明显。原因是，price 字段在没有加索引的情况下，需要进行全表扫描，加上limit 1,只要找到了对应的一条记录，就不会继续向下扫描了，效率会大大提高。 limit 1适用于查询结果为1条(也可能为0)会导致全表扫描的的SQL语句。</p>
-<p>再看一下使用主键作为条件时，使用limit 1</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-38-1024x120.png" alt=""></p>
-<p>从结果看来，效果不是特别明显，而时候反而加上limit 1，效率反而降低。原因是 sql 语句执行顺序为 select 查询完结果之后再进行 limit 1筛选。</p>
-<p>所以，建议使用limit 1 最好是用在没加索引的where条件下。</p>
-
+<h4 id="2、查询条件数据类型一致"><a href="#2、查询条件数据类型一致" class="headerlink" title="2、查询条件数据类型一致"></a>2、查询条件数据类型一致</h4><p>为了测试把其中的一个订单id 改为 201903121704170005，看下图不同的查询：<br>
+        
+          <a class="article-more-a" href="/2019/04/06/mysql%E8%AF%AD%E5%8F%A5%E4%BC%98%E5%8C%96%E8%A1%A5%E5%85%85%EF%BC%88%E4%BA%8C%EF%BC%89/#more">more >></a>
+        
       
 
       
@@ -781,46 +691,10 @@
         <p>前面已经写了一些关于优化sql语句的方法。为了更形象的在项目中使用，以现有的数据再次详细说明一些，希望对sql优化有更进一步的学习。</p>
 <h4 id="从发现问题到解决问题"><a href="#从发现问题到解决问题" class="headerlink" title="从发现问题到解决问题"></a>从发现问题到解决问题</h4><p>以本地数据 my_order表 为例，先生成119w多条记录。</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-13.png" alt=""></p>
-<p>根据id查询一条数据，用时0.00s</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-5.png" alt=""></p>
-<p>用 explain 查看详情，用到了主键索引 primary key ；查询的行数row=1；</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-7-1024x503.png" alt=""></p>
-<p>同理，若用oid 查询一条数据,用时0.26s</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-14-1024x269.png" alt=""></p>
-<p>explain 查看一下,没用任何索引，查询的行数row=1186791</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-15-1024x439.png" alt=""></p>
-<p>对比两条语句，差别在于where字句后的字段是否使用了索引，初步判断是因为索引的问题。先不说索引的问题。</p>
-<h4 id="先开启慢查询"><a href="#先开启慢查询" class="headerlink" title="先开启慢查询"></a>先开启慢查询</h4><p>show variables like “slow%”;  </p>
-<p>set global slow_query_log=on;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-10-1024x588.png" alt=""></p>
-<p>设置慢查询时间，为了更好的测试设置为0.1s，在实际项目中根据需求设置，比如设为0.5s等。</p>
-<p>show variables like “%long%”;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-11-1024x350.png" alt=""></p>
-<p>set long_query_time=0.1;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-12-1024x421.png" alt=""></p>
-<p>再次运行 select * from my_order where oid=’o_201904060514268977’;</p>
-<p>打开慢日志文件，可查看刚才运行的语句。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-16-1024x265.png" alt=""></p>
-<h4 id="查看性能"><a href="#查看性能" class="headerlink" title="查看性能"></a>查看性能</h4><p>show variables like “%profiling%”;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-17.png" alt=""></p>
-<p>set profiling=on;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-18.png" alt=""></p>
-<p>再次运行 select * from my_order where oid=’o_201904060514268977’;</p>
-<p>show profiles;<br>//查看刚才运行的语句。</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-19-1024x427.png" alt=""></p>
-<p>可以看到刚才语句语句运行的更具体的时间。再进一步分析：</p>
-<p>show profile for query 2;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-20.png" alt=""></p>
-<p>通过上图可以看到详细的运行时间。其中，Sending data花费时间最长。</p>
-<p>并且，注意：logging slow query 也花费时间，一般不要在线上开启慢查询，等需要分析的时候再启用。</p>
-<h4 id="加索引优化"><a href="#加索引优化" class="headerlink" title="加索引优化"></a>加索引优化</h4><p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-21-1024x367.png" alt=""></p>
-<p>增加索引，alter table my_order add index(oid);</p>
-<p>并运行：select * from my_order where oid=’o_201904060514268977’;</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-22-1024x711.png" alt=""></p>
-<p>再分析一下：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-23-1024x311.png" alt=""></p>
-<p>看来加索引解决了刚才慢查询的问题。</p>
-
+<p>根据id查询一条数据，用时0.00s<br>
+        
+          <a class="article-more-a" href="/2019/04/06/mysql%E8%AF%AD%E5%8F%A5%E4%BC%98%E5%8C%96%E8%A1%A5%E5%85%85%EF%BC%88%E4%B8%80%EF%BC%89/#more">more >></a>
+        
       
 
       
@@ -912,23 +786,10 @@
 <p>默认端口：80；HTTPS默认端口：443。</p>
 <p>二、HTTP 的请求方式：get，post，head，delete，put，move。get和post的区别。</p>
 <p>三、HTTP 状态码： 100-199 客户端。200-299 请求成功。300-399已经移动的文件。400-499 客户端错误。500-599 服务器错误。</p>
-<p>200 ok ；<br>301 永久重定向；<br>403 禁止访问；<br>404 没有找到资源；<br>500 服务器错误，不能完成客户端请求。<br>502 坏的网关，代理服务出了问题。<br>503服务器不可用，超载、宕机；<br>504 网关超时。</p>
-<p>四、HTTP报文：</p>
-<p>1、请求行（请求方法：get；url：<a href="https://www.sunsanmiao.cn；http协议，状态码等），" target="_blank" rel="noopener">https://www.sunsanmiao.cn；http协议，状态码等），</a></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-163.png" alt=""></p>
-<p>2、请求头部（键值对，客户端把请求信息告诉服务器）</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-164-1024x220.png" alt=""></p>
-<p>3、空行。</p>
-<p>4、请求报文。（起始行：状态；响应头部；空行；响应报文主体）</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-165-1024x391.png" alt=""></p>
-<p>五：URL：统一资源定位符。协议；IP或域名；主机资源地址（/index.html）。</p>
-<p>六、URI：统一资源标识符。用于标识某一互联网资源名称的字符串，唯一标识某一信息资源。</p>
-<p>七：TCP/IP 网络协议。</p>
-<p>TCP和UDP的区别。</p>
-<p>1、TCP面向连接（如打电话要先拨号建立连接）;UDP是无连接的，即发送数据之前不需要建立连接<br>2、TCP提供可靠的服务。也就是说，通过TCP连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP尽最大努力交付，即不保证可靠交付<br>3、TCP面向字节流，实际上是TCP把数据看成一连串无结构的字节流;UDP是面向报文的<br> UDP没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如IP电话，实时视频会议等）<br>4、每一条TCP连接只能是点到点的;UDP支持一对一，一对多，多对一和多对多的交互通信<br>5、TCP首部开销20字节;UDP的首部开销小，只有8个字节<br>6、TCP的逻辑通信信道是全双工的可靠信道，UDP则是不可靠信道</p>
-<p>八、DNS解析过程。本地LDNS，host-》全球DNS服务器-》一层层解析cn-sunsanmiao.cn-&gt;<a href="http://www.sunsanmiao.cn-&gt;把解析出的IP发给本地LDNS-&gt;把记录缓存" target="_blank" rel="noopener">www.sunsanmiao.cn-&gt;把解析出的IP发给本地LDNS-&gt;把记录缓存</a></p>
-<p>九：HTTP协议工作原理。客户端输入地址-》DNS解析-》建立TCP连接（三次握手）-》发送报文-》服务器响应返回http报文-》关闭HTTP连接，关闭TCP连接=》浏览器显示内容到屏幕上。</p>
-
+<p>200 ok ；<br>301 永久重定向；<br>403 禁止访问；<br>404 没有找到资源；<br>500 服务器错误，不能完成客户端请求。<br>502 坏的网关，代理服务出了问题。<br>503服务器不可用，超载、宕机；<br>504 网关超时。<br>
+        
+          <a class="article-more-a" href="/2019/04/04/%E7%94%B1http%E6%83%B3%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88/#more">more >></a>
+        
       
 
       
@@ -1017,26 +878,10 @@
 <p>CGI(Common Gateway Interface) 通用网关接口，CGI是外部应用程序（CGI程序）与WEB服务器之间的接口标准，是在CGI程序和Web服务器之间传递信息的过程。</p>
 <p><img src="http://note.youdao.com/yws/api/personal/file/WEB6930b9d20e1c7361de390efa7e0b04d9?method=download&shareKey=ebd561eb88641be368153c6c34daa849" alt="image"></p>
 <p>Web服务器一般只处理静态文件请求（如 jpg、htm、html），如果碰到一个动态脚本请求（如php），服务器并不能直接运行php这样的文件，自己不能做，外包给别人吧，但是要与php做个约定，我给你什么，然后你给我什么。那这个约定就就是<code>CGI协议</code>。而实现这个协议的脚本叫做<code>CGI程序。</code></p>
-<p>web服务器主进程fork出一个新的进程来启动CGI程序，启动CGI程序需要一个过程，比如，读取配置文件，加载扩展等。CGI程序启动后，就会解析动态脚本，然后将结果返回给Web服务器，最后Web服务器再将结果返回给客户端，刚才fork的进程也会随之关闭。<br>这样，每次用户请求动态脚本，Web服务器都要重新fork一个新进程，去启动CGI程序，由CGI程序来处理动态脚本，处理完后进程随之关闭。<br>这种工作方式的效率是非常低下的。</p>
-<p>什么是FastCGI</p>
-<p>当请求量过大时CGI程序会严重浪费系统资源的。这样FastCGI就是为了解决这个问题。</p>
-<p>FastCGI程序本身监听某个socket然后等待来自web服务器的连接，而不是像CGI程序是由web服务器 fork-exec，所以FastCGI本身是一个服务端程序，而web服务器对它来说则是客户端。</p>
-<p><img src="http://note.youdao.com/yws/api/personal/file/WEB683ab0ce6daa0f9103971b05b3f4f5a4?method=download&shareKey=439b6e0fc69fd7f15815c6bce0960a9a" alt="image"></p>
-<blockquote>
-<p><code>FastCGI被设计用来支持常驻（long-lived）应用进程，减少了fork-and-execute带来的开销</code></p>
-<p><code>FastCGI进程通过监听的socket，收来自Web服务器的连接，这样FastCGI进程可以独立部署</code></p>
-<p><code>服务器和FastCGI监听的socket之间按照消息的形式发送环境变量和其他数据</code></p>
-</blockquote>
-<p>FastCGI程序和web服务器之间通过可靠的流式传输（Unix Domain Socket或TCP）来通信，相对于传统的CGI程序，有环境变量和标准输入输出，而FastCGI程序和web服务器之间则只有一条socket连接来传输数据，所以它把数据分成以下多种消息类型：</p>
-<p>FastCGI会提供这样的功能：首先会由某个程序读取相应的配置文件并初始化执行环境，当这一系列步骤完成之后，他会一下生成很多个cgi进程（也就是进程池），这样在以后处理php的请求时就不需要频繁的“读取配置、创建进程、销毁进程这样的步骤了”，所以FastCGI可以理解为就是为了实现这种效果而产生的一种处理办法。</p>
-<p>什么是PHP-CGI</p>
-<p>PHP-CGI只是解释PHP脚本的程序。PHP-CGI只是个CGI程序，他自己本身只能解析请求，返回结果，不会进程管理。所以就出现了一些能够调度PHP-CGI进程的程序。</p>
-<p>什么是php-fpm</p>
-<p>用来实现FastCGI的操作。“php-fpm是FastCGI进程的管理器，用来管理FastCGI进程的”，这句话可以理解成php-fpm就是能够实现FastCGI功能的程序，他目前由php官方集成到php内核中。所以就是如果要实现cgi的进程池功能就需要使用php-fpm 。php-fpm除了进程管理外，还实现FastCGI协议并且支持进程平滑重启。</p>
-<p>FastCGI 与 PHP-CGI关系</p>
-<p>FastCGI是协议，在php中由php-fpm实现，管理着解析php脚本的进程，PHP-CGI是一个程序，专门处理php脚本。</p>
-<p>参考：<a href="http://yongxiong.leanote.com/post/%E4%BB%8ECGI%E5%88%B0FastCGI%E5%88%B0PHP-FPM" target="_blank" rel="noopener">http://yongxiong.leanote.com/post/%E4%BB%8ECGI%E5%88%B0FastCGI%E5%88%B0PHP-FPM</a></p>
-
+<p>web服务器主进程fork出一个新的进程来启动CGI程序，启动CGI程序需要一个过程，比如，读取配置文件，加载扩展等。CGI程序启动后，就会解析动态脚本，然后将结果返回给Web服务器，最后Web服务器再将结果返回给客户端，刚才fork的进程也会随之关闭。<br>这样，每次用户请求动态脚本，Web服务器都要重新fork一个新进程，去启动CGI程序，由CGI程序来处理动态脚本，处理完后进程随之关闭。<br>这种工作方式的效率是非常低下的。<br>
+        
+          <a class="article-more-a" href="/2019/04/04/cgi-fastcgiphp-cgiphp-fpm%E7%9A%84%E5%85%B3%E7%B3%BB/#more">more >></a>
+        
       
 
       
@@ -1143,14 +988,9 @@
 <p><strong>解释：</strong>执行的时候是./test_dir.sh来执行的，这样执行的话终端会产生一个子shell（类似于C语言调用函数），子shell去执行我的脚本，在子shell中已经切换了目录了，但是子shell一旦执行完，马上退出，子shell中的变量和操作全部都收回。<strong>回到终端根本就看不到这个过程的变化。</strong></p>
 </blockquote>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-1.png" alt=""></p>
-<p>验证一下：</p>
-<p>#!/bin/bash<br>history<br>cd /Applications/MAMP/htdocs/test/<br>sleep 1<br>pwd</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-2.png" alt=""></p>
-<p>首先按照 ./test_dir.sh执行，这时候终端没有切换目录，history执行的结果是空的，说明子shell里面没有历史命令。</p>
-<p>而pwd 输出结果： /Applications/MAMP/htdocs/test</p>
-<p>解决方法：<code>source test_dir.sh</code>或者<code>. ./</code>test_dir<code>.sh</code></p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image.png" alt=""></p>
-
+        
+          <a class="article-more-a" href="/2019/04/02/%E8%A7%A3%E5%86%B3shell-%E9%87%8C%E6%89%A7%E8%A1%8Ccd-%E7%9A%84%E9%97%AE%E9%A2%98/#more">more >></a>
+        
       
 
       
@@ -1234,77 +1074,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>结合方向</p>
-<p>运算符</p>
-<p>附加信息</p>
-<p>非结合</p>
-<p>clone new</p>
-<p><a href="http://phpstudy.php.cn/php/92.html" target="_blank" rel="noopener">clone</a> 和 <a href="http://phpstudy.php.cn/php/76.html#language.oop5.basic.new" target="_blank" rel="noopener">new</a></p>
-<p>左</p>
-<p>[</p>
-<p><a href="http://phpstudy.php.cn/php/155.html" target="_blank" rel="noopener">array()</a></p>
-<p>非结合</p>
-<p>++ –</p>
-<p><a href="http://phpstudy.php.cn/php/42.html" target="_blank" rel="noopener">递增／递减运算符</a></p>
-<p>非结合</p>
-<p>~ - (int) (float) (string) (array) (object) (bool) @</p>
-<p><a href="http://phpstudy.php.cn/php/12.html" target="_blank" rel="noopener">类型</a></p>
-<p>非结合</p>
-<p>instanceof</p>
-<p><a href="http://phpstudy.php.cn/php/12.html" target="_blank" rel="noopener">类型</a></p>
-<p>右结合</p>
-<p>!</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑操作符</a></p>
-<p>左</p>
-<p>* / %</p>
-<p><a href="http://phpstudy.php.cn/php/36.html" target="_blank" rel="noopener">算术运算符</a></p>
-<p>左</p>
-<p>+ - .</p>
-<p><a href="http://phpstudy.php.cn/php/36.html" target="_blank" rel="noopener">算术运算符</a>和<a href="http://phpstudy.php.cn/php/44.html" target="_blank" rel="noopener">字符串运算符</a></p>
-<p>左</p>
-<p>&lt;&lt; &gt;&gt;</p>
-<p><a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a></p>
-<p>非结合</p>
-<p>&lt; &lt;= &gt; &gt;= &lt;&gt;</p>
-<p><a href="http://phpstudy.php.cn/php/39.html" target="_blank" rel="noopener">比较运算符</a></p>
-<p>非结合</p>
-<p>== != === !==</p>
-<p><a href="http://phpstudy.php.cn/php/39.html" target="_blank" rel="noopener">比较运算符</a></p>
-<p>左</p>
-<p>&amp;</p>
-<p><a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a>和引用</p>
-<p>左</p>
-<p>^</p>
-<p><a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a></p>
-<p>左</p>
-<p><a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a></p>
-<p>左</p>
-<p>&amp;&amp;</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a></p>
-<p>左</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a></p>
-<p>左</p>
-<p>? :</p>
-<p><a href="http://phpstudy.php.cn/php/39.html#language.operators.comparison.ternary" target="_blank" rel="noopener">三元运算符</a></p>
-<p>右</p>
-<p>= += -= *= /= .= %= &amp;= = ^= &lt;&lt;= &gt;&gt;=</p>
-<p><a href="http://phpstudy.php.cn/php/37.html" target="_blank" rel="noopener">赋值运算符</a></p>
-<p>左</p>
-<p>and</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a></p>
-<p>左</p>
-<p>xor</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a></p>
-<p>左</p>
-<p>or</p>
-<p><a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a></p>
-<p>左</p>
-<p>,</p>
-<p>多处用到</p>
-<p>左联表示表达式从左向右求值，右联相反</p>
+        <table>
+<thead>
+<tr>
+<th>结合方向</th>
+<th>运算符</th>
+<th>附加信息</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非结合</td>
+<td>clone new</td>
+<td><a href="http://phpstudy.php.cn/php/92.html" target="_blank" rel="noopener">clone</a> 和 <a href="http://phpstudy.php.cn/php/76.html#language.oop5.basic.new" target="_blank" rel="noopener">new</a></td>
+</tr>
+</tbody></table>
+<p>|左|[|<a href="http://phpstudy.php.cn/php/155.html" target="_blank" rel="noopener">array()</a>|</p>
+<p>|非结合|++ –| <a href="http://phpstudy.php.cn/php/42.html" target="_blank" rel="noopener">递增／递减运算符</a>|</p>
+<p>|非结合|~ - (int) (float) (string) (array) (object) (bool) @|<a href="http://phpstudy.php.cn/php/12.html" target="_blank" rel="noopener">类型</a></p>
+<p>|非结合|instanceof|<a href="http://phpstudy.php.cn/php/12.html" target="_blank" rel="noopener">类型</a></p>
+<p>|右结合|!|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑操作符</a><br>|左|* / %|<a href="http://phpstudy.php.cn/php/36.html" target="_blank" rel="noopener">算术运算符</a><br>|左|+ - .|<a href="http://phpstudy.php.cn/php/36.html" target="_blank" rel="noopener">算术运算符</a>和<a href="http://phpstudy.php.cn/php/44.html" target="_blank" rel="noopener">字符串运算符</a><br>|左|&lt;&lt; &gt;&gt;|<a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a><br>|非结合|&lt; &lt;= &gt; &gt;= &lt;&gt;|<a href="http://phpstudy.php.cn/php/39.html" target="_blank" rel="noopener">比较运算符</a><br>|非结合|== != === !==|<a href="http://phpstudy.php.cn/php/39.html" target="_blank" rel="noopener">比较运算符</a><br>|左|&amp;|<a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a>和引用<br>|左|^|<a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a><br>|左| | |<a href="http://phpstudy.php.cn/php/38.html" target="_blank" rel="noopener">位运算符</a><br>|左|&amp;&amp;|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a><br>|左|&amp;&amp;|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a><br>|左|? :|<a href="http://phpstudy.php.cn/php/39.html#language.operators.comparison.ternary" target="_blank" rel="noopener">三元运算符</a><br>|右|= += -= *= /= .= %= &amp;= = ^= &lt;&lt;= &gt;&gt;=|<a href="http://phpstudy.php.cn/php/37.html" target="_blank" rel="noopener">赋值运算符</a><br>|左|and|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a><br>|左|xor|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a><br>|左|or|<a href="http://phpstudy.php.cn/php/43.html" target="_blank" rel="noopener">逻辑运算符</a><br>|左|,|多处用到左联表示表达式从左向右求值，右联相反</p>
 <p>举例：</p>
-<p>$a=1;<br>$b=2;<br>$c=3;<br><strong>if</strong>($a=4  $b=5 &amp;&amp; $c=6){<br>    $a++;<br>    $b++;<br>}  </p>
-<p>var_dump($a);<br>var_dump($b);<br>var_dump($c);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$a&#x3D;1;  </span><br><span class="line">$b&#x3D;2;  </span><br><span class="line">$c&#x3D;3;  </span><br><span class="line">**if**($a&#x3D;4  $b&#x3D;5 &amp;&amp; $c&#x3D;6)&#123;  </span><br><span class="line">    $a++;  </span><br><span class="line">    $b++;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">var\_dump($a);  </span><br><span class="line">var\_dump($b);  </span><br><span class="line">var\_dump($c);</span><br></pre></td></tr></table></figure>
 <p>输出结果：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-32-300x90.png" alt=""></p>
 <p>说明：先运算 5&amp;&amp;$c ,结果是true，再运算 4 ,结果也是true， 后面的就不再执行，最后 再赋值运算$a=true; 进入if语句体进行运算，所以结果就是$a=true,$b=3,$c=3</p>
@@ -1378,9 +1168,10 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">« Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next »</a>
     </nav>
   
+
 
 
           </div>

@@ -16,7 +16,7 @@
 <meta property="og:description" content="使用MySQL当然会接触到MySQL的存储引擎，在新建数据库和新建数据表的时候都会看到。MySQL默认的存储引擎是MyISAM，其他常用的就是InnoDB了。至于到底用哪种存储引擎比较好？这个问题是没有定论的，需要根据你的需求和环境来衡量。所以对这两种引擎的概念、原理、异同和各自的优劣点有了详细的了解之后，再根据自己的情况选择起来就容易多了。 MyISAM InnoDB 存储结构 每张表被存放在三">
 <meta property="og:locale" content="zn">
 <meta property="article:published_time" content="2019-03-08T08:44:20.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.470Z">
+<meta property="article:modified_time" content="2020-12-03T11:21:45.469Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="MySQL">
 <meta property="article:tag" content="InnoDB">
@@ -186,8 +186,7 @@
 <p>InnoDB</p>
 <p>存储结构</p>
 <p>每张表被存放在三个文件：<br>frm - 表格定义<br>MYD(MYData) - 数据文件<br>MYI(MYIndex) - 索引文件</p>
-<p>所有的表都保存在同一个数据文件中（也可能是多个文件，或者是独立的表空间文件），InnoDB表的大小只受限于操作系统文件的大小，一般为2GB</p>
-<p>存储空间</p>
+<p>所有的表都保存在同一个数据文件中（也可能是多个文件，或者是独立的表空间文件），InnoDB表的大小只受限于操作系统文件的大小，一般为2GB<br> <a id="more"></a><br>存储空间</p>
 <p>MyISAM可被压缩，存储空间较小</p>
 <p>InnoDB的表需要更多的内存和存储，它会在主内存中建立其专用的缓冲池，用于高速缓冲数据和索引</p>
 <p>可移植性、备份及恢复</p>

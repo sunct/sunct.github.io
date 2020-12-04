@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> 使用mpvue重构个人小程序（四）全局配置 | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用mpvue重构个人小程序（三）使用Vue的语法编写  如何把右侧的小程序通过mpvue 进行重构呢？ 为了干净，可以把pp.json里的 tabBar等数据清掉  只保留下图数据  全局配置在src &#x2F; app.json 配置 全局属性：  pages 是页面配置，加一个页面就配置一个。 window 是页面全局配置 “enablePullDownRefresh”: true, &#x2F;&#x2F; 开启下拉">
+  <meta name="description" content="使用mpvue重构个人小程序（三）使用Vue的语法编写  如何把右侧的小程序通过mpvue 进行重构呢？ 为了干净，可以把pp.json里的 tabBar等数据清掉">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 使用mpvue重构个人小程序（四）全局配置">
 <meta property="og:url" content="https://sunct.github.io/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E5%9B%9B%EF%BC%89%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="使用mpvue重构个人小程序（三）使用Vue的语法编写  如何把右侧的小程序通过mpvue 进行重构呢？ 为了干净，可以把pp.json里的 tabBar等数据清掉  只保留下图数据  全局配置在src &#x2F; app.json 配置 全局属性：  pages 是页面配置，加一个页面就配置一个。 window 是页面全局配置 “enablePullDownRefresh”: true, &#x2F;&#x2F; 开启下拉">
+<meta property="og:description" content="使用mpvue重构个人小程序（三）使用Vue的语法编写  如何把右侧的小程序通过mpvue 进行重构呢？ 为了干净，可以把pp.json里的 tabBar等数据清掉">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-62-1024x774.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-68-1024x765.png">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-71-1024x708.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-72-1024x462.png">
 <meta property="article:published_time" content="2019-04-16T03:38:03.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.533Z">
+<meta property="article:modified_time" content="2020-12-03T11:39:00.637Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="mpvue">
 <meta property="article:tag" content="小程序">
@@ -192,8 +192,7 @@
         <p><a href="https://www.sunsanmiao.cn/archives/376" target="_blank" rel="noopener">使用mpvue重构个人小程序（三）使用Vue的语法编写</a></p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-62-1024x774.png" alt=""></p>
 <p>如何把右侧的小程序通过mpvue 进行重构呢？</p>
-<p>为了干净，可以把pp.json里的 tabBar等数据清掉</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-68-1024x765.png" alt=""></p>
+<p>为了干净，可以把pp.json里的 tabBar等数据清掉<br> <a id="more"></a><br><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-68-1024x765.png" alt=""></p>
 <p>只保留下图数据</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-67-1024x586.png" alt=""></p>
 <h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h4><p>在src / app.json 配置 全局属性：</p>

@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> 使用mpvue重构个人小程序（九）下拉刷新 | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前面有几节已经提到过下拉刷新，本节，再详细的归结一下。 配置1、全局配置 “enablePullDownRefresh”: true,  2、单独页面局部配置 没有main.json 自己新建一个即可。  使用和methods 平级使用 onPullDownRefresh () {  &#x2F;&#x2F; to doing..  console.log(‘shuaxin’)  &#x2F;&#x2F; 停止下拉刷新  wx.stop">
+  <meta name="description" content="前面有几节已经提到过下拉刷新，本节，再详细的归结一下。 配置1、全局配置 “enablePullDownRefresh”: true,  2、单独页面局部配置 没有main.json 自己新建一个即可。  使用和methods 平级使用">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 使用mpvue重构个人小程序（九）下拉刷新">
 <meta property="og:url" content="https://sunct.github.io/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B9%9D%EF%BC%89%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="前面有几节已经提到过下拉刷新，本节，再详细的归结一下。 配置1、全局配置 “enablePullDownRefresh”: true,  2、单独页面局部配置 没有main.json 自己新建一个即可。  使用和methods 平级使用 onPullDownRefresh () {  &#x2F;&#x2F; to doing..  console.log(‘shuaxin’)  &#x2F;&#x2F; 停止下拉刷新  wx.stop">
+<meta property="og:description" content="前面有几节已经提到过下拉刷新，本节，再详细的归结一下。 配置1、全局配置 “enablePullDownRefresh”: true,  2、单独页面局部配置 没有main.json 自己新建一个即可。  使用和methods 平级使用">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-109-1024x488.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-110-1024x555.png">
@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-116-1024x493.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-117-1024x883.png">
 <meta property="article:published_time" content="2019-04-16T06:01:50.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.540Z">
+<meta property="article:modified_time" content="2020-12-03T11:39:00.632Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="mpvue">
 <meta property="article:tag" content="小程序">
@@ -199,8 +199,7 @@
 <p>2、单独页面局部配置</p>
 <p>没有main.json 自己新建一个即可。</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-110-1024x555.png" alt=""></p>
-<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>和methods 平级使用</p>
-<p>onPullDownRefresh () {<br>  // to doing..<br>  console.log(‘shuaxin’)<br>  // 停止下拉刷新<br>  wx.stopPullDownRefresh()</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>和methods 平级使用<br> <a id="more"></a><br>onPullDownRefresh () {<br>  // to doing..<br>  console.log(‘shuaxin’)<br>  // 停止下拉刷新<br>  wx.stopPullDownRefresh()</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-111-1024x473.png" alt=""></p>
 <p>模板中使用也是如此：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-112-1024x489.png" alt=""></p>

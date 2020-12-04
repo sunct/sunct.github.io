@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://sunct.github.io">
   <title> 使用mpvue重构个人小程序（七）使用自定义模板 | sunct的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="模板文件把自己的模板统一放在src &#x2F; components 目录下：  调用模板import Sinfo from ‘@&#x2F;components&#x2F;sinfo’  把模板配置到组成部分 components 名字和import 时的名字一致 components: {  Sinfo},  如果不使用会报错误  页面代码中调用模板  说明：模板标签不区分大小写 可以使用 sinfo 也可以使用 Sin">
+  <meta name="description" content="模板文件把自己的模板统一放在src &#x2F; components 目录下：  调用模板import Sinfo from ‘@&#x2F;components&#x2F;sinfo’  把模板配置到组成部分 components 名字和import 时的名字一致 components: {  Sinfo},">
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 使用mpvue重构个人小程序（七）使用自定义模板">
 <meta property="og:url" content="https://sunct.github.io/2019/04/16/%E4%BD%BF%E7%94%A8mpvue%E9%87%8D%E6%9E%84%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B8%83%EF%BC%89%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF/index.html">
 <meta property="og:site_name" content="sunct的博客">
-<meta property="og:description" content="模板文件把自己的模板统一放在src &#x2F; components 目录下：  调用模板import Sinfo from ‘@&#x2F;components&#x2F;sinfo’  把模板配置到组成部分 components 名字和import 时的名字一致 components: {  Sinfo},  如果不使用会报错误  页面代码中调用模板  说明：模板标签不区分大小写 可以使用 sinfo 也可以使用 Sin">
+<meta property="og:description" content="模板文件把自己的模板统一放在src &#x2F; components 目录下：  调用模板import Sinfo from ‘@&#x2F;components&#x2F;sinfo’  把模板配置到组成部分 components 名字和import 时的名字一致 components: {  Sinfo},">
 <meta property="og:locale" content="zn">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-84-1024x350.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-85-1024x344.png">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-99-1024x450.png">
 <meta property="og:image" content="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-98-1024x542.png">
 <meta property="article:published_time" content="2019-04-16T05:00:15.000Z">
-<meta property="article:modified_time" content="2020-12-03T10:06:02.537Z">
+<meta property="article:modified_time" content="2020-12-03T11:39:00.646Z">
 <meta property="article:author" content="sunct">
 <meta property="article:tag" content="mpvue">
 <meta property="article:tag" content="小程序">
@@ -204,8 +204,7 @@
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-85-1024x344.png" alt=""></p>
 <p>把模板配置到组成部分 components</p>
 <p>名字和import 时的名字一致</p>
-<p>components: {<br>  Sinfo<br>},</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-86-1024x273.png" alt=""></p>
+<p>components: {<br>  Sinfo<br>},<br> <a id="more"></a><br><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-86-1024x273.png" alt=""></p>
 <p>如果不使用会报错误</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/04/image-88-1024x312.png" alt=""></p>
 <p>页面代码中调用模板</p>

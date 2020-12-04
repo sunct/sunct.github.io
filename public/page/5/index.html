@@ -308,44 +308,8 @@
 <p>PHP一个主要应用场合就是应用程序与数据库打交道的场景，在一个应用中会存在大量的数据库操作，针对数据库句柄连接数据库的行为，使用<strong>单例模式可以避免大量的new操作</strong>。因为每一次new操作都会消耗系统和内存的资源。</p>
 <p>1. 为什么必须是静态的?因为静态成员属于类,并被类所有实例所共享<br>2. 为什么必须是私有的?不允许外部直接访问,仅允许通过类方法控制方法<br>3. 为什么要有初始值null,因为类内部访问接口需要检测实例的状态,判断是否需要实例化  </p>
 <p>知识点：<br>一、三私一公：<br>①、私有静态属性，又来储存生成的唯一对象<br>②、私有构造函数<br>③、私有克隆函数，防止克隆——clone<br>④、公共静态方法，用来访问静态属性储存的对象，如果没有对象，则生成此单例<br>二、关键词instanceof<br>检查此变量是否为该类的对象、子类、或是实现接口。</p>
-<p> <strong>&lt;?php<br><em><em>_/\</em>\</em><br> *这是一个单例模式 demo<br> *<br> *此文件程序用来做什么的（详细说明，可选。）。<br> * Created by PhpStorm<br> *_ **<em>@author</em></strong> <em>sunct<br> *</em> <strong><em>@version</em></strong> <em>$Id$<br> *</em> <strong><em>@since</em></strong> _1.0<br> */  </p>
-<p>_<strong>class</strong> Mysql<br>{  </p>
-<pre><code>_/\*\*  
- \*  
- \*_ **_@var_** _self\[该属性用来保存实例\] need  
- \*/_ **private static** _$instance_;  
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">&#x2F;**</span><br><span class="line"> *这是一个单例模式 demo</span><br><span class="line"> *</span><br><span class="line"> *此文件程序用来做什么的（详细说明，可选。）。</span><br><span class="line"> * Created by PhpStorm</span><br><span class="line"> * @author    sunct</span><br><span class="line"> * @version   $Id$</span><br><span class="line"> * @since     1.0</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">class Mysql</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     *</span><br><span class="line">     * @var self[该属性用来保存实例] need</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private static $instance;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     *</span><br><span class="line">     * @var mixed</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public $mix;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * Return self instance[创建一个用来实例化对象的方法] need</span><br><span class="line">     *</span><br><span class="line">     * @return self</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public static function getInstance()</span><br><span class="line">    &#123;</span><br><span class="line">        if (! (self::$instance instanceof self)) &#123;</span><br><span class="line">            self::$instance &#x3D; new self();</span><br><span class="line">        &#125;</span><br><span class="line">        return self::$instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 构造函数为private,防止创建对象 need</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private function __construct()</span><br><span class="line">    &#123;&#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 防止对象被复制</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private function __clone() need</span><br><span class="line">    &#123;</span><br><span class="line">        trigger_error(&#39;Clone is not allowed !&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; @test</span><br><span class="line">$firstMysql &#x3D; Mysql::getInstance();</span><br><span class="line">$secondMysql &#x3D; Mysql::getInstance();</span><br><span class="line"></span><br><span class="line">$firstMysql-&gt;mix &#x3D; &quot;this_one&lt;br&#x2F;&gt;&quot;;</span><br><span class="line">$secondMysql-&gt;mix &#x3D; &quot;this_two&lt;br&#x2F;&gt;&quot;;</span><br><span class="line"></span><br><span class="line">print_r($firstMysql-&gt;mix);</span><br><span class="line">&#x2F;&#x2F; 输出： this_two</span><br><span class="line">print_r($secondMysql-&gt;mix);</span><br><span class="line">&#x2F;&#x2F; 输出： this_two</span><br></pre></td></tr></table></figure>
 
-_/\*\*  
- \*  
- \*_ **_@var_** _mixed  
- \*/_ **public** $mix;  
-
-_/\*\*  
- \* Return self instance\[创建一个用来实例化对象的方法\] need  
- \*  
- \*_ **_@return_** _self  
- \*/_ **public static function** getInstance()  
-{  
-    **if** (! (**self**::_$instance_ **instanceof self**)) {  
-        **self**::_$instance_ \= **new self**();  
-    }  
-    **return self**::_$instance_;  
-}  
-
-_/\*\*  
- \* 构造函数为private,防止创建对象 need  
- \*/_ **private function** \_\_construct()  
-{}  
-
-_/\*\*  
- \* 防止对象被复制  
- \*/_ **private function** \_\_clone() need  
-{  
-    trigger\_error(&apos;Clone is not allowed !&apos;);  
-}  </code></pre><p>}  </p>
-<p>// @test<br>$firstMysql = Mysql::<em>getInstance</em>();<br>$secondMysql = Mysql::<em>getInstance</em>();  </p>
-<p>$firstMysql-&gt;mix = “this_one<br/>“;<br>$secondMysql-&gt;mix = “this_two<br/>“;  </p>
-<p>print_r($firstMysql-&gt;mix);<br>// 输出： this_two<br>print_r($secondMysql-&gt;mix);<br>// 输出： this_two</p>
 <p>输出结果：</p>
 <p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-31.png" alt=""></p>
 <p><strong>优点</strong></p>
@@ -443,12 +407,10 @@ _/\*\*
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h4><p>工厂模式是我们最常用的实例化对象模式，是用工厂方法代替new操作的一种模式。</p>
-<p>使用工厂模式的好处是，如果你想要更改所实例化的类名等，则只需更改该工厂方法内容即可，不需逐一寻找代码中具体实例化的地方（new处）修改了。为系统结构提供灵活的动态扩展机制，减少了耦合。</p>
-<p><strong>&lt;?php<br><em><em>_/\</em>\</em><br> *这是一个工厂模式demo<br> *<br> *此文件程序用来做什么的（详细说明，可选。）。<br> * Created by PhpStorm<br> *_ **<em>@author</em></strong> <em>sunct<br> *</em> <strong><em>@version</em></strong> <em>$Id$<br> *</em> <strong><em>@since</em></strong> _1.0<br> */  </p>
-<p>/**<br> *简单工厂模式（静态工厂方法模式）<br> */<br>/**<br> * Interface people 人类<br> */<br><em><strong>interface</strong> people<br>{<br>    <strong>public function</strong> say();<br>}<br>_/**<br> * Class man 继承people的男人类<br> */<br>_<strong>class</strong> man <strong>implements</strong> people<br>{<br>    // 具体实现people的say方法<br>    <strong>public function</strong> say()<br>    {<br>        <strong>echo</strong> ‘我是男人<br>‘;<br>    }<br>}<br>_/**<br> * Class women 继承people的女人类<br> */<br>_<strong>class</strong> women <strong>implements</strong> people<br>{<br>    // 具体实现people的say方法<br>    <strong>public function</strong> say()<br>    {<br>        <strong>echo</strong> ‘我是女人<br>‘;<br>    }<br>}<br>_/**<br> * Class SimpleFactoty 工厂类<br> */<br>_<strong>class</strong> SimpleFactoty<br>{<br>    // 简单工厂里的静态方法-用于创建男人对象<br>    <strong>static function</strong> createMan()<br>    {<br>        <strong>return new</strong> man();<br>    }<br>    // 简单工厂里的静态方法-用于创建女人对象<br>    <strong>static function</strong> createWomen()<br>    {<br>        <strong>return new</strong> women();<br>    }<br>}<br>_/**<br> * 具体调用<br> */<br>_$man = SimpleFactoty::_createMan</em>();<br>$man-&gt;say();<br>$woman = SimpleFactoty::<em>createWomen</em>();<br>$woman-&gt;say();</p>
-<p>输出结果：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-30.png" alt=""></p>
-
+<p>使用工厂模式的好处是，如果你想要更改所实例化的类名等，则只需更改该工厂方法内容即可，不需逐一寻找代码中具体实例化的地方（new处）修改了。为系统结构提供灵活的动态扩展机制，减少了耦合。<br>
+        
+          <a class="article-more-a" href="/2019/03/26/%E5%B8%B8%E8%A7%81%E7%9A%84-php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%EF%BC%88%E6%8E%A5%E5%8F%A3%EF%BC%89/#more">more >></a>
+        
       
 
       
@@ -541,18 +503,10 @@ _/\*\*
 <p>策略模式的三个角色：</p>
 <p>1．抽象策略角色</p>
 <p>2．具体策略角色</p>
-<p>3．环境角色（对抽象策略角色的引用）</p>
-<p>实现步骤：</p>
-<p>1．定义抽象角色类（定义好各个实现的共同抽象方法）</p>
-<p>2．定义具体策略类（具体实现父类的共同方法）</p>
-<p>3．定义环境角色类（私有化申明抽象角色变量，重载构造方法，执行抽象方法）</p>
-<p>就在编程领域之外，有许多例子是关于策略模式的。例如：</p>
-<p>如果我需要在早晨从家里出发去上班，我可以有几个策略考虑：我可以乘坐地铁，乘坐公交车，走路或其它的途径。每个策略可以得到相同的结果，但是使用了不同的资源。</p>
-<p>策略模式的代码实例：</p>
-<p> <strong>&lt;?php<br><em><em>_/\</em>\</em><br> *这是一个php 策略模式 demo<br> *<br> *此文件程序用来做什么的（详细说明，可选。）。<br> * Created by PhpStorm<br> *_ **<em>@author</em></strong> <em>sunct<br> *</em> <strong><em>@version</em></strong> <em>$Id$<br> *</em> <strong><em>@since</em></strong> <em>1.0<br> */</em> <strong>abstract class</strong> baseVehicle { //抽象策略类<br>        <strong>abstract function</strong> PrintPage();<br>    }<br>    //用于公共汽车调用的类（环境角色）<br>    <strong>class</strong> busVehicle <strong>extends</strong> baseVehicle {<br>        <strong>function</strong> PrintPage() {<br>            <strong>return</strong> ‘公共汽车’;<br>        }<br>    }<br>    //用于地铁时调用的类（环境角色）<br>    <strong>class</strong> subwayVehicle <strong>extends</strong> baseVehicle {<br>        <strong>function</strong> PrintPage() {<br>            <strong>return</strong> ‘地铁’;<br>        }<br>    }<br>    <strong>class</strong> people { //具体策略角色<br>        <strong>public function</strong> call($object) {<br>            <strong>return</strong> $object-&gt;PrintPage ();<br>        }<br>    }<br>        $people = <strong>new</strong> people ();<br>    <strong>echo</strong> $people-&gt;call ( <strong>new</strong> subwayVehicle () );<br><strong>?&gt;</strong></p>
-<p>输出结果：</p>
-<p><img src="https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-29.png" alt=""></p>
-
+<p>3．环境角色（对抽象策略角色的引用）<br>
+        
+          <a class="article-more-a" href="/2019/03/26/%E5%B8%B8%E8%A7%81%E7%9A%84-php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/#more">more >></a>
+        
       
 
       
@@ -738,33 +692,10 @@ _/\*\*
 <p>（1）判断一个对象是否是某个类的实例，</p>
 <p>（2）判断一个对象是否实现了某个接口。</p>
 <p><strong>第一种用法：</strong></p>
-<?php   
-$obj = new A();   
-if ($obj instanceof A) {   
-  echo 'A';   
-}  
-?>
-
-<p><strong>第二种用法：</strong></p>
-<?php   
-interface ExampleInterface {   
-   public function interfaceMethod();    
-}    
-class ExampleClass implements ExampleInterface {      
-  public function interfaceMethod(){        
-   return 'Hello World!';     
- }    
-}   
-$exampleInstance = new ExampleClass();    
-if($exampleInstance instanceof ExampleInterface){      
-  echo 'Yes, it is';    
-}else{      
-  echo 'No, it is not';   
-}    
-?>
-
-<p>输出结果：Yes, it is</p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php   </span><br><span class="line">$obj &#x3D; new A();   </span><br><span class="line">if ($obj instanceof A) &#123;   </span><br><span class="line">  echo &#39;A&#39;;   </span><br><span class="line">&#125;  </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/03/20/php-%E4%B8%ADinstanceof%E7%9A%84%E4%BD%BF%E7%94%A8/#more">more >></a>
+        
       
 
       
@@ -848,7 +779,7 @@ if($exampleInstance instanceof ExampleInterface){
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://img-blog.csdn.net/20170626140009906?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU0xfaWRlYXM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="è¿éåå¾çæè¿°"></p>
+        <p><img src="https://img-blog.csdn.net/20170626140009906?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU0xfaWRlYXM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
 <p>相同点</p>
 <p>1. 都是一样基于TCP的，都是可靠性传输协议。<br>2. 都是应用层协议。</p>
 <p>不同点</p>
@@ -945,42 +876,10 @@ if($exampleInstance instanceof ExampleInterface){
       
         <h4 id="一、抽象类"><a href="#一、抽象类" class="headerlink" title="一、抽象类:"></a>一、抽象类:</h4><p>1 ．抽象类是指在 class 前加了 <strong>abstract</strong> 关键字且存在抽象方法（在类方法 function 关键字前加了 abstract 关键字）的类。</p>
 <p>2 ．<strong>抽象类不能被直接实例化</strong>。抽象类中只定义（或部分实现）子类需要的方法。子类可以通过继承抽象类并通过实现抽象类中的所有抽象方法，使抽象类具体化。</p>
-<p>3 ．<strong>如果子类需要实例化，前提是它实现了抽象类中的所有抽象方法</strong>。如果子类没有全部实现抽象类中的所有抽象方法，那么该子类也是一个抽象类，必须在 class 前面加上 abstract 关键字，并且不能被实例化。</p>
-<h4 id="二、接口"><a href="#二、接口" class="headerlink" title="二、接口:"></a>二、接口:</h4><p>1 ．抽象类提供了具体实现的标准，而<strong>接口则是纯粹的模版。接口只定义功能，而不包含实现的内容。接口用关键字 interface 来声明。</strong></p>
-<p>2 ． <strong>interface 是完全抽象的，只能声明方法，而且只能声明 public 的方法，</strong>不能声明 private 及 protected 的方法，不能定义方法体，也不能声明实例变量 。然而， interface 却可以声明常量变量 。但将常量变量放在 interface 中违背了其作为接口的作用而存在的宗旨，也混淆了 interface 与类的不同价值。如果的确需要，可以将其放在相应的 abstract class 或 Class 中。</p>
-<p>3 ．<strong>任何实现接口的类都要实现接口中所定义的所有方法</strong>。</p>
-<p>4 ．一个类可以在声明中<strong>使用 implements 关键字来实现某个接口</strong>。这么做之后，实现接口的具体过程和继承一个仅包含抽象方法的抽象类是一样的。一个类可以同时继承一个父类和实现任意多个接口。 extends 子句应该在 implements 子句之前。 PHP 只支持继承自一个父类，因此 extends 关键字后只能跟一个类名</p>
-<p>5 ．<strong>接口不可以实现另一个接口，但可以继承多个。</strong></p>
-<p>实现多个接口时，接口中的方法不能有重名。</p>
-<p>接口也可以继承，通过使用extends操作符.</p>
-<p>类要实现接口，必须使用和接口中所定义的方法完全一致的方式。否则会导致致命错误。</p>
-<h4 id="三、-抽象类和接口的异同"><a href="#三、-抽象类和接口的异同" class="headerlink" title="三、 抽象类和接口的异同"></a>三、 抽象类和接口的异同</h4><ol>
-<li>相同点：</li>
-</ol>
-<p>(1)      两者都是抽象类，<strong>都不能实例化</strong>。</p>
-<p>(2)      interface 实现类及 abstract class 的<strong>子类都必须要实现已经声明的抽象方法。</strong></p>
-<ol start="2">
-<li>不同点：</li>
-</ol>
-<p>(1)      interface 需要实现，要用 implements ，而 abstract class 需要继承，要用 extends 。</p>
-<p>(2)      一个类可以实现多个 interface ，但一个类只能继承一个 abstract class 。</p>
-<p>(3)      interface 强调特定功能的实现，而 abstract class 强调所属关系。</p>
-<p>(4)      尽管 interface 实现类及 abstract class 的子类都必须要实现相应的抽象方法，但实现的形式不同。 interface 中的每一个方法都是抽象方法，都只是声明的 (declaration, 没有方法体 ) ，实现类必须要实现。而 abstract class 的子类可以有选择地实现。这个选择有两点含义： a) abstract class 中并非所有的方法都是抽象的，只有那些冠有 abstract 的方法才是抽象的，子类必须实现。那些没有 abstract 的方法，在 abstract class 中必须定义方法体； b) abstract class 的子类在继承它时，对非抽象方法既可以直接继承，也可以覆盖；而对抽象方法，可以选择实现，也可以留给其子类来实现，但此类必须也声明为抽象类。既是抽象类，当然也不能实例化。</p>
-<p>(5)      abstract class 是 interface 与 class 的中介。 abstract class 在 interface 及 class 中起到了承上启下的作用。一方面， abstract class 是抽象的，可以声明抽象方法，以规范子类必须实现的功能；另一方面，它又可以定义缺省的方法体，供子类直接使用或覆盖。另外，它还可以定义自己的实例变量，以供子类通过继承来使用。</p>
-<p>(6)      接口中的抽象方法前不用也不能加 abstract 关键字，默认隐式就是抽象方法，也不能加 final 关键字来防止抽象方法的继承。而抽象类中抽象方法前则必须加上 abstract 表示显示声明为抽象方法。</p>
-<p>(7)      接口中的抽象方法默认是 public 的，也只能是 public 的，不能用 private ， protected 修饰符修饰。而抽象类中的抽象方法则可以用 public ，protected 来修饰，但不能用 private 。</p>
-<p>（8）接口没有构造函数,抽象类可以有</p>
-<p>3. interface 的应用场合</p>
-<p>(1)      类与类之间需要特定的接口进行协调，而不在乎其如何实现。</p>
-<p>(2)      作为能够实现特定功能的标识存在，也可以是什么接口方法都没有的纯粹标识。</p>
-<p>(3)      需要将一组类视为单一的类，而调用者只通过接口来与这组类发生联系。</p>
-<p>(4)      需要实现特定的多项功能，而这些功能之间可能完全没有任何联系。</p>
-<p>4. abstract class 的应用场合</p>
-<p>一句话，在既需要统一的接口，又需要实例变量或缺省的方法的情况下，就可以使用它。最常见的有：</p>
-<p>(1)      定义了一组接口，但又不想强迫每个实现类都必须实现所有的接口。可以用 abstract class 定义一组方法体，甚至可以是空方法体，然后由子类选择自己所感兴趣的方法来覆盖。</p>
-<p>(2)      某些场合下，只靠纯粹的接口不能满足类与类之间的协调，还必需类中表示状态的变量来区别不同的关系。 abstract 的中介作用可以很好地满足这一点。</p>
-<p>(3)      规范了一组相互协调的方法，其中一些方法是共同的，与状态无关的，可以共享的，无需子类分别实现；而另一些方法却需要各个子类根据自己特定的状态来实现特 定的功能 。</p>
-
+<p>3 ．<strong>如果子类需要实例化，前提是它实现了抽象类中的所有抽象方法</strong>。如果子类没有全部实现抽象类中的所有抽象方法，那么该子类也是一个抽象类，必须在 class 前面加上 abstract 关键字，并且不能被实例化。<br>
+        
+          <a class="article-more-a" href="/2019/03/20/php%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/#more">more >></a>
+        
       
 
       
@@ -1071,42 +970,10 @@ if($exampleInstance instanceof ExampleInterface){
         <h4 id="一、Memcached"><a href="#一、Memcached" class="headerlink" title="一、Memcached"></a>一、Memcached</h4><p>Memcached 是一个高性能的分布式内存对象缓存系统，用于动态Web应用以减轻数据库负载。它通过在内存中缓存数据和对象来减少读取数据库的次数，从而提供动态、数据库驱动网站的速度。Memcached基于一个存储键/值对的hashmap。</p>
 <p>端口（11211）</p>
 <p><strong>Memcached的优点：</strong><br>Memcached可以利用多核优势，单实例吞吐量极高，可以达到几十万QPS（取决于key、value的字节大小以及服务器硬件性能，日常环境中QPS高峰大约在4-6w左右）。适用于最大程度扛量。  </p>
-<p><strong>Memcached的局限性：</strong><br>只支持简单的key/value数据结构，不像Redis可以支持丰富的数据类型。<br>无法进行持久化，数据不能备份，只能用于缓存使用，且重启后数据全部丢失。<br>无法进行数据同步，不能将MC中的数据迁移到其他MC实例中。<br>Memcached内存分配采用Slab Allocation机制管理内存，value大小分布差异较大时会造成内存利用率降低，并引发低利用率时依然出现踢出等问题。需要用户注重value设计。</p>
-<p>应用场景：</p>
-<p>1.分布式应该，</p>
-<p>2.数据库前段缓存，</p>
-<p>3.服务器间数据共享。</p>
-<h4 id="二、Redis"><a href="#二、Redis" class="headerlink" title="二、Redis"></a>二、Redis</h4><p>Redis是一个开源（BSD许可），内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。</p>
-<p>端口（6379）</p>
-<p><strong>Redis的优点：</strong><br>支持多种数据结构，包括string(字符串)、 list(链表)、set(集合)和zset(有序集合)。这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。<br>支持持久化操作，可以进行aof及rdb数据持久化到磁盘，从而进行数据备份或数据恢复等操作，较好的防止数据丢失的手段。<br>支持通过Replication进行数据复制，通过master-slave机制，可以实时进行数据的同步复制，支持多级复制和增量复制，master-slave机制是Redis进行HA的重要手段。<br>单线程请求，所有命令串行执行，并发情况下不需要考虑数据一致性问题。<br>支持pub/sub消息订阅机制，可以用来进行消息订阅与通知。<br>支持简单的事务需求，但业界使用场景很少，并不成熟。</p>
-<p><strong>Redis的局限性：</strong><br>Redis只能使用单线程，性能受限于CPU性能，故单实例CPU最高才可能达到5-6wQPS每秒（取决于数据结构，数据大小以及服务器硬件性能，日常环境中QPS高峰大约在1-2w左右）。<br>支持简单的事务需求，但业界使用场景很少，并不成熟，既是优点也是缺点。<br>Redis在string类型上会消耗较多内存，可以使用dict（hash表）压缩存储以降低内存耗用。</p>
-<p>Mc和Redis都是Key-Value类型，不适合在不同数据集之间建立关系，也不适合进行查询搜索。比如redis的keys pattern这种匹配操作，对redis的性能是灾难。</p>
-<p>应用场景：</p>
-<p>1.配合关系型数据库做高速缓存</p>
-<p>2.缓存高频次数据，降低数据库io</p>
-<p>3.分布式架构，做session共享</p>
-<h4 id="三、mongoDB"><a href="#三、mongoDB" class="headerlink" title="三、mongoDB"></a>三、mongoDB</h4><p>mongoDB 是一种文档性的数据库。先解释一下文档的数据库，即可以存放xml、json、bson类型系那个的数据。</p>
-<p>这些数据具备自述性（self-describing），呈现分层的树状数据结构。redis可以用hash存放简单关系型数据。</p>
-<p><em>mongoDB 存放json格式数据。</em></p>
-<p>端口（27017）</p>
-<p><em>适合场景：事件记录、内容管理或者博客平台，比如评论系统。</em></p>
-<p><strong>1.mongodb持久化原理</strong></p>
-<p>mongodb与mysql不同，mysql的每一次更新操作都会直接写入硬盘，但是mongo不会，做为内存型数据库，数据操作会先写入内存，然后再会持久化到硬盘中去，那么mongo是如何持久化的呢<br>mongodb在启动时，专门初始化一个线程不断循环（除非应用crash掉），用于在一定时间周期内来从defer队列中获取要持久化的数据并写入到磁盘的journal(日志)和mongofile(数据)处，当然因为它不是在用户添加记录时就写到磁盘上，所以按mongodb开发者说，它不会造成性能上的损耗，因为看过代码发现，当进行CUD操作时，记录(Record类型)都被放入到defer队列中以供延时批量（groupcommit）提交写入，但相信其中时间周期参数是个要认真考量的参数，系统为90毫秒，如果该值更低的话，可能会造成频繁磁盘操作，过高又会造成系统宕机时数据丢失过。  </p>
-<p><strong>MongoDB的数据文件很大</strong><br>MongoDB采用的预分配空间的方式来防止文件碎片</p>
-<h3 id="从以下几个维度，对redis、memcache、mongoDB-做了对比"><a href="#从以下几个维度，对redis、memcache、mongoDB-做了对比" class="headerlink" title="从以下几个维度，对redis、memcache、mongoDB 做了对比"></a>从以下几个维度，对redis、memcache、mongoDB 做了对比</h3><h4 id="1-性能上："><a href="#1-性能上：" class="headerlink" title="1.性能上："></a>1.性能上：</h4><p>性能上都很出色，具体到细节，由于Redis只使用单核，而Memcached可以使用多核，所以平均每一个核上Redis在存储小数据时比Memcached性能更高。而在100k以上的数据中，Memcached性能要高于Redis，虽然Redis最近也在存储大数据的性能上进行优化，但是比起 Memcached，还是稍有逊色。前两者性能差不多，大于 Mongodb。</p>
-<h4 id="2-内存空间和数据量大小："><a href="#2-内存空间和数据量大小：" class="headerlink" title="2.内存空间和数据量大小："></a>2.内存空间和数据量大小：</h4><p>MemCached可以修改最大内存，采用LRU算法。</p>
-<p>Redis增加了VM的特性，突破了物理内存的限制。 　 </p>
-<p>MongoDB 适合大数据量的存储，依赖操作系统 VM 做内存管理，吃内存也比较厉害，服务不要和别的服务在一起 </p>
-<h4 id="3-操作便利上："><a href="#3-操作便利上：" class="headerlink" title="3.操作便利上："></a>3.操作便利上：</h4><p>MemCached数据结构单一，仅用来缓存数据</p>
-<p>Redis支持更加丰富的数据类型，也可以在服务器端直接对数据进行丰富的操作,这样可以减少网络IO次数和数据体积。 　 </p>
-<p>Mongodb 支持丰富的数据表达，索引，最类似关系型数据库，支持的查询语言非常丰富。 </p>
-<h4 id="4-可靠性上："><a href="#4-可靠性上：" class="headerlink" title="4.可靠性上："></a>4.可靠性上：</h4><p>MemCached不支持数据持久化，断电或重启后数据消失，但其稳定性是有保证的。</p>
-<p>Redis支持数据持久化和数据恢复，允许单点故障，但是同时也会付出性能的代价。 　 </p>
-<p>MongoDB 从 1.8 版本开始采用 binlog 方式支持持久化的可靠性。 </p>
-<h4 id="5-应用场景："><a href="#5-应用场景：" class="headerlink" title="5.应用场景："></a>5.应用场景：</h4><p>Memcached：动态系统中减轻数据库负载，提升性能；做缓存，适合多读少写，大数据量的情况（如人人网大量查询用户信息、好友信息、文章信息等）。</p>
-<p>Redis：适用于对读写效率要求都很高，数据处理业务复杂和对安全性要求较高的系统（如新浪微博的计数和微博发布部分系统，对数据安全性、读写要求都很高）。 　</p>
-<p>MongoDB:主要解决海量数据的访问效率问题。</p>
-
+<p><strong>Memcached的局限性：</strong><br>只支持简单的key/value数据结构，不像Redis可以支持丰富的数据类型。<br>无法进行持久化，数据不能备份，只能用于缓存使用，且重启后数据全部丢失。<br>无法进行数据同步，不能将MC中的数据迁移到其他MC实例中。<br>Memcached内存分配采用Slab Allocation机制管理内存，value大小分布差异较大时会造成内存利用率降低，并引发低利用率时依然出现踢出等问题。需要用户注重value设计。<br>
+        
+          <a class="article-more-a" href="/2019/03/20/memcached%E3%80%81redis%E5%92%8Cmongodb%E7%9A%84%E5%8C%BA%E5%88%AB/#more">more >></a>
+        
       
 
       
@@ -1204,20 +1071,10 @@ if($exampleInstance instanceof ExampleInterface){
 <p>而linux任务调度的工作主要分为以下两类：</p>
 <ul>
 <li>1、系统执行的工作：系统周期性所要执行的工作，如备份系统数据、清理缓存</li>
-<li>2、个人执行的工作：某个用户定期要做的工作，例如每隔10分钟检查邮件服务器是否有新信，这些工作可由每个用户自行设置</li>
-</ul>
-<p>crontab [ -u user ] file  </p>
-<p>crontab [ -u user ] { -l  -r  -e }<br><strong>说明：</strong><br>crontab 是用来让使用者在固定时间或固定间隔执行程序之用，换句话说，也就是类似使用者的时程表。<br>-u user 是指设定指定 user 的时程表，这个前提是你必须要有其权限(比如说是 root)才能够指定他人的时程表。如果不使用 -u user 的话，就是表示设定自己的时程表。<br><strong>参数说明</strong>：<br>-e : 执行文字编辑器来设定时程表，内定的文字编辑器是 VI，如果你想用别的文字编辑器，则请先设定 VISUAL 环境变数来指定使用那个文字编辑器(比如说 setenv VISUAL joe)<br>-r : 删除目前的时程表<br>-l : 列出目前的时程表</p>
-<p>时程表的格式如下：</p>
-<p>f1 f2 f3 f4 f5 program</p>
-<ul>
-<li>其中 f1 是表示分钟，f2 表示小时，f3 表示一个月份中的第几日，f4 表示月份，f5 表示一个星期中的第几天。program 表示要执行的程序。</li>
-<li>当 f1 为 * 时表示每分钟都要执行 program，f2 为 * 时表示每小时都要执行程序，其余类推</li>
-<li>当 f1 为 a-b 时表示从第 a 分钟到第 b 分钟这段时间内要执行，f2 为 a-b 时表示从第 a 到第 b 小时都要执行，其余类推</li>
-<li>当 f1 为 */n 时表示每 n 分钟个时间间隔执行一次，f2 为 */n 表示每 n 小时个时间间隔执行一次，其余类推</li>
-<li>当 f1 为 a, b, c,… 时表示第 a, b, c,… 分钟要执行，f2 为 a, b, c,… 时表示第 a, b, c…个小时要执行，其余类推</li>
-</ul>
-
+<li>2、个人执行的工作：某个用户定期要做的工作，例如每隔10分钟检查邮件服务器是否有新信，这些工作可由每个用户自行设置
+        
+          <a class="article-more-a" href="/2019/03/14/linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E5%AD%A6%E4%B9%A0%E4%BA%94-crontab/#more">more >></a>
+        
       
 
       
@@ -1291,9 +1148,10 @@ if($exampleInstance instanceof ExampleInterface){
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">« Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next »</a>
     </nav>
   
+
 
 
           </div>
