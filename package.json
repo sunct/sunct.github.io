@@ -31,6 +31,7 @@
     "hexo-server": "^1.0.0",
     "hexo-theme-icarus": "^4.1.1",
     "hexo-util": "^2.4.0",
-    "hexo-wordcount": "^6.0.1"
+    "hexo-wordcount": "^6.0.1",
+    "social-share.js": "^1.0.16"
   }
 }
