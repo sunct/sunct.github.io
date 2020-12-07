@@ -2,8 +2,6 @@
 title: ' php：布尔值（boolean）数据类型判断'
 tags:
   - boolean
-  - 布尔
-id: '300'
 categories:
   - - PHP
 date: 2019-03-27 17:31:59

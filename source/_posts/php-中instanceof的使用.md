@@ -2,7 +2,6 @@
 title: ' php 中instanceof的使用'
 tags:
   - instanceof
-id: '285'
 categories:
   - - PHP
 date: 2019-03-20 21:50:20
@@ -14,8 +13,8 @@ date: 2019-03-20 21:50:20
 
 （2）判断一个对象是否实现了某个接口。
 
-**第一种用法：**
-```
+## 第一种用法：
+```php
 <?php   
 $obj = new A();   
 if ($obj instanceof A) {   
@@ -24,8 +23,8 @@ if ($obj instanceof A) {
 ?>
 ```
  <!--more--> 
-**第二种用法：**
-```
+## 第二种用法：
+```php
 <?php   
 interface ExampleInterface {   
    public function interfaceMethod();    
@@ -43,4 +42,5 @@ if($exampleInstance instanceof ExampleInterface){
 }    
 ?>
 ```
+
 输出结果：Yes, it is

@@ -2,10 +2,8 @@
 title: ' php优先级问题'
 tags:
   - php优先级
-id: '302'
 categories:
   - - PHP
-  - - 技术
 date: 2019-03-27 18:47:11
 ---
 
@@ -51,6 +49,6 @@ var_dump($c);
 ```
 输出结果：
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-32-300x90.png)
+![](/assets/articleImg/2019/image-32-300x90.png)
 
 > 说明：先运算 5&&$c ,结果是true，再运算 4 ,结果也是true， 后面的就不再执行，最后 再赋值运算$a=true; 进入if语句体进行运算，所以结果就是$a=true,$b=3,$c=3

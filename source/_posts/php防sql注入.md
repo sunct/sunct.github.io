@@ -1,11 +1,7 @@
 ---
 title: ' PHP防SQL注入'
 tags:
-  - php
   - SQL注入
-  - 安全
-  - 过滤
-id: '186'
 categories:
   - - PHP
 date: 2019-03-09 20:17:51
@@ -49,6 +45,6 @@ mysql\_escape\_string(strip\_tags($arr\["$val"\])); /\*\* \* 函数名称：post
 *   2、safe\_mode\_gid = off
 *   3、关闭危险函数 disable\_functions = chdir,chroot,dir,getcwd,opendir,readdir,scandir,fopen,unlink,delete,copy,mkdir, rmdir,rename,file,file\_get\_contents,fputs,fwrite,chgrp,chmod,chown
 *   4、关闭PHP版本信息在http头中的泄漏  expose\_php = Off
-*   5、_**打开magic\_quotes\_gpc来防止SQL注入  magic\_quotes\_gpc = On 这个默认是关闭的，如果它打开后将自动把用户提交对sql的查询进行转换 比如把 ' 转为 \\'等，这对防止sql注入有重大作用。**_
+*   5、打开magic\_quotes\_gpc来防止SQL注入  magic\_quotes\_gpc = On 这个默认是关闭的，如果它打开后将自动把用户提交对sql的查询进行转换 比如把 ' 转为 \\'等，这对防止sql注入有重大作用。
 *   6、错误信息控制 error\_reporting = E\_WARNING & E\_ERROR 只显示警告以上
 *   7、错误日志 建议在关闭display\_errors后能够把错误信息记录下来，便于查找服务器运行的原因 log\_errors = On

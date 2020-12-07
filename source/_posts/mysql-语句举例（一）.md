@@ -1,12 +1,7 @@
 ---
 title: ' MySQL 语句举例（一）'
 tags:
-  - group by
-  - having
   - MySQL
-  - 排序
-  - 语句
-id: '270'
 categories:
   - - MySQL
 date: 2019-03-12 19:12:19
@@ -16,16 +11,16 @@ date: 2019-03-12 19:12:19
 
 my_user 表数据
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-22-149x300.png)
-
+![](/assets/articleImg/2019/image-22-149x300.png)
+ <!--more--> 
 my_order，uid对应my\_user表的id
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-24-300x298.png)
+![](/assets/articleImg/2019/image-24-300x298.png)
 
 测试数据生成
 
 写一个存储过程，随机插入10000条数据：
- <!--more--> 
+
 ```
 CREATE DEFINER=`root`@`localhost` PROCEDURE `test_loop`( )  
  BEGIN  
@@ -61,12 +56,12 @@ ORDER BY
 ```
 查询结果：
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-25-300x289.png)
+![](/assets/articleImg/2019/image-25-300x289.png)
 
 统计所有的用户订单数，结果如下：
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-26-168x300.png)
-```
+![](/assets/articleImg/2019/image-26-168x300.png)
+```sql
 SELECT  
     count( o.uid ) count\_num,  
     u.NAME   
@@ -82,7 +77,7 @@ ORDER BY
 ```
 该sql 主要考察 group by 和 having 的使用，然后 order by 和 desc 排序。
 
-**★sql 的执行顺序如下：**
+## sql 的执行顺序如下：
 
 *   1、FORM: 对FROM左边的表和右边的表计算笛卡尔积，产生虚表VT1。
 *   2、ON: 对虚表VT1进行ON过滤，只有那些符合的行才会被记录在虚表VT2中。

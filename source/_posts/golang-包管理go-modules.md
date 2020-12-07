@@ -2,7 +2,6 @@
 title: ' golang - 包管理go modules'
 tags:
   - Golang
-id: '650'
 categories:
   - - Golang
 date: 2020-01-15 16:08:15
@@ -12,33 +11,31 @@ date: 2020-01-15 16:08:15
 
 > 项目在不同服务器上运行，需要把需要的包一个一个的重新下载，这一节就来详细说明一下，如何更好的管理第三方安装包：
 
-### [](https://github.com/sunct/learning-go//blob/master/learning-base/mod.md#1go-modules-%E4%BB%8B%E7%BB%8D)1、go modules 介绍
+### 1、go modules 介绍
 
-自从 Go 官方推出 1.11 之后，增加新的依赖管理模块并且更加易于管理项目中所需要的模块。模块是存储在文件树中的 Go 包的集合，其根目录中包含 go.mod 文件。 go.mod 文件定义了模块的模块路径，它也是用于根目录的导入路径，以及它的依赖性要求。每个依赖性要求都被写为模块路径和特定语义版本。
+自从 Go 官方推出 1.11 之后，增加新的依赖管理模块并且更加易于管理项目中所需要的模块。模块是存储在文件树中的 Go 包的集合，其根目录中包含 `go.mod` 文件。 `go.mod` 文件定义了模块的模块路径，它也是用于根目录的导入路径，以及它的依赖性要求。每个依赖性要求都被写为模块路径和特定语义版本。
 
-从 Go 1.11 开始，Go 允许在 $GOPATH/src 外的任何目录下使用 go.mod 创建项目。在 $GOPATH/src 中，为了兼容性，Go 命令仍然在旧的 GOPATH 模式下运行。从 Go 1.13 开始，模块模式将成为默认模式。
+从 Go 1.11 开始，Go 允许在 `$GOPATH/src`外的任何目录下使用 `go.mod` 创建项目。在 `$GOPATH/src` 中，为了兼容性，Go 命令仍然在旧的 `GOPATH` 模式下运行。从 Go 1.13 开始，模块模式将成为默认模式。
 
 > 建议：为了体验go 更多的功能和解决版本问题，请升级go 到最新版
-
+ <!--more-->
 模块是相关Go包的集合。modules是源代码交换和版本控制的单元。 go命令直接支持使用modules，包括记录和解析对其他模块的依赖性。modules替换旧的基于GOPATH的方法来指定在给定构建中使用哪些源文件。
- <!--more--> 
-如果你想直接使用modules而不需要从GOPATH过度，那么把“GO111MODULE”设置为on。
+ 
+如果你想直接使用`modules`而不需要从`GOPATH`过度，那么把`“GO111MODULE”`设置为`on`。
 
 设置命令如下：
 
-```
+```linux
 go env -w GO111MODULE=on
 ```
 
 为了防止下载包出现超时（需要翻墙的包），请设置环境变量 GOPROXY
 
-```
+```linux
 go env -w GOPROXY=https://goproxy.cn,direct
 ```
 
-### [](https://github.com/sunct/learning-go//blob/master/learning-base/mod.md#2go-mod-%E7%9A%84%E4%BD%BF%E7%94%A8)2、go mod 的使用
-
-*   ####初始化
+#### 初始化
 
 （1）使用命令初始化go.mod
 
@@ -46,13 +43,13 @@ go env -w GOPROXY=https://goproxy.cn,direct
 go mod init ***
 ```
 
-说明：其中 \*\*\* 可以是自己项目的名字，以便区分。 现在我就是 使用项目名字来初始化，命令为：go mod init github.com/ms
+说明：其中 `***` 可以是自己项目的名字，以便区分。 现在我就是 使用项目名字来初始化，命令为：`go mod init github.com/ms`
 
 [![image](https://github.com/sunct/learning-go/raw/master/images/mod-1.jpg)](https://github.com/sunct/learning-go/blob/master/images/mod-1.jpg)
 
 （2） 运行或编译
 
-```
+```linux
 go run main.go
 或
 go build main.go
@@ -60,13 +57,13 @@ go build main.go
 
 运行以上代码后，会自动下载项目引用的包
 
-（3）查看 文件 go.mod和 go.sum
+（3）查看 文件 `go.mod`和 `go.sum`
 
 > 以下是目前项目的文件内容
 
 go.mod 文件：
 
-```
+```mod
 module github.com/ms
 
 go 1.13
@@ -112,7 +109,7 @@ gopkg.in/yaml.v2 v2.2.4
 
 前面部分是包的名字，也就是import时需要写的部分，而空格之后的是版本号，版本号遵循如下规律：
 
-```
+```mod
 X.Y.Z-pre.0.yyyymmddhhmmss-abcdefabcdef
 vX.0.0-yyyymmddhhmmss-abcdefabcdef
 vX.Y.(Z+1)-0.yyyymmddhhmmss-abcdefabcdef
@@ -124,7 +121,7 @@ vX.Y.Z
 
 go.sum 文件
 
-```
+```sum
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 cloud.google.com/go v0.37.4/go.mod h1:NHPJ89PdicEuT9hdPXMROBD91xc5uRDxsMtSB16k7hw=
@@ -1113,12 +1110,12 @@ sigs.k8s.io/yaml v1.1.0/go.mod h1:UJmg0vDUVViEyp3mgSv9WPwZCDxu4rQW1olrI1uml+o=
 
 ```
 
-go.sum文件是我们直接引用的package和它自身需要的以来的版本记录，go modules就是根据这些去找到需要的packages的。
+go.sum文件是我们直接引用的package和它自身需要的以来的版本记录，`go modules`就是根据这些去找到需要的`packages`的。
 
 如果我们不做任何修改，默认会使用最新的包版本，如果包打过tag，那么就会使用最新的那个tag对应的版本。
 
-更多的mod 命令可使用：
+更多的`mod`命令可使用：
 
-```
+```linux
 go help mod
 ```

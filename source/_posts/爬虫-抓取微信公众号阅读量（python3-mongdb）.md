@@ -1,137 +1,79 @@
 ---
-title: ' 爬虫 | 抓取微信公众号阅读量（python3 + mongdb）'
+title: '爬虫 | 抓取微信公众号阅读量（python3 + mongdb）'
 tags:
-  - Python
-  - 微信公众号阅读量
   - 爬虫
-id: '587'
+  
 categories:
   - - Python
-  - - 技术
-date: 2019-08-23 16:10:34
----
-
-[爬虫 抓取微信公众号阅读量（python3 + mongdb）](https://blog.csdn.net/u010377516/article/details/99746947)
-
-原文请参照：
-
   
-版权声明：本文为CSDN博主「Halosec\_Wei」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。  
-原文链接：https://blog.csdn.net/qq\_41686130/article/details/88296981
+date: 2019-08-29 16:11:04
+---
+>  声明：此文件内容只适合个人学习参考，不得作为商业用途。谢谢！
 
-* * *
 
-**截止到 2019年08月19日18:21:38 亲测可用。**
+截止到 2019年08月19日18:21:38 亲测可用。
 
-**需要的环境：python3 + mongdb**
+需要的环境：python3 + mongdb
 
-**以下是 参照 博主「Halosec\_Wei」，我自己修改的文档和代码。在此，再次感谢 博主「Halosec\_Wei」。**
+
 
 需要修改的部分 是代码中的 # 0，#1，#2，#3，具体参照代码部分。
 
 参数修改说明:
 
-**\# 0**
- <!--more--> 
+# #0
+
 mangodb 数据存储配置
 
-**\# 1**
+# #1 
+<!--more--> 
 
 微信公众平台参数
 
 找到“新建图文素材”
+![微信公众号](/assets/articleImg/2019/20190819184810650.png)
 
-![](https://img-blog.csdnimg.cn/20190819184810650.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
-
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image.gif)
-
-​
 
 “检查” 查看网络请求。
 
-![](https://img-blog.csdnimg.cn/20190819184856305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
-
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-1.gif)
-
-​
-
-![](https://img-blog.csdnimg.cn/20190819185114844.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
-
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-3.gif)
-
-​
+![微信公众号](/assets/articleImg/2019/20190819184856305.png)
 
 搜索要找的公众号：
-
-![](https://img-blog.csdnimg.cn/20190819185153883.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
-
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-4.gif)
-
-​
+![微信公众号](/assets/articleImg/2019/20190819185114844.png)
+![微信公众号](/assets/articleImg/2019/20190819185153883.png)
 
 回车，点击出现的公众号，右侧的 Network,则出现相关url：
-
-![](https://img-blog.csdnimg.cn/20190819185349444.png)
-
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-4.gif)
-
-​
-
-![](https://img-blog.csdnimg.cn/20190819185312207.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
-
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-7.gif)
-
-​
+![微信公众号](/assets/articleImg/2019/20190819185312207.png)
 
 找到url 中出现的参数：
+![微信公众号](/assets/articleImg/2019/20190819183451584.png)
+![微信公众号](/assets/articleImg/2019/20190819183833241.png)
 
-![](https://img-blog.csdnimg.cn/20190819183451584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-2.gif)
+# #2
 
-​
+通过 代理服务器 获取参数：我用的是 Charles。
+![微信公众号](/assets/articleImg/2019/20190819184223896.png)
 
-![](https://img-blog.csdnimg.cn/20190819183833241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
-
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-5.gif)
-
-​
-
-**\# 2**
-
-通过 代理服务器 获取参数：我用的是 [Charles](https://www.charlesproxy.com/%C2%A0)。
-
-![](https://img-blog.csdnimg.cn/20190819184223896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
-
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-8.gif)
-
-​
-
-**\# 3**
+# #3
 
 设置抓取的开始页码。
+> 说明：如果抓了一会出现没有数据，说明数据失效，请重新设置 #2 和 #3 部分即可。如果经过一段时间重新设置啥也不起作用，说明 请求频繁，微信被拒绝。可更换微信公众号，重新设置 #1，#2 和 #3。
+![微信公众号](/assets/articleImg/2019/20190820160041668.png)
 
-**说明：如果抓了一会出现没有数据，说明数据失效，请重新设置 #2 和 #3 部分即可。如果经过一段时间重新设置啥也不起作用，说明 请求频繁，微信被拒绝。可更换微信公众号，重新设置 #1，#2 和 #3。**
-
-![](https://img-blog.csdnimg.cn/20190820160041668.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
-
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-6.gif)
-
-​
 
  爬虫文件1:
 
 存储到mangodb
 
-```
-# -*- coding: utf-8 -*-
+```python
 import requests
 import time
 import json
 from pymongo import MongoClient
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
+#from requests.packages.urllib3.exceptions import InsecureRequestWarning
  
-requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+#requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 # -------------配置信息开始---------------------------
 # 0
 # mango 数据库名称
@@ -361,14 +303,11 @@ if __name__ == '__main__':
     main()
 ```
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-9.gif)
-
 爬虫文件2
 
 导出到excel
 
-```
-
+```python
 import pymongo
  
 from openpyxl import Workbook
@@ -411,36 +350,30 @@ for x in mycol.find():
 excel_QA.save(title+".xlsx")#保存
 ```
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-10.gif)
-
 抓取结果：
 
-![](https://img-blog.csdnimg.cn/20190819190321430.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
+![微信公众号](/assets/articleImg/2019/20190819190321430.png)
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-11.gif)
-
-​
-
-有数字表示正常，其中
+有数字表示正常，其中:
 
 false：-1  是 未获取到评论数，如果不需要可忽略。
 
 如果连续出现 false：-1 而没有数字，请重新从当前页抓取。比如 在 16页 下方出现了：
 
-![](https://img-blog.csdnimg.cn/20190819190703346.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
+![微信公众号](/assets/articleImg/2019/20190819190703346.png)
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-12.gif)
 
-​
-
-那么，请从17页重新抓取即可，需修改 # 3 的数字。
+那么，请从17页重新抓取即可，需修改 `#3` 的数字。
 
 mangdb 数据：
 
-![](https://img-blog.csdnimg.cn/20190819191114167.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,size_16,color_FFFFFF,t_70)
-
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/08/image-13.gif)
-
-​
+![微信公众号](/assets/articleImg/2019/20190819191114167.png)
 
 如有问题请在下方留言。
+
+或关注我的公众号“孙三苗”，输入“联系方式”。获得进一步帮助。
+
+![微信公众号](/assets/articleImg/2019/20200522172422550.jpg)
+
+
+或在公众号中输入关键词：`微信爬虫包` 获取源代码。
