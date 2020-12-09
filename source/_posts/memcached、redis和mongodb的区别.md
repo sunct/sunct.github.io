@@ -1,5 +1,6 @@
 ---
 title: ' Memcached、Redis和MongoDB的区别'
+thumbnail: /assets/articleImg/2019/timg-redis.jpeg
 tags:
   - redis
 categories:

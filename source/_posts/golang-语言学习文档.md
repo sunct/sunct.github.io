@@ -1,9 +1,8 @@
 ---
 title: ' golang 语言学习文档'
+thumbnail: /assets/articleImg/2020/u19859778662129692339fm11gp0.jpg
 tags:
   - Golang
-  - 文档
-id: '286'
 categories:
   - - Golang
 date: 2019-03-26 17:07:31

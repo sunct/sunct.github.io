@@ -1,5 +1,6 @@
 ---
 title: ' MVCC（数据库多版本并发控制）'
+thumbnail: /assets/articleImg/2019/timg-mysql.jpeg
 tags:
   - MVCC
 categories:

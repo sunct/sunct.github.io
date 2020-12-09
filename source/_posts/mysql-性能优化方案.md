@@ -1,5 +1,6 @@
 ---
 title: ' MySQL 性能优化方案'
+thumbnail: /assets/articleImg/2019/timg-mysql.jpeg
 tags:
   - MySQL
 categories:

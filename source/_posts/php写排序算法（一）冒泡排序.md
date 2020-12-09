@@ -1,8 +1,9 @@
 ---
 title: ' PHP写排序算法（一）冒泡排序'
+thumbnail: /assets/articleImg/2019/timg-php.jpeg
 tags:
   - 排序算法
-id: '530'
+  - PHP
 categories:
   - - PHP
 date: 2019-04-19 19:43:41

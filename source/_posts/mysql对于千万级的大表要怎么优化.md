@@ -1,5 +1,6 @@
 ---
 title: ' MySQL对于千万级的大表要怎么优化'
+thumbnail: /assets/articleImg/2019/timg-mysql.jpeg
 tags:
   - MySQL
 categories:

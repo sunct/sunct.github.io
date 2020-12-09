@@ -1,5 +1,6 @@
 ---
 title: ' shell 批量关闭端口'
+thumbnail: /assets/articleImg/2019/timg-shell.jpeg
 tags:
   - shell
 categories:

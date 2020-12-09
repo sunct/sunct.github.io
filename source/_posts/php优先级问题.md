@@ -1,7 +1,8 @@
 ---
 title: ' php优先级问题'
+thumbnail: /assets/articleImg/2019/timg-php.jpeg
 tags:
-  - php优先级
+  - PHP
 categories:
   - - PHP
 date: 2019-03-27 18:47:11

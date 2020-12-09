@@ -1,10 +1,12 @@
 ---
 title: ' golang - 包管理go modules'
+thumbnail: /assets/articleImg/2020/u19859778662129692339fm11gp0.jpg
 tags:
   - Golang
 categories:
   - - Golang
 date: 2020-01-15 16:08:15
+
 ---
 
 ## 包管理go modules

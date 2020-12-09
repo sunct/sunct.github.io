@@ -1,5 +1,6 @@
 ---
 title: ' 常见的 PHP 设计模式1–策略模式（抽象）'
+thumbnail: /assets/articleImg/2019/timg-php.jpeg
 tags:
   - 模式
 categories:

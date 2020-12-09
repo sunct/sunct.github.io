@@ -1,9 +1,9 @@
 ---
 title: ' CGI, FastCGI,PHP-CGI,php-fpm的关系'
+thumbnail: /assets/articleImg/2019/img-linux.jpg
 tags:
   - cgi
   - php-fpm
-id: '312'
 categories:
   - - Linux
 date: 2019-04-04 23:51:44

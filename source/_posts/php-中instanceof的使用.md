@@ -1,7 +1,8 @@
 ---
 title: ' php 中instanceof的使用'
+thumbnail: /assets/articleImg/2019/timg-php.jpeg
 tags:
-  - instanceof
+  - PHP
 categories:
   - - PHP
 date: 2019-03-20 21:50:20

@@ -1,5 +1,6 @@
 ---
 title: ' 浏览器报错 net::ERR_CONTENT_LENGTH_MISMATCH 200 (OK) 解决办法'
+thumbnail: /assets/articleImg/2019/timg-error.jpeg
 tags: 浏览器
 categories:
   - - 服务

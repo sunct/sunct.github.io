@@ -1,9 +1,9 @@
 ---
 title: ' cross-request - chrome插件无效解决办法'
+thumbnail: /assets/articleImg/2019/timg-chrome.jpeg
 tags:
   - cross-request
   - 插件
-id: '686'
 categories:
   - - 服务
 date: 2020-04-02 15:21:26

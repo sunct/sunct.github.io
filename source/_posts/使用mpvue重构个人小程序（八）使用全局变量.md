@@ -1,5 +1,6 @@
 ---
 title: '使用mpvue重构个人小程序（八）使用全局变量'
+thumbnail: /assets/articleImg/2019/timg-xcx.jpeg
 tags:
   - mpvue
   - 小程序

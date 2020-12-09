@@ -1,7 +1,9 @@
 ---
 title: '爬虫|Charles（茶壶）工具在MAC端设置'
+thumbnail: /assets/articleImg/2019/timg-pachong.jpeg
 tags:
   - Charles
+  - 爬虫
 categories:
   - - 服务
 date: 2019-08-29 16:11:04

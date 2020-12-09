@@ -1,5 +1,6 @@
 ---
 title: ' MySQL 优化常用方法'
+thumbnail: /assets/articleImg/2019/timg-mysql.jpeg
 tags:
   - MySQL
 categories:

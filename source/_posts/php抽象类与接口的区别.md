@@ -1,8 +1,9 @@
 ---
 title: ' PHP抽象类与接口的区别'
+thumbnail: /assets/articleImg/2019/timg-php.jpeg
 tags:
   - 抽象类
-  - 接口
+  - PHP
 categories:
   - - PHP
 date: 2019-03-20 20:57:12

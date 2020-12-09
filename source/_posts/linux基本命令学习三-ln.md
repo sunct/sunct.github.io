@@ -1,5 +1,6 @@
 ---
 title: ' Linux基本命令学习(三)- ln'
+thumbnail: /assets/articleImg/2019/img-linux.jpg
 tags:
   - Linux
 categories:

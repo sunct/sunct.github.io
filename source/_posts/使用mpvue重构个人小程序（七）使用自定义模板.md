@@ -1,10 +1,9 @@
 ---
 title: ' 使用mpvue重构个人小程序（七）使用自定义模板'
+thumbnail: /assets/articleImg/2019/timg-xcx.jpeg
 tags:
   - mpvue
   - 小程序
-  - 自定义模板
-id: '423'
 categories:
   - - 小程序
 date: 2019-04-16 13:00:15

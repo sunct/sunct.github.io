@@ -1,5 +1,6 @@
 ---
 title: ' 由HTTP想到了什么'
+thumbnail: /assets/articleImg/2019/img-http.jpg
 tags:
   - HTTP
 categories:

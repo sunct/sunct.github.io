@@ -1,5 +1,6 @@
 ---
 title: ' 使用mpvue重构个人小程序（四）全局配置'
+thumbnail: /assets/articleImg/2019/timg-xcx.jpeg
 tags:
   - mpvue
   - 小程序

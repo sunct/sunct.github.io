@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 安装go
+thumbnail: /assets/articleImg/2020/u19859778662129692339fm11gp0.jpg
 date: 2020-01-15 16:08:10
 comments: true
 toc: true

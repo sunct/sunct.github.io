@@ -1,5 +1,6 @@
 ---
 title: ' 使用mpvue重构个人小程序（五）插件配置mpvue-calendar'
+thumbnail: /assets/articleImg/2019/timg-xcx.jpeg
 tags:
   - mpvue
   - mpvue-calendar

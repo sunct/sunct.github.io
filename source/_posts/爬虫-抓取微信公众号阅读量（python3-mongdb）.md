@@ -1,5 +1,6 @@
 ---
 title: '爬虫 | 抓取微信公众号阅读量（python3 + mongdb）'
+thumbnail: /assets/articleImg/2019/timg-pachong.jpeg
 tags:
   - 爬虫
   

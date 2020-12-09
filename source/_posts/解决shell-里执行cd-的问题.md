@@ -1,5 +1,6 @@
 ---
 title: ' 解决shell 里执行cd 的问题'
+thumbnail: /assets/articleImg/2019/timg-shell.jpeg
 tags:
   - shell
 categories:

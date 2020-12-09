@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 使用HEXO与Github.io搭建个人博客
+thumbnail: /assets/articleImg/2020/timg-hexo.jpeg
 date: 2020-05-09 20:16:57
 comments: true
 toc: true

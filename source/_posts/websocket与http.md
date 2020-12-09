@@ -1,5 +1,6 @@
 ---
 title: ' WebSocket与HTTP'
+thumbnail: /assets/articleImg/2019/img-http.jpg
 tags:
   - HTTP
   - WebSocket

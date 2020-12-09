@@ -1,5 +1,6 @@
 ---
 title: ' MySQL语句优化补充（一）'
+thumbnail: /assets/articleImg/2019/timg-mysql.jpeg
 tags:
   - MySQL
 categories:

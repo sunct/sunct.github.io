@@ -1,5 +1,6 @@
 ---
 title: ' Linux基本命令学习(四)-touch、chmod'
+thumbnail: /assets/articleImg/2019/img-linux.jpg
 tags:
   - Linux
 categories:

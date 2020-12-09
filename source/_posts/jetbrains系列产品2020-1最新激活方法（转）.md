@@ -1,5 +1,6 @@
 ---
 title: ' Jetbrains系列产品2020.1最新激活方法（转）'
+thumbnail: /assets/articleImg/2020/img-Jetbrains.png
 tags: Jetbrains
 categories:
   - - 服务

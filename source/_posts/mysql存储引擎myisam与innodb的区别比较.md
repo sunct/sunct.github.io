@@ -1,5 +1,6 @@
 ---
 title: ' MySQL存储引擎MyISAM与InnoDB的区别比较'
+thumbnail: /assets/articleImg/2019/timg-mysql.jpeg
 tags:
   - MySQL
 categories:

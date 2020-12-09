@@ -1,7 +1,9 @@
 ---
 title: ' PHP防SQL注入'
+thumbnail: /assets/articleImg/2019/timg-php.jpeg
 tags:
-  - SQL注入
+  - SQL
+  - PHP
 categories:
   - - PHP
 date: 2019-03-09 20:17:51

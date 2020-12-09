@@ -1,5 +1,6 @@
 ---
 title: ' Apache Kafka'
+thumbnail: /assets/articleImg/2019/timg-duilie.jpeg
 tags:
   - kafka
   - 消息队列

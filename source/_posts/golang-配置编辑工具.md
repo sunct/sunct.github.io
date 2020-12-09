@@ -1,8 +1,8 @@
 ---
 title: ' golang - 配置编辑工具'
+thumbnail: /assets/articleImg/2020/u19859778662129692339fm11gp0.jpg
 tags:
   - goland
-id: '683'
 categories:
   - - Golang
 date: 2020-01-15 16:54:54

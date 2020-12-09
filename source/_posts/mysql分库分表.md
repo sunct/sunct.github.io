@@ -1,5 +1,6 @@
 ---
 title: ' MySQL分库分表'
+thumbnail: /assets/articleImg/2019/timg-mysql.jpeg
 tags:
   - MySQL
 categories:

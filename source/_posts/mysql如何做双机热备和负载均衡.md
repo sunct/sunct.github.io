@@ -1,5 +1,6 @@
 ---
 title: ' MySQL如何做双机热备和负载均衡'
+thumbnail: /assets/articleImg/2019/timg-mysql.jpeg
 tags:
   - MySQL
 categories:

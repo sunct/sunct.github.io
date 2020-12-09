@@ -1,5 +1,6 @@
 ---
 title: ' 常见的 PHP 设计模式2–工厂模式（接口）'
+thumbnail: /assets/articleImg/2019/timg-php.jpeg
 tags:
   - 模式
 categories:

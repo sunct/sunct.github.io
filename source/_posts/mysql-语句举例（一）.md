@@ -1,5 +1,6 @@
 ---
 title: ' MySQL 语句举例（一）'
+thumbnail: /assets/articleImg/2019/timg-mysql.jpeg
 tags:
   - MySQL
 categories:
