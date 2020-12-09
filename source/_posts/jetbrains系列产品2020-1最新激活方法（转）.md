@@ -10,9 +10,9 @@ date: 2020-04-21 13:10:57
 Jetbrains全家桶用着用着就爆出需要激活。他们家的所有产品升级到2018.2.1及以上版本后，先前可用的注册服务器都失效了，无法激活升级到最新版本体验最新黑科技。
 
 ![](/assets/articleImg/2019/image-166-1024x237.png)
-
-具体使用方法已写在压缩包的 `README.pdf/README.txt`内。
  <!--more--> 
+具体使用方法已写在压缩包的 `README.pdf/README.txt`内。
+
 使用方法:
 
 1.  先下载压缩包解压后得到jetbrains-agent.jar。  

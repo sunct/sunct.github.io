@@ -15,9 +15,9 @@ date: 2020-04-02 15:21:26
 ![效果图](https://img-blog.csdnimg.cn/20200323133621586.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTAzNzc1MTY=,color_FFFFFF,t_70#pic_center)
 
 只好自己又从网上重新下载了一下离线版的，亲测可用。
-
-> 注：下载地址见文末。
  <!--more--> 
+> 注：下载地址见文末。
+
 
 把压缩包解压出来，其中里面的文件，如图：
 

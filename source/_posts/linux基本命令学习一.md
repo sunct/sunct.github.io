@@ -11,7 +11,7 @@ date: 2019-03-11 13:00:09
 ## 1、ifconfig　　IP查询
 
 ![](/assets/articleImg/2019/image-2-1024x457.png)
-
+ <!--more--> 
 ## 2、cd [目录名] 切换当前目录至dirName
 
 cd /home 进入 '/ home' 目录'  
@@ -21,7 +21,7 @@ cd 进入个人的主目录 
 cd ~user1 进入个人的主目录   
 cd - 返回上次所在的目录 
 
- <!--more--> 
+
 ## 3、ls [-option] 目录名称　　显示制定目录下的内容
 
 ![](/assets/articleImg/2019/image-3-1024x111.png)

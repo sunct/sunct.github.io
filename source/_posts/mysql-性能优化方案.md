@@ -17,7 +17,7 @@ mysql> show global status;
 
 mysql> show variables;
 ```
-
+ <!--more--> 
 慢查询
 连接数
 key_buffer_size

@@ -20,11 +20,11 @@ date: 2019-04-16 14:01:50
 ```
 
 ![效果图](/assets/articleImg/2019/image-109-1024x488.png)
-
+ <!--more--> 
 ## 2、单独页面局部配置
 
 没有main.json 自己新建一个即可。
- <!--more--> 
+
 ![效果图](/assets/articleImg/2019/image-110-1024x555.png)
 
 ## 二、使用

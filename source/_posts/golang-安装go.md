@@ -14,9 +14,9 @@ tags:
 安装包可从[go官网](https://golang.google.cn/dl/) 或者 [go 中文网](https://studygolang.com/dl) ，找到安装包路径。如图所示，根据自己需求下载。
 
 ![image](/assets/articleImg/2020/install-1.png)
-
-在操作环境下，执行下面的命令进行下载。（截止时间：2020年01月14日14:14:59）
 <!--more-->
+在操作环境下，执行下面的命令进行下载。（截止时间：2020年01月14日14:14:59）
+
 #### 1、下载安装包
 ```linux
 wget https://studygolang.com/dl/golang/go1.13.6.linux-amd64.tar.gz

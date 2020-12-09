@@ -7,15 +7,29 @@ categories:
   - - Golang
 date: 2019-03-26 17:07:31
 ---
+golang学习资料：
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-27-818x1024.png)
-<!--more-->
-仅供学习使用，下载地址:
+![GO书籍文件目录](/assets/articleImg/2019/WX20201209-185343@2x.png)
 
-[Go语言编程\_许式伟\_完整版\_](https://www.sunsanmiao.cn/wp-content/uploads/2019/03/Go语言编程_许式伟_完整版_.pdf)[下载](https://www.sunsanmiao.cn/wp-content/uploads/2019/03/Go语言编程_许式伟_完整版_.pdf)
+下载地址：
+ <!--more-->
+ 
+ > 链接: [下载地址：GO书籍](https://pan.baidu.com/s/1LeaWrAkOrDuurTKvz2a-bQ)  
+ 密码: ujj0
+ 
+ ## 其他：
+  > 链接: [下载地址：GO语言编程（完整版）](https://pan.baidu.com/s/1Q63HHYIuCRMMqvSjXNz9lw)  
+ 密码: 750w
 
-![](https://www.sunsanmiao.cn/wp-content/uploads/2019/03/image-28-832x1024.png)
 
-仅供学习使用，下载地址:
+![Go语言编程_许式伟_完整版](/assets/articleImg/2019/image-27-818x1024.png)
 
-[Go语言实战](https://www.sunsanmiao.cn/wp-content/uploads/2019/03/Go语言实战-.pdf)[下载](https://www.sunsanmiao.cn/wp-content/uploads/2019/03/Go语言实战-.pdf)
+仅供学习使用，可使用浏览器在线预览，地址:
+
+[Go语言编程_许式伟_完整版](/assets/file/2019/Go语言编程_许式伟_完整版_.pdf)
+
+![Go语言实战](/assets/articleImg/2019/image-28-832x1024.png)
+
+仅供学习使用，可使用浏览器在线预览，地址:
+
+[Go语言实战](/assets/file/2019/Go语言实战-.pdf)
