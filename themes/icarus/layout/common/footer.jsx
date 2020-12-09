@@ -41,6 +41,8 @@ class Footer extends Component {
                             {showVisitorCounter ? <span id="busuanzi_container_site_uv"
                                 dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span> : null}
                         </p>
+                        <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer=""></script>
+                        <p id="hitokoto">:D 获取中...</p>
                     </div>
                     <div class="level-end">
                         {Object.keys(links).length ? <div class="field has-addons">
