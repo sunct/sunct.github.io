@@ -12,10 +12,14 @@ class Footer extends Component {
             author,
             links,
             showVisitorCounter,
-            visitorCounterTitle
+            visitorCounterTitle,
+            yiYan,
+            weather
         } = this.props;
 
         let footerLogo = '';
+        let yiYanContent='';
+        let weatherContent='';
         if (logo) {
             if (logo.text) {
                 footerLogo = logo.text;
@@ -24,6 +28,13 @@ class Footer extends Component {
             }
         } else {
             footerLogo = siteTitle;
+        }
+        if(yiYan){
+            yiYanContent = <div><p id="hitokoto">:D 获取中...</p> <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer=""></script></div>
+        }
+        if(weather){
+            weatherContent = <iframe width="150" scrolling="no" height="30" frameBorder="0" allowTransparency="true"
+                                    src="https://i.tianqi.com?c=code&id=53&icon=1&site=12"></iframe>
         }
 
         return <footer class="footer">
@@ -41,8 +52,8 @@ class Footer extends Component {
                             {showVisitorCounter ? <span id="busuanzi_container_site_uv"
                                 dangerouslySetInnerHTML={{ __html: visitorCounterTitle }}></span> : null}
                         </p>
-                        <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer=""></script>
-                        <p id="hitokoto">:D 获取中...</p>
+                        {yiYanContent}
+                        {weatherContent}
                     </div>
                     <div class="level-end">
                         {Object.keys(links).length ? <div class="field has-addons">
@@ -65,7 +76,7 @@ class Footer extends Component {
 module.exports = cacheComponent(Footer, 'common.footer', props => {
     const { config, helper } = props;
     const { url_for, _p, date } = helper;
-    const { logo, title, author, footer, plugins } = config;
+    const { logo, title, author, footer, plugins, yiYan, weather } = config;
 
     const links = {};
     if (footer && footer.links) {
@@ -87,6 +98,8 @@ module.exports = cacheComponent(Footer, 'common.footer', props => {
         author,
         links,
         showVisitorCounter: plugins && plugins.busuanzi === true,
-        visitorCounterTitle: _p('plugin.visitor_count', '<span id="busuanzi_value_site_uv">0</span>')
+        visitorCounterTitle: _p('plugin.visitor_count', '<span id="busuanzi_value_site_uv">0</span>'),
+        yiYan,
+        weather
     };
 });

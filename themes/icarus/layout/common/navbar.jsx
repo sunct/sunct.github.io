@@ -71,8 +71,6 @@ class Navbar extends Component {
                     </div>
                 </div>
             </div>
-           <webview src="weather.seniverse.com/?token=01e27592-8708-4838-a9d5-d30aa1adb5ef"></webview>
-
         </nav>;
     }
 }

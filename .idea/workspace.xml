@@ -4,8 +4,6 @@
     <list default="true" id="985555ff-71fd-4286-8d45-24e155398256" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.12.9.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.12.9.development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-theme-icarus/layout/common/footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/hexo-theme-icarus/layout/common/footer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/2019/03/08/mysql-优化常用方法/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/2019/03/08/mysql-优化常用方法/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/2019/03/08/mysql-性能优化方案/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/2019/03/08/mysql-性能优化方案/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/2019/03/08/mysql分库分表/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/2019/03/08/mysql分库分表/index.html" afterDir="false" />
@@ -156,12 +154,16 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/hexo-server/lib/middlewares/static.js">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/_config.icarus.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="379" column="3" lean-forward="true" selection-start-line="379" selection-start-column="3" selection-end-line="379" selection-end-column="3" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/hexo-server/lib/middlewares/logger.js">
+        <entry file="file://$PROJECT_DIR$/themes/icarus/layout/index.jsx">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -189,20 +191,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/themes/icarus/layout/common/footer.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+            <state relative-caret-position="244">
+              <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/themes/icarus/layout/common/navbar.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+            <state relative-caret-position="198">
+              <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -239,9 +241,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ppoffice</find>
-      <find>theme</find>
-      <find>Monokai.css</find>
       <find>fontawesome</find>
       <find>icarus</find>
       <find>评论</find>
@@ -269,6 +268,9 @@
       <find>logoUrl</find>
       <find>XMLHttpRequest</find>
       <find>script&gt;</find>
+      <find>window.</find>
+      <find>&lt;script&gt;</find>
+      <find>logo</find>
     </findStrings>
     <replaceStrings>
       <replace>`</replace>
@@ -341,7 +343,6 @@
         <option value="$PROJECT_DIR$/source/_posts/cgi-fastcgiphp-cgiphp-fpm的关系.md" />
         <option value="$PROJECT_DIR$/source/_posts/cross-request-chrome插件无效解决办法.md" />
         <option value="$PROJECT_DIR$/source/_posts/php-中instanceof的使用.md" />
-        <option value="$PROJECT_DIR$/_config.icarus.yml" />
         <option value="$PROJECT_DIR$/source/_posts/php优先级问题.md" />
         <option value="$PROJECT_DIR$/source/_posts/php写排序算法（一）冒泡排序.md" />
         <option value="$PROJECT_DIR$/source/_posts/php防sql注入.md" />
@@ -349,8 +350,9 @@
         <option value="$PROJECT_DIR$/source/_posts/php：布尔值（boolean）数据类型判断.md" />
         <option value="$PROJECT_DIR$/source/_posts/爬虫-charles-（茶壶）工具在mac端设置.md" />
         <option value="$PROJECT_DIR$/node_modules/hexo-theme-icarus/layout/common/footer.jsx" />
-        <option value="$PROJECT_DIR$/themes/icarus/layout/common/footer.jsx" />
         <option value="$PROJECT_DIR$/themes/icarus/layout/common/navbar.jsx" />
+        <option value="$PROJECT_DIR$/_config.icarus.yml" />
+        <option value="$PROJECT_DIR$/themes/icarus/layout/common/footer.jsx" />
       </list>
     </option>
   </component>
@@ -568,7 +570,7 @@
     <frame x="3" y="23" width="1440" height="810" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2353362" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2353362" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -582,7 +584,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2562674" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2562674" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -594,16 +596,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/source/_posts/blog-build.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="45">
-            <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="49" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/0525.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -892,13 +884,6 @@
     <entry file="file://$PROJECT_DIR$/node_modules/hexo-theme-icarus/layout/tags.jsx">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/_config.icarus.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="291" selection-start-line="291" selection-end-line="291" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/themes/icarus/layout/common/article.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-843" />
@@ -977,10 +962,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/icarus/layout/common/footer.jsx">
+    <entry file="file://$PROJECT_DIR$/themes/icarus/layout/common/navbar.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+        <state relative-caret-position="198">
+          <caret line="72" column="18" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -991,10 +976,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/icarus/layout/common/navbar.jsx">
+    <entry file="file://$PROJECT_DIR$/_config.icarus.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="77" column="1" lean-forward="true" selection-start-line="77" selection-start-column="1" selection-end-line="77" selection-end-column="1" />
+        <state relative-caret-position="442">
+          <caret line="379" column="3" lean-forward="true" selection-start-line="379" selection-start-column="3" selection-end-line="379" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/icarus/layout/index.jsx">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/icarus/layout/common/footer.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="33" column="9" lean-forward="true" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
         </state>
       </provider>
     </entry>
