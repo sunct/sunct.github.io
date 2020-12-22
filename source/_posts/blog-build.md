@@ -81,7 +81,7 @@ hexo server
 ```
 项目目录如下：
 
-![目录](/assets/articleImg/WX20200509-165741@2x.png)
+![目录](/assets/articleImg/2020/WX20200509-165741@2x.png)
 
 
 终端显示如下：
@@ -121,11 +121,11 @@ hexo server
 
 创建完仓库，点击 `Setting`
 
-![Setting](/assets/articleImg/1589014297690.jpg)
+![Setting](/assets/articleImg/2020/1589014297690.jpg)
 
 然后进行一些设置。往下滚动，在`GitHub Pages`条目下，会显示可访问的地址。
 
-![效果图](/assets/articleImg/1589014797098.jpg)
+![效果图](/assets/articleImg/2020/1589014797098.jpg)
 
 根据以上配置完，只有把`public`文件下的代码就可以传到 刚才创建的 github仓库就可以了。
 
@@ -151,7 +151,7 @@ hint: its remote counterpart. Integrate the remote changes (e.g.
 hint: 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
-![效果图](/assets/articleImg/WX20200509-173025@2x.png)
+![效果图](/assets/articleImg/2020/WX20200509-173025@2x.png)
 
 是本地和github上有历史冲突，运行：
 ```linux
@@ -167,6 +167,6 @@ git pull origin master --allow-unrelated-histories
 ```linux
 git subtree push --prefix public origin  gh-pages
 ```
-![效果图](/assets/articleImg/1605591636896.jpg)
+![效果图](/assets/articleImg/2020/1605591636896.jpg)
 
 
