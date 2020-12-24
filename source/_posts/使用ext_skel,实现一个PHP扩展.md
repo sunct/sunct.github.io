@@ -23,9 +23,9 @@ echo hello();
 
 输出内容：
 ```linux
-$ php ./hello.php
+$ php74 ./hello.php
 
-$ hello word!
+$ hello word
 ```
 在扩展中实现一个`hello` 方法，调用`hello` 方法后，输出 `hello word!`。
 <!--more-->
