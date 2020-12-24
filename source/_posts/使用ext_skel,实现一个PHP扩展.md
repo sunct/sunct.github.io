@@ -9,7 +9,7 @@ abbrlink: d42c7b69
 date: 2020-12-21 19:00:50
 ---
 
-## 写在前面
+## 一、写在前面
 
 
 本文是以`PHP7.4` 作为基础，讲解如何从零开始创建一个PHP扩展。本文主要讲解创建一个扩展的基本步骤都有哪些。示例中，我们将实现如下功能：
@@ -31,7 +31,7 @@ $ hello word
 在扩展中实现一个`hello` 方法，调用`hello` 方法后，输出 `hello word!`。
 <!--more-->
 
-## 生成代码
+## 二、生成代码
 
 PHP为我们提供了生成基本代码的工具 ext_skel.php 。这个工具在PHP源代码的`php-对应版本/ext/`目录下。
 
@@ -107,7 +107,7 @@ OPTIONS
 通常来说，开发一个新扩展时，仅需关注的参数是 `--ext name` 和 `--help`。除非已经熟悉扩展的结构; 指定此参数会造成 ext_skel 不会在生成的文件里省略很多有用的注释。
 剩下的 --ext name 会将扩展的名称传给 `ext_skel`。"name" 是一个`全为小写字母的标识符`，仅包含`字母和下划线`，在 PHP 发行包的 `ext/` 文件夹下是`唯一`的。
 
-## 修改config.m4配置文件
+## 三、修改config.m4配置文件
 
 
 > 扩展的 config.m4 文件告诉 UNIX 构建系统哪些扩展 configure 选项是支持的，你需要哪些扩展库，以及哪些源文件要编译成它的一部分。对所有经常使用的 autoconf 宏，包括 PHP 特定的及 autoconf 内建的。
@@ -124,7 +124,7 @@ OPTIONS
 
 
 
-## 代码实现
+## 四、代码实现
 
 修改hello.c文件。实现hello方法。
 
@@ -193,7 +193,7 @@ PHP_FE(hello, NULL)
 ![代码片段](/assets/articleImg/2020/1608631199420.jpg)
 
 
-## 编译安装
+## 五、编译安装
 
 ```linux
 cd hello/
@@ -246,7 +246,7 @@ sudo cp ~/code/php/php-7.4.13/ext/hello/modules/hello.so   /usr/local/php7/lib/p
 
 ![查看phpinfo](/assets/articleImg/2020/1608639767959.jpg)
 
-## 调用测试
+## 六、调用测试
 
 写一个PHP文件，调用hello方法。看输出的内容是否符合预期。
 
@@ -265,7 +265,7 @@ echo "\r\n执行 hello_test1() ----:".hello_test1();
 
 
 
-## ★ 剖析文件 
+## ★七、剖析文件 
 
 ### 1、config.m4 
 UNIX构建系统配置
@@ -299,42 +299,115 @@ zend_module_entry hello_module_entry = {
 ```
 模块结构字段值
 
-|Field（字段）|Value（值）|Description（描述）|
-|--|--|--|
-|size[1] [2] [3]|sizeof(zend_module_entry)|结构的字节大小。|
-|zend_api [1] [2] [3]|ZEND_MODULE_API_NO|此模块针对的Zend API版本。|
-|zend_debug [1] [2] [3]|ZEND_DEBUG|指示模块是否在调试打开的情况下进行编译的标志。|
-|zts [1] [2] [3]|USING_ZTS|指示模块是否在启用ZTS（TSRM）的情况下进行编译的标志（请参阅内存管理）。|
-|ini_entry [1] [3]|null|Zend在内部使用此指针来保持对模块声明的任何INI条目的非本地引用。
-|deps [3]|null|指向模块依赖关系列表的指针。|
-|name|"mymodule"|模块的名称。这是简称，例如“ spl”或“ standard”。|
-|functions|	mymodule_functions|指向模块功能表的指针，Zend使用该指针将模块中的功能公开给用户空间。|
-|module_startup_func|PHP_MINIT（mymodule）|Zend将在模块第一次加载到PHP的特定实例时调用的一个回调函数。|
-|module_shutdown_func|PHP_MSHUTDOWN（mymodule）|通常在最终关闭期间的一个回调函数，当模块从特定PHP实例卸载时，Zend将调用该函数|
-|request_startup_func|PHP_RINIT（mymodule）|Zend将在每个请求开始时调用一个回调函数。这个函数应该尽可能的短或者为空，因为调用这个函数对每个请求都有代价。|
-|request_shutdown_func|PHP_RSHUTDOWN（mymodule）|Zend将在每个请求结束时调用的个回调函数。这个函数应该尽可能的短或者为空，因为调用这个函数对每个请求都有代价。|
-|info_func|PHP_MINFO（mymodule）|Zend将在调用phpinfo() 函数时调用的回调函数。|
-|version|NO_VERSION_YET|给出模块版本的字符串，由模块开发人员指定。建议版本号采用`version_compare()`期望的格式（例如"1.0.5-dev"）或CVS或SVN修订号（例如"$Rev: 322138 $"）。|
-|globals_size [1] [4] [5] [6]|sizeof(zend_mymodule_globals)|包含模块全局变量的数据结构的大小（如果有）。|
-|globals_id_ptr [1] [4] [5] [6] [7]|＆mymodule_globals_id|这两个字段中只有一个字段存在，具体取决于USING_ZTS常量是否为真。前者是TSRM分配表中模块全局变量的索引，后者是直接指向全局变量的指针。|
-|globals_ptr [1] [4] [5] [6] [8]|&mymodule_globals_id|同上|
-|globals_ctor [4] [5] [6]|PHP_GINIT(mymodule)|调用这个函数是为了在 `module_startup_func`之前初始化模块的全局变量。|
-|globals_dtor [4] [5] [6]|PHP_GSHUTDOWN(mymodule)|这个函数被调用是为了在`module_shutdown_func`之后释放模块的全局变量。|
-|post_deactivate_func [4]|ZEND_MODULE_POST_ZEND_DEACTIVATE_N(mymodule)|这个函数在请求关闭后由Zend调用。很少被使用。|
-|module_started [1] [9] [4]|0|	这些字段用于Zend的内部跟踪信息。
-|type [1] [9] [4]|0|同上|
-|handle [1] [9] [4]|null|同上|
-|module_number [1] [9] [4]|	0|同上|
+<table>
+<tr>
+    <th>Field（字段）</th><th>Value（值）</th></th><th>Description（描述）</th>
+</tr>
+<tr>
+    <td>size [^1][^2][^3]</td><td>sizeof(zend_module_entry)</td><td>结构的字节大小。</td>
+</tr>
+
+<tr>
+<td>zend_api [^1][^2][^3]</td><td>ZEND_MODULE_API_NO</td><td>此模块针对的Zend API版本。</td>
+</tr>
+
+<tr>
+    <td>zend_debug [^1][^2][^3]</td><td>ZEND_DEBUG</td><td>指示模块是否在调试打开的情况下进行编译的标志。</td>
+</tr>
+
+<tr>
+    <td>zts [^1][^2][^3]</td><td>USING_ZTS</td><td>指示模块是否在启用ZTS（TSRM）的情况下进行编译的标志（请参阅内存管理）。</td>
+</tr>
+
+<tr>
+    <td>ini_entry [^1][^3]</td><td>null</td><td>Zend在内部使用此指针来保持对模块声明的任何INI条目的非本地引用。</td>
+</tr>
+
+<tr>
+    <td>deps[^3]</td><td>null</td><td>指向模块依赖关系列表的指针。</td>
+</tr>
+
+<tr>
+    <td>name</td><td>"mymodule"</td><td>模块的名称。这是简称，例如"spl"或"standard"。</td>
+</tr>
+
+<tr>
+    <td>functions</td><td>mymodule_functions</td><td>指向模块功能表的指针，Zend使用该指针将模块中的功能公开给用户空间。</td>
+</tr>
+
+<tr>
+    <td>module_startup_func</td><td>PHP_MINIT(mymodule)</td><td>Zend将在模块第一次加载到PHP的特定实例时调用的一个回调函数。</td>
+</tr>
+
+<tr>
+    <td>module_shutdown_func</td><td>PHP_MSHUTDOWN(mymodule)</td><td>通常在最终关闭期间的一个回调函数，当模块从特定PHP实例卸载时，Zend将调用该函数。</td>
+</tr>
 
 
-[1] 此字段不适用于模块开发人员。<br/>
-[2] 该字段由`STANDARD_MODULE_HEADER_EX`填充。<br/>
-[3] 该字段由`STANDARD_MODULE_HEADER`填充。<br/>
-[4] 该字段由`STANDARD_MODULE_PROPERTIES`填充。<br/>
-[5] 该字段由`NO_MODULE_GLOBALS`填充。<br/>
-[6] 该字段由`PHP_MODULE_GLOBALS`填充。<br/>
-[7] 仅当USING_ZTS是时，此字段存在true。<br/>
-[8] 仅当USING_ZTS是时，此字段存在false。<br/>
-[9] 该字段由`STANDARD_MODULE_PROPERTIES_EX`填充。<br/>
+<tr>
+    <td>request_startup_func</td><td>PHP_RINIT(mymodule)</td><td>Zend将在每个请求开始时调用一个回调函数。这个函数应该尽可能的短或者为空，因为调用这个函数对每个请求都有代价。</td>
+</tr>
 
+<tr>
+    <td>request_shutdown_func</td><td>PHP_RSHUTDOWN(mymodule)</td><td>Zend将在每个请求结束时调用的个回调函数。这个函数应该尽可能的短或者为空，因为调用这个函数对每个请求都有代价。|</td>
+</tr>
+
+<tr>
+    <td>info_func</td><td>PHP_MINFO(mymodule)</td><td>Zend将在调用`phpinfo()`函数时调用的回调函数。</td>
+</tr>
+
+<tr>
+    <td>version</td><td>NO_VERSION_YET</td><td>给出模块版本的字符串，由模块开发人员指定。建议版本号采用`version_compare()`期望的格式（例如"1.0.5-dev"）或CVS或SVN修订号（例如"$Rev: 322138 $"）。</td>
+</tr>
+
+
+
+
+<tr>
+    <td>globals_size [^1][^4][^5][^6]</td><td>sizeof(zend_mymodule_globals)</td><td>包含模块全局变量的数据结构的大小（如果有）。</td>
+</tr>
+<tr>
+    <td>globals_id_ptr [^1][^4][^5][^6][^7]</td><td>＆mymodule_globals_id</td><td rowspan="2";>这两个字段中只有一个字段存在，具体取决于USING_ZTS常量是否为真。前者是TSRM分配表中模块全局变量的索引，后者是直接指向全局变量的指针。</td>
+</tr>
+<tr>
+    <td>globals_ptr [^1][^4][^5][^6][^8]</td><td>&mymodule_globals_id</td>
+</tr>
+
+<tr>
+    <td>globals_ctor [^4][^5][^6]</td><td>PHP_GINIT(mymodule)</td><td>调用这个函数是为了在 `module_startup_func`之前初始化模块的全局变量。</td>
+</tr>
+<tr>
+    <td>globals_dtor [^4][^5][^6]</td><td>PHP_GSHUTDOWN(mymodule)</td><td>这个函数被调用是为了在`module_shutdown_func`之后释放模块的全局变量。</td>
+</tr>
+
+
+
+<tr>
+    <td>post_deactivate_func [^4]</td><td>ZEND_MODULE_POST_ZEND_DEACTIVATE_N(mymodule)</td><td>这个函数在请求关闭后由Zend调用。很少被使用。</td>
+</tr>
+<tr>
+    <td>module_started [^1][^9][^4]</td><td>0</td><td rowspan="4";>这些字段用于Zend的内部跟踪信息。</td>
+</tr>
+<tr>
+    <td>type [^1][^9][^4]</td><td>0</td>
+</tr>
+<tr>
+    <td>handle [^1][^9][^4]</td><td>null</td>
+</tr>
+<tr>
+    <td>module_number [^1][^9][^4]</td><td>0</td>
+</tr>
+
+</table>
+
+
+[^1]: 此字段不适用于模块开发人员。
+[^2]: 该字段由`STANDARD_MODULE_HEADER_EX`填充。
+[^3]: 该字段由`STANDARD_MODULE_HEADER`填充。
+[^4]: 该字段由`STANDARD_MODULE_PROPERTIES`填充。
+[^5]: 该字段由`NO_MODULE_GLOBALS`填充。
+[^6]: 该字段由`PHP_MODULE_GLOBALS`填充。
+[^7]: 仅当USING_ZTS是时，此字段存在true。
+[^8]: 仅当USING_ZTS是时，此字段存在false。
+[^9]: 该字段由`STANDARD_MODULE_PROPERTIES_EX`填充。
 
