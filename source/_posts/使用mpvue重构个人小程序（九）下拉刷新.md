@@ -1,11 +1,12 @@
 ---
-title: '使用mpvue重构个人小程序（九）下拉刷新'
+title: 使用mpvue重构个人小程序（九）下拉刷新
 thumbnail: /assets/articleImg/2019/timg-xcx.jpeg
 tags:
   - mpvue
   - 小程序
 categories:
   - - 小程序
+abbrlink: 4390feb9
 date: 2019-04-16 14:01:50
 ---
 上一节：[使用mpvue重构个人小程序（八）使用全局变量](/2019/04/16/使用mpvue重构个人小程序（八）使用全局变量/)

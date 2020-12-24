@@ -2,11 +2,12 @@
 layout: post
 title: 使用HEXO与Github.io搭建个人博客
 thumbnail: /assets/articleImg/2020/timg-hexo.jpeg
-date: 2020-05-09 20:16:57
 comments: true
 toc: true
-tags: 
-	- Hexo
+tags:
+  - Hexo
+abbrlink: 4081f3d5
+date: 2020-05-09 20:16:57
 ---
 
  HEXO是基于Node.JS的一款简单快速的博客框架，能够支持多线程，支持markdown，可以将生成的静态网页发布到github.io以及coding上。

@@ -6,6 +6,7 @@ tags:
   - 小程序
 categories:
   - - 小程序
+abbrlink: fdc1a9c5
 date: 2019-04-16 12:01:41
 ---
 上一节：[使用mpvue重构个人小程序（五）插件配置mpvue-calendar](/2019/04/16/使用mpvue重构个人小程序（五）插件配置mpvue-calendar/)

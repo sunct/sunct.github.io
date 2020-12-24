@@ -5,6 +5,7 @@ tags:
   - Linux
 categories:
   - - Linux
+abbrlink: be4bd57b
 date: 2019-03-11 14:45:26
 ---
 ## ln

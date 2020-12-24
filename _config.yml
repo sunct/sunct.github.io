@@ -9,7 +9,6 @@ timezone: ''
 email: sunch1234@qq.com
 url: 'https://sunct.github.io'
 root: /
-permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
 pretty_urls:
   trailing_index: true
@@ -82,3 +81,13 @@ jsonContent:
     categories: false
     tags: true
 word_count: true
+
+
+# 首先找到并修改permalink的格式
+permalink: posts/:abbrlink.html
+
+# 然后再添加abbrlink的配置
+# abbrlink config
+abbrlink:
+  alg: crc32  #support crc16(default) and crc32
+  rep: hex    #support dec(default) and hex

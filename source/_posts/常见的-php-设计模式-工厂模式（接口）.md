@@ -5,6 +5,7 @@ tags:
   - 模式
 categories:
   - - PHP
+abbrlink: 43f2273
 date: 2019-03-26 20:43:19
 ---
 ## 工厂模式

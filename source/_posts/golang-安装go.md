@@ -2,11 +2,12 @@
 layout: post
 title: 安装go
 thumbnail: /assets/articleImg/2020/u19859778662129692339fm11gp0.jpg
-date: 2020-01-15 16:08:10
 comments: true
 toc: true
-tags: 
-	- golang
+tags:
+  - golang
+abbrlink: d70c7b78
+date: 2020-01-15 16:08:10
 ---
 
 - ### linux 环境下安装

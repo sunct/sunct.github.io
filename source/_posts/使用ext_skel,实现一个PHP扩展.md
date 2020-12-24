@@ -1,10 +1,11 @@
 ---
-title: '使用ext_skel，实现一个PHP扩展'
+title: 使用ext_skel，实现一个PHP扩展
 thumbnail: /assets/articleImg/2019/timg-php.jpeg
 tags:
   - PHP
 categories:
   - - PHP
+abbrlink: d42c7b69
 date: 2020-12-21 19:00:50
 ---
 

@@ -5,6 +5,7 @@ tags:
   - goland
 categories:
   - - Golang
+abbrlink: 2ebe1bc0
 date: 2020-01-15 16:54:54
 ---
 

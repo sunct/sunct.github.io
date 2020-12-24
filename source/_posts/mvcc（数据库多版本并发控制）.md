@@ -5,6 +5,7 @@ tags:
   - MVCC
 categories:
   - - MySQL
+abbrlink: 765fe4cd
 date: 2019-04-24 10:34:58
 ---
 

@@ -2,9 +2,10 @@
 title: ' php：布尔值（boolean）数据类型判断'
 thumbnail: /assets/articleImg/2019/timg-php.jpeg
 tags:
-    - PHP
+  - PHP
 categories:
   - - PHP
+abbrlink: e1c556bb
 date: 2019-03-27 17:31:59
 ---
 

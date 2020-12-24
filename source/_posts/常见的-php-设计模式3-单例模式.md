@@ -5,6 +5,7 @@ tags:
   - 模式
 categories:
   - - PHP
+abbrlink: a878a524
 date: 2019-03-26 20:59:11
 ---
 

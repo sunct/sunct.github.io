@@ -5,6 +5,7 @@ tags:
   - shell
 categories:
   - - shell
+abbrlink: b26d3dc0
 date: 2019-04-16 19:04:48
 ---
 

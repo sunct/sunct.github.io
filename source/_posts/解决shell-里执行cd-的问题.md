@@ -5,6 +5,7 @@ tags:
   - shell
 categories:
   - - shell
+abbrlink: '51347788'
 date: 2019-04-02 21:43:15
 ---
 
