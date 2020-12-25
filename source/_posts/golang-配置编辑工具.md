@@ -22,7 +22,7 @@ go常用的编辑器包括但不限于：[GoLand](https://www.jetbrains.com/go/)
 
 ## 配置go modules
 
-![配置go modules](/assets/articleImg/2020/tool-2.png)
+![配置go modules](/assets/articleImg/2020/tool-2.jpg)
 
 勾选 -[] Enable Go Modules (vgo) integration 选择并配置。
 
@@ -32,4 +32,4 @@ go常用的编辑器包括但不限于：[GoLand](https://www.jetbrains.com/go/)
 
 如图所示：
 
-![自动格式化代码](/assets/articleImg/2020/tool-3.png)
+![自动格式化代码](/assets/articleImg/2020/tool-3.jpg)
