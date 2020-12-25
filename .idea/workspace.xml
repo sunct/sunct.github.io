@@ -4,103 +4,23 @@
     <list default="true" id="985555ff-71fd-4286-8d45-24e155398256" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/marked" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/lib/renderer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/.bin/which" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/camel-case/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/camel-case/camel-case.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/camel-case/camel-case.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/camel-case/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/cross-spawn/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/cross-spawn/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/cross-spawn/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/cross-spawn/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/cross-spawn/lib/enoent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/cross-spawn/lib/parse.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/cross-spawn/lib/util/escape.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/cross-spawn/lib/util/readShebang.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/cross-spawn/lib/util/resolveCommand.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/cross-spawn/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/highlight_alias.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/cache_stream.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/camel_case_keys.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/color.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/escape_diacritic.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/escape_html.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/escape_regexp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/hash.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/highlight.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/html_tag.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/pattern.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/permalink.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/slugize.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/spawn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/strip_html.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/truncate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/lib/word_wrap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/hexo-util/scripts/build_highlight_alias.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/lower-case/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/lower-case/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/lower-case/lower-case.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/lower-case/lower-case.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/lower-case/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/no-case/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/no-case/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/no-case/no-case.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/no-case/no-case.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/no-case/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/no-case/vendor/camel-case-regexp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/no-case/vendor/camel-case-upper-regexp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/no-case/vendor/non-word-regexp.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/path-key/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/path-key/license" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/path-key/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/path-key/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/shebang-command/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/shebang-command/license" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/shebang-command/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/shebang-command/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/shebang-regex/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/shebang-regex/license" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/shebang-regex/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/shebang-regex/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/which/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/which/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/which/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/which/bin/which" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/which/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/node_modules/which/which.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/hexo-renderer-marked/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/marked/LICENSE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/marked/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/marked/bin/marked" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/marked/lib/marked.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/marked/man/marked.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/marked/man/marked.1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/marked/marked.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/marked/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nice-try/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nice-try/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nice-try/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nice-try/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nice-try/src/index.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/atom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/atom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/categories/PHP/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/PHP/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/categories/小札/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/小札/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/content.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/content.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/posts/6fd2d282.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/6fd2d282.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/posts/a08a7e28.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/a08a7e28.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/posts/d42c7b69.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/d42c7b69.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/PHP/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/PHP/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/tags/那风吹不干的记忆/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/那风吹不干的记忆/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/tags/阴阳师/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/阴阳师/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/2020阴阳师式神一览表.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2020阴阳师式神一览表.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/_posts/使用ext_skel,实现一个PHP扩展.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/使用ext_skel,实现一个PHP扩展.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/花猫.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/花猫.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -126,34 +46,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_config.icarus.yml">
+        <entry file="file://$PROJECT_DIR$/node_modules/hexo-tag-chart/template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="418" column="26" selection-start-line="418" selection-start-column="26" selection-end-line="418" selection-end-column="26" />
+            <state relative-caret-position="105">
+              <caret line="7" column="26" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="26" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5960" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/atom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14799" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/_posts/使用ext_skel,实现一个PHP扩展.md">
+        <entry file="file://$PROJECT_DIR$/source/_posts/花猫.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="260">
-                <caret line="267" column="5" selection-start-line="267" selection-start-column="5" selection-end-line="267" selection-end-column="5" />
+              <first_editor relative-caret-position="302">
+                <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
               </first_editor>
               <second_editor />
             </state>
@@ -161,37 +70,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package-lock.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6323" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="92" column="43" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="43" />
+        <entry file="file://$PROJECT_DIR$/source/_posts/解决shell-里执行cd-的问题.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="330">
+                <caret line="22" selection-start-line="22" selection-end-line="22" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/hexo/lib/hexo/default_config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-47">
-              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/assets/articleImg/2020/1608625181672.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/_posts/linux基本命令学习五-crontab.md">
+        <entry file="file://$PROJECT_DIR$/source/_posts/邻家那棵老香椿.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor />
@@ -201,11 +92,67 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/_posts/使用mpvue重构个人小程序（一）安装.md">
+        <entry file="file://$PROJECT_DIR$/source/_posts/爬虫-抓取微信公众号阅读量（python3-mongdb）.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="180">
-                <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-4938">
+                <caret line="24" selection-start-line="24" selection-end-line="24" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/cgi-fastcgiphp-cgiphp-fpm的关系.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-468" />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/golang-安装go.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-1500" />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/golang-语言学习文档.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-48">
+                <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/linux基本命令学习四-touch、.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="-873">
+                <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/_posts/2020阴阳师式神一览表.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="480">
+                <caret line="119" column="1" selection-start-line="119" selection-start-column="1" selection-end-line="119" selection-end-column="1" />
               </first_editor>
               <second_editor />
             </state>
@@ -216,8 +163,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>default.css</find>
-      <find>navbar</find>
       <find>navbar.jsx</find>
       <find>recent_posts</find>
       <find>article</find>
@@ -246,6 +191,8 @@
       <find>:year/:month/:day/:title/</find>
       <find>plugins</find>
       <find>markdown</find>
+      <find>烬天玉藻前</find>
+      <find>鬼王酒吞童子</find>
     </findStrings>
     <replaceStrings>
       <replace>`</replace>
@@ -265,6 +212,7 @@
       <dir>$PROJECT_DIR$/source/assets/articleImg/2020</dir>
       <dir>$PROJECT_DIR$/source</dir>
       <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/node_modules/hexo-tag-chart</dir>
     </dirStrings>
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.15.5/libexec" />
@@ -287,10 +235,8 @@
         <option value="$PROJECT_DIR$/source/_posts/shell-批量关闭端口.md" />
         <option value="$PROJECT_DIR$/source/_posts/漫谈数据库事务.md" />
         <option value="$PROJECT_DIR$/source/_posts/邻家那棵老香椿.md" />
-        <option value="$PROJECT_DIR$/source/_posts/花猫.md" />
         <option value="$PROJECT_DIR$/source/_posts/家门外的石碾.md" />
         <option value="$PROJECT_DIR$/source/_posts/二年级的同桌.md" />
-        <option value="$PROJECT_DIR$/source/_posts/2020阴阳师式神一览表.md" />
         <option value="$PROJECT_DIR$/source/_posts/0525.md" />
         <option value="$PROJECT_DIR$/source/_posts/关于消息队列的使用.md" />
         <option value="$PROJECT_DIR$/source/_posts/memcached、redis和mongodb的区别.md" />
@@ -330,10 +276,13 @@
         <option value="$PROJECT_DIR$/_config.yml" />
         <option value="$PROJECT_DIR$/_config.icarus.yml" />
         <option value="$PROJECT_DIR$/source/_posts/使用ext_skel,实现一个PHP扩展.md" />
+        <option value="$PROJECT_DIR$/source/_posts/花猫.md" />
+        <option value="$PROJECT_DIR$/source/_posts/2020阴阳师式神一览表.md" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
+    <option name="x" value="137" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="810" />
@@ -407,10 +356,10 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="23" width="1440" height="810" extended-state="6" />
+    <frame x="-39" y="23" width="1440" height="810" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.101573676" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21316166" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -424,7 +373,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2869081" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.15738161" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -436,106 +385,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/source/_posts/cross-request-chrome插件无效解决办法.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="220">
-            <caret line="17" selection-start-line="17" selection-end-line="17" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/golang-包管理go-modules.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="300">
-            <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/golang-安装go.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="240">
-            <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/golang-配置编辑工具.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-1" />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/jetbrains系列产品2020-1最新激活方法（转）.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="180">
-            <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/mysql-性能优化方案.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="285">
-            <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/mysql-语句举例（一）.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/mysql分库分表.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/mysql存储引擎myisam与innodb的区别比较.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-5" />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/邻家那棵老香椿.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/爬虫-抓取微信公众号阅读量（python3-mongdb）.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="360">
-            <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/使用mpvue重构个人小程序（九）下拉刷新.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -614,31 +463,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/解决shell-里执行cd-的问题.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="330">
-            <caret line="22" selection-start-line="22" selection-end-line="22" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/php：布尔值（boolean）数据类型判断.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="270">
             <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/php优先级问题.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="525">
-            <caret line="35" selection-start-line="35" selection-end-line="35" selection-end-column="13" />
           </first_editor>
           <second_editor />
         </state>
@@ -697,43 +526,33 @@
     <entry file="file://$PROJECT_DIR$/source/assets/articleImg/2020/1608548910651.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/golang-语言学习文档.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="105">
-            <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/_config.icarus.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="396" column="23" selection-start-line="396" selection-start-column="23" selection-end-line="396" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/linux基本命令学习四-touch、.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="315">
-            <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/db.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/atom.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="92" column="43" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/2020阴阳师式神一览表.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="210">
-            <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="11" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/blog-build.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="135">
-            <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/node_modules/hexo/lib/hexo/default_config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -751,59 +570,166 @@
     <entry file="file://$PROJECT_DIR$/source/_posts/使用mpvue重构个人小程序（一）安装.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="180">
+          <first_editor relative-caret-position="195">
             <caret line="13" selection-start-line="13" selection-end-line="13" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5960" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/atom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14799" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6323" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/hexo/lib/hexo/default_config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-47">
-          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="92" column="43" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.icarus.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="418" column="26" selection-start-line="418" selection-start-column="26" selection-end-line="418" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/使用ext_skel,实现一个PHP扩展.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-1653">
+            <caret line="278" column="2" lean-forward="true" selection-start-line="278" selection-start-column="2" selection-end-line="278" selection-end-column="2" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/blog-build.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="260">
-            <caret line="267" column="5" selection-start-line="267" selection-start-column="5" selection-end-line="267" selection-end-column="5" />
+          <first_editor relative-caret-position="-13">
+            <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/cross-request-chrome插件无效解决办法.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-273" />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/golang-包管理go-modules.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-1156" />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/php优先级问题.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="432">
+            <caret line="35" selection-start-line="35" selection-end-line="35" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/hexo-tag-chart/test/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/hexo-tag-chart/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/hexo-tag-chart/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/hexo-tag-chart/template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/花猫.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="302">
+            <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/解决shell-里执行cd-的问题.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="330">
+            <caret line="22" selection-start-line="22" selection-end-line="22" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/邻家那棵老香椿.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/爬虫-抓取微信公众号阅读量（python3-mongdb）.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-4938">
+            <caret line="24" selection-start-line="24" selection-end-line="24" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/golang-语言学习文档.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-48">
+            <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/linux基本命令学习四-touch、.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-873">
+            <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/golang-安装go.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-1500" />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/cgi-fastcgiphp-cgiphp-fpm的关系.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-468" />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/2020阴阳师式神一览表.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="480">
+            <caret line="119" column="1" selection-start-line="119" selection-start-column="1" selection-end-line="119" selection-end-column="1" />
           </first_editor>
           <second_editor />
         </state>
