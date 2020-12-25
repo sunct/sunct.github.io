@@ -207,9 +207,9 @@
     <link href="https://sunct.github.io/posts/2ebe1bc0.html"/>
     <id>https://sunct.github.io/posts/2ebe1bc0.html</id>
     <published>2020-01-15T08:54:54.000Z</published>
-    <updated>2020-12-25T11:07:45.492Z</updated>
+    <updated>2020-12-25T13:44:12.520Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>go常用的编辑器包括但不限于：<a href="https://www.jetbrains.com/go/">GoLand</a> ,<a href="https://code.visualstudio.com/">Visual Studio Code</a></p><p>目前我使用的是 GoLand</p><h1>1、goland配置</h1> <a id="more"></a> <p><img src="/assets/articleImg/2020/tool-1.png" alt="goland配置"></p><p>打开goland设置</p><h2 id="配置go-modules">配置go modules</h2><p><img src="/assets/articleImg/2020/tool-2.png" alt="配置go modules"></p><p>勾选 -[] Enable Go Modules (vgo) integration 选择并配置。</p><h2 id="自动格式化代码">自动格式化代码</h2><p>可以通过添加一个File Watcher来在文件发生变化的时候调用gofmt进行代码格式化，具体方法是，点击Preferences -&gt; Tools -&gt; File Watchers，点加号添加一个go fmt模版，Goland中预置的go fmt模版使用的是go fmt命令，将其替换为gofmt，然后在参数中增加-l -w -s参数，启用代码简化功能。添加配置后，保存源码时，goland就会执行代码格式化了。</p><p>如图所示：</p><p><img src="/assets/articleImg/2020/tool-3.png" alt="自动格式化代码"></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>go常用的编辑器包括但不限于：<a href="https://www.jetbrains.com/go/">GoLand</a> ,<a href="https://code.visualstudio.com/">Visual Studio Code</a></p><p>目前我使用的是 GoLand</p><h1>1、goland配置</h1> <a id="more"></a> <p><img src="/assets/articleImg/2020/tool-1.png" alt="goland配置"></p><p>打开goland设置</p><h2 id="配置go-modules">配置go modules</h2><p><img src="/assets/articleImg/2020/tool-2.jpg" alt="配置go modules"></p><p>勾选 -[] Enable Go Modules (vgo) integration 选择并配置。</p><h2 id="自动格式化代码">自动格式化代码</h2><p>可以通过添加一个File Watcher来在文件发生变化的时候调用gofmt进行代码格式化，具体方法是，点击Preferences -&gt; Tools -&gt; File Watchers，点加号添加一个go fmt模版，Goland中预置的go fmt模版使用的是go fmt命令，将其替换为gofmt，然后在参数中增加-l -w -s参数，启用代码简化功能。添加配置后，保存源码时，goland就会执行代码格式化了。</p><p>如图所示：</p><p><img src="/assets/articleImg/2020/tool-3.jpg" alt="自动格式化代码"></p>]]></content>
     
     
     <summary type="html">&lt;p&gt;go常用的编辑器包括但不限于：&lt;a href=&quot;https://www.jetbrains.com/go/&quot;&gt;GoLand&lt;/a&gt; ,&lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;&lt;/p&gt;
