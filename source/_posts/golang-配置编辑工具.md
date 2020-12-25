@@ -16,13 +16,13 @@ go常用的编辑器包括但不限于：[GoLand](https://www.jetbrains.com/go/)
 
 # 1、goland配置
  <!--more--> 
-[![image](https://github.com/sunct/learning-go/raw/master/images/tool-1.png)](https://github.com/sunct/learning-go/blob/master/images/tool-1.png)
+![goland配置](https://github.com/sunct/learning-go/raw/master/images/tool-1.png)
 
 打开goland设置 
 
 ## 配置go modules
 
-[![image](https://github.com/sunct/learning-go/raw/master/images/tool-2.jpg)](https://github.com/sunct/learning-go/blob/master/images/tool-2.jpg)
+![配置go modules](https://github.com/sunct/learning-go/raw/master/images/tool-2.jpg)
 
 勾选 -[] Enable Go Modules (vgo) integration 选择并配置。
 
@@ -32,4 +32,4 @@ go常用的编辑器包括但不限于：[GoLand](https://www.jetbrains.com/go/)
 
 如图所示：
 
-![image](https://github.com/sunct/learning-go/raw/master/images/tool-3.jpg)](https://github.com/sunct/learning-go/blob/master/images/tool-3.jpg)
+![自动格式化代码](https://github.com/sunct/learning-go/raw/master/images/tool-3.jpg)

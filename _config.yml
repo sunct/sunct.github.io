@@ -1,3 +1,8 @@
+server:
+  port: 4001 #端口号随意，默认是4000
+  compress: true
+  header: true
+
 title: sunct的博客
 subtitle: 我走路带风
 description: sunc的博客

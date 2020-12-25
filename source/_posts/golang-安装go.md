@@ -10,7 +10,7 @@ abbrlink: d70c7b78
 date: 2020-01-15 16:08:10
 ---
 
-- ### linux 环境下安装
+# 一、linux 环境下安装
 
 安装包可从[go官网](https://golang.google.cn/dl/) 或者 [go 中文网](https://studygolang.com/dl) ，找到安装包路径。如图所示，根据自己需求下载。
 
@@ -18,13 +18,13 @@ date: 2020-01-15 16:08:10
 <!--more-->
 在操作环境下，执行下面的命令进行下载。（截止时间：2020年01月14日14:14:59）
 
-#### 1、下载安装包
+## 1、下载安装包
 ```linux
 wget https://studygolang.com/dl/golang/go1.13.6.linux-amd64.tar.gz
 ```
 根据你当前时间使用最新版本。
 
-#### 2、提取压缩包
+## 2、提取压缩包
 
 提取压缩包到合适的目录（例如: /usr/local ，该目录一般是默认的目录），（注：根据自己的安装包修改命令中的版本号。）
 
@@ -37,12 +37,12 @@ rm -rf go1.13.6.linux-amd64.tar.gz
 ```
 
 
-#### 3、查看安装版本
+## 3、查看安装版本
 ```$xslt
 go version
 ```
 
-### 4、配置环境变量
+## 4、配置环境变量
 ```$xslt
 vim /etc/profile
 ```
@@ -57,7 +57,7 @@ export PATH=$PATH:$GOBIN
 ```$xslt
 source /etc/profile
 ```
-### 5、查看环境变量信息
+## 5、查看环境变量信息
 ```$xslt
 go env
 ```
@@ -83,26 +83,27 @@ GOSUMDB="sum.golang.org"
 
 ```
 
-### 6、go版本升级
+## 6、go版本升级
 先删除旧版本，只需删除/usr/local/go 文件即可。运行命令：
 ```$xslt
 sudo rm -rf /usr/local/go
 ```
 再根据此文进行 下载新版本包并安装即可。
 
-- ### mac 环境下安装
+# 二、mac 环境下安装
 
-#### 1、安装
+## 1、安装
+
 使用 brew 运行命令：
 ```$xslt
 brew install go
 ```
 
-#### 2、查看安装版本
+## 2、查看安装版本
 ```$xslt
 go version
 ```
-#### 3、配置环境变量
+## 3、配置环境变量
 编辑
 ```$xslt
 vim ~/.bash_profile
@@ -119,16 +120,16 @@ source ~/.bash_profile
 ```
 
 
-#### 4、升级版本
+## 4、升级版本
 ```$xslt
 brew upgrade go
 ```
-#### 5、切换版本
+## 5、切换版本
 ```$xslt
 brew switch go 1.13.6
 ```
 
-#### 6、卸载
+## 6、卸载
 ```$xslt
 brew uninstall go
 ```

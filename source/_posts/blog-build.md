@@ -24,6 +24,7 @@ date: 2020-05-09 20:16:57
 ```linux
 brew install node
 ```
+
 # 二、安装hexo
 
 运行以下命令
@@ -95,7 +96,7 @@ INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.
 在浏览器下输入[http://localhost:4000](http://localhost:4000)，成功的话就生成hexo的标准界面。
 
 
-## 四、更换主题
+# 四、更换主题
 
 只需在项目 themes 文件下，加入自己想要的主题即可。
 
@@ -116,7 +117,7 @@ hexo g
 hexo server
 ```
 
-## 五、部署到github
+# 五、部署到github
 
 首先，在github中建立一个仓库（没有账户的先创建一个吧！ O(∩_∩)O哈哈~），仓库名字为 `XXX`.github.io,其中 `XXX` 是自定义的名字，后缀必须是`.github.io`。
 
@@ -159,7 +160,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 git pull origin master --allow-unrelated-histories
 ```
 
-## 六、写博客
+# 六、写博客
 
 在 `/source/_posts/`目录下写自己的博客就可以了。
 写完后再构建即可，可现在本地预览一下 [http://localhost:4000](http://localhost:4000)。把构建完的`public`文件夹上传到github就可以了。
