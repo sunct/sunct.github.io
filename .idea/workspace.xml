@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="985555ff-71fd-4286-8d45-24e155398256" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/source/assets/blogImg/cat_2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/2020阴阳师式神一览表.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2020阴阳师式神一览表.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,60 +24,6 @@
     </option>
     <expand />
     <select />
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>article</find>
-      <find>thumbnail</find>
-      <find>image-32</find>
-      <find>\*\*</find>
-      <find>```shell</find>
-      <find>https://www.sunsanmiao.cn/wp-content/uploads/2019/03/</find>
-      <find>https://www.sunsanmiao.cn/wp-content/uploads/2019/04/</find>
-      <find>foot</find>
-      <find>footerLogo</find>
-      <find>logoUrl</find>
-      <find>XMLHttpRequest</find>
-      <find>script&gt;</find>
-      <find>window.</find>
-      <find>&lt;script&gt;</find>
-      <find>logo</find>
-      <find>shell</find>
-      <find>1605591636896</find>
-      <find>articleImg</find>
-      <find>STANDARD_MODULE_HEADER_EX</find>
-      <find>highlight</find>
-      <find>sitemap</find>
-      <find>permalink</find>
-      <find>crc32</find>
-      <find>:year/:month/:day/:title/</find>
-      <find>plugins</find>
-      <find>markdown</find>
-      <find>烬天玉藻前</find>
-      <find>鬼王酒吞童子</find>
-      <find>4000</find>
-      <find>compress</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>`</replace>
-      <replace>```linux</replace>
-      <replace />
-      <replace>/assets/articleImg/2019/</replace>
-      <replace>linux</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/themes/icarus/layout</dir>
-      <dir>$PROJECT_DIR$/source/_posts</dir>
-      <dir>$PROJECT_DIR$/themes</dir>
-      <dir>$PROJECT_DIR$/node_modules</dir>
-      <dir>$PROJECT_DIR$/node_modules/hexo-component-inferno</dir>
-      <dir>$PROJECT_DIR$/node_modules/hexo-theme-icarus</dir>
-      <dir>$PROJECT_DIR$/themes/icarus</dir>
-      <dir>$PROJECT_DIR$/source/assets/articleImg/2020</dir>
-      <dir>$PROJECT_DIR$/source</dir>
-      <dir>$PROJECT_DIR$/node_modules/hexo-tag-chart</dir>
-      <dir>$PROJECT_DIR$</dir>
-    </dirStrings>
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.15.5/libexec" />
   <component name="Git.Settings">
@@ -105,24 +51,24 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/source/assets/blogImg" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/source/assets/blogImg" />
+      <recent name="$PROJECT_DIR$/source/assets/articleImg/2020" />
+      <recent name="$PROJECT_DIR$/source/assets/articleImg" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/source/assets/file/2019" />
       <recent name="$PROJECT_DIR$/source/assets/file" />
       <recent name="$PROJECT_DIR$/source/assets/articleImg/2020" />
       <recent name="$PROJECT_DIR$/source/assets/articleImg/2019" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/source/assets/articleImg/2020" />
-      <recent name="$PROJECT_DIR$/source/assets/blogImg" />
-      <recent name="$PROJECT_DIR$/source/assets/articleImg" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
