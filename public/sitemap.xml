@@ -2,7 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://sunct.github.io/posts/0.html</loc>
+    <loc>https://sunct.github.io/posts/84082f1e.html</loc>
+    
+    <lastmod>2021-01-04</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://sunct.github.io/posts/a08a7e28.html</loc>
     
     <lastmod>2021-01-04</lastmod>
     
@@ -459,6 +466,13 @@
   </url>
   
   <url>
+    <loc>https://sunct.github.io/tags/%E9%98%B4%E9%98%B3%E5%B8%88/</loc>
+    <lastmod>2021-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://sunct.github.io/tags/kafka/</loc>
     <lastmod>2021-01-04</lastmod>
     <changefreq>daily</changefreq>
@@ -749,6 +763,13 @@
   
   <url>
     <loc>https://sunct.github.io/categories/%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2021-01-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://sunct.github.io/categories/%E6%B8%B8%E6%88%8F/</loc>
     <lastmod>2021-01-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
