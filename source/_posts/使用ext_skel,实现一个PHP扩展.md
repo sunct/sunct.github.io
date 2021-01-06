@@ -412,3 +412,5 @@ zend_module_entry hello_module_entry = {
 [^8]: 仅当USING_ZTS是时，此字段存在false。
 [^9]: 该字段由`STANDARD_MODULE_PROPERTIES_EX`填充。
 
+
+下一节：[PHP的目录结构、设计理念以及核心架构](/posts/67d3d9f2.html)
