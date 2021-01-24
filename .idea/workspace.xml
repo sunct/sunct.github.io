@@ -6,10 +6,14 @@
       <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/atom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/atom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/categories/游戏/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/游戏/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/category-sitemap.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/content.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/content.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/post-sitemap.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/posts/84082f1e.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/84082f1e.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/sitemap.xsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/tag-sitemap.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/阴阳师/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/阴阳师/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/_posts/2021阴阳师式神一览表.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2021阴阳师式神一览表.md" afterDir="false" />
     </list>
