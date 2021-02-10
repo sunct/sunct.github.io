@@ -33,7 +33,7 @@ class Footer extends Component {
             yiYanContent = <div><p id="hitokoto">:D 获取中...</p> <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer=""></script></div>
         }
         if(weather){
-            weatherContent = <iframe width="150" scrolling="no" height="30" frameBorder="0" allowTransparency="true"
+            weatherContent = <iframe width="180" scrolling="no" height="30" frameBorder="0" allowTransparency="true"
                                     src="https://i.tianqi.com?c=code&id=53&icon=1&site=12"></iframe>
         }
 
