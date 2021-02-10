@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="985555ff-71fd-4286-8d45-24e155398256" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/source/assets/articleImg/2021/pic01_2d8d19c.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/source/assets/articleImg/2021/yys_gmzr_1366X768.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.12.9.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/@babel/register/.babel.7.12.9.development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/archives/2019/03/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/archives/2019/03/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/archives/2019/04/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/archives/2019/04/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/archives/2019/08/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/archives/2019/08/index.html" afterDir="false" />
@@ -21,7 +19,6 @@
       <change beforePath="$PROJECT_DIR$/public/archives/2021/01/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/archives/2021/01/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/archives/2021/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/archives/2021/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/archives/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/archives/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/atom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/atom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/categories/Golang/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/Golang/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/categories/Linux/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/Linux/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/categories/Linux/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/Linux/page/2/index.html" afterDir="false" />
@@ -43,9 +40,9 @@
       <change beforePath="$PROJECT_DIR$/public/categories/服务/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/服务/page/2/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/categories/游戏/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/游戏/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/categories/网络/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/网络/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/category-sitemap.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/content.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/content.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/page/2/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/page/3/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/page/4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/page/4/index.html" afterDir="false" />
@@ -54,7 +51,6 @@
       <change beforePath="$PROJECT_DIR$/public/page/7/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/page/7/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/page/8/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/page/8/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/page/9/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/page/9/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/post-sitemap.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/posts/10651370.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/10651370.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/posts/1a33f37a.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/1a33f37a.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/posts/296757da.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/296757da.html" afterDir="false" />
@@ -121,8 +117,6 @@
       <change beforePath="$PROJECT_DIR$/public/posts/fc8eac67.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/fc8eac67.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/posts/fdc1a9c5.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/posts/fdc1a9c5.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/public/sitemap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/sitemap.xsl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tag-sitemap.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/Charles/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/Charles/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/HTTP/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/HTTP/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/Hexo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/Hexo/index.html" afterDir="false" />
@@ -163,7 +157,6 @@
       <change beforePath="$PROJECT_DIR$/public/tags/爬虫/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/爬虫/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/那风吹不干的记忆/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/那风吹不干的记忆/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/阴阳师/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/阴阳师/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/_posts/2021阴阳师式神一览表.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/2021阴阳师式神一览表.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -184,6 +177,13 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="/usr/local/Cellar/go/1.15.5/libexec" />
   <component name="Git.Settings">
@@ -211,25 +211,25 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/source/assets/articleImg/2021" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/source/photos" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="Settings.Markdown" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/source/photos" />
+      <recent name="$PROJECT_DIR$/source/assets/articleImg/2021" />
+      <recent name="$PROJECT_DIR$/source/assets/blogImg" />
+      <recent name="$PROJECT_DIR$/source/assets/articleImg/2020" />
+      <recent name="$PROJECT_DIR$/source/assets/articleImg" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/source/assets/file/2019" />
       <recent name="$PROJECT_DIR$/source/assets/file" />
       <recent name="$PROJECT_DIR$/source/assets/articleImg/2020" />
       <recent name="$PROJECT_DIR$/source/assets/articleImg/2019" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/source/assets/articleImg/2021" />
-      <recent name="$PROJECT_DIR$/source/assets/blogImg" />
-      <recent name="$PROJECT_DIR$/source/assets/articleImg/2020" />
-      <recent name="$PROJECT_DIR$/source/assets/articleImg" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
