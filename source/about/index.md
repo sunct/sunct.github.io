@@ -17,4 +17,10 @@ date: 2021-02-10 15:28:11
 ### 关于博主
 
 - 暂无介绍。
+- 公众号：sunsanmiao（孙三苗）或扫描下面的`二维码`
+<div  align="center" style="width: 25%;margin: 0 auto;">
+  
+![公众号二维码](/assets/blogImg/qrcode_for_gh_99ec35f7100f_258.jpg)
+
+</div>
 

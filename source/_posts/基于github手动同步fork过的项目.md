@@ -7,7 +7,7 @@ tags:
   - github
 categories:
   - - 服务
-date: '2021-01-118 11:11:20'
+date: '2021-02-18 11:11:20'
 abbrlink: 14ebfabe
 ---
 
@@ -53,5 +53,5 @@ abbrlink: 14ebfabe
 
 完成。
 
-> 另外，如果不想如此麻烦操作，也可以把自己fork的项目删除先掉，然后再重新`fork`。
+> 另外，如果不想如此麻烦操作，也可以把自己fork的项目先删除掉，然后再重新`fork`。
 
