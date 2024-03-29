@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title> Linux基本命令学习(一)-ifconfig、cd、ls、vi、pwd - sunct的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="孙三苗"><meta name="msapplication-TileImage" content="/assets/blogImg/cat_2.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="孙三苗"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta description="1、ifconfig　　IP查询"><meta property="og:type" content="blog"><meta property="og:title" content=" Linux基本命令学习(一)-ifconfig、cd、ls、vi、pwd"><meta property="og:url" content="https://sunct.github.io/posts/ecf5933.html"><meta property="og:site_name" content="sunct的博客"><meta property="og:description" content="1、ifconfig　　IP查询"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://sunct.github.io/assets/articleImg/2019/img-linux.jpg"><meta property="article:published_time" content="2019-03-11T05:00:09.000Z"><meta property="article:modified_time" content="2020-12-24T06:18:22.851Z"><meta property="article:author" content="sunct"><meta property="article:tag" content="Linux"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/assets/articleImg/2019/img-linux.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://sunct.github.io/posts/ecf5933.html"},"headline":"sunct的博客","image":["https://sunct.github.io/assets/articleImg/2019/img-linux.jpg"],"datePublished":"2019-03-11T05:00:09.000Z","dateModified":"2020-12-24T06:18:22.851Z","author":{"@type":"Person","name":"sunct"},"description":"1、ifconfig　　IP查询"}</script><link rel="canonical" href="https://sunct.github.io/posts/ecf5933.html"><link rel="icon" href="/assets/blogImg/cat_2.png"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="sunct的博客" type="application/atom+xml">
+</head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/assets/blogImg/cat_2.png" alt="sunct的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a><a class="navbar-item" href="/atom.xml">RSS</a><a class="navbar-item" target="_blank" rel="noopener" href="https://support.qq.com/products/302198">吐个槽</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/sunct"><i class="fab fa-github"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2019-03-11T05:00:09.000Z" title="2019-03-11T05:00:09.000Z">2019-03-11</time>发表</span><span class="level-item"><time dateTime="2020-12-24T06:18:22.851Z" title="2020-12-24T06:18:22.851Z">2020-12-24</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/Linux/">Linux</a></span><span class="level-item">5 分钟读完 (大约680个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile"> Linux基本命令学习(一)-ifconfig、cd、ls、vi、pwd</h1><div class="content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="1、ifconfig-IP查询">1、ifconfig　　IP查询</h2>
+<p><img src="/assets/articleImg/2019/image-2-1024x457.png" alt=""></p>
+ <a id="more"></a> 
+<h2 id="2、cd-目录名-切换当前目录至dirName">2、cd [目录名] 切换当前目录至dirName</h2>
+<p>cd /home 进入 ‘/ home’ 目录’<br>
+cd … 返回上一级目录 <br>
+cd …/… 返回上两级目录 <br>
+cd 进入个人的主目录 <br>
+cd ~user1 进入个人的主目录 <br>
+cd - 返回上次所在的目录</p>
+<h2 id="3、ls-option-目录名称-显示制定目录下的内容">3、ls [-option] 目录名称　　显示制定目录下的内容</h2>
+<p><img src="/assets/articleImg/2019/image-3-1024x111.png" alt=""></p>
+<p>-a　　显示所有文件和目录，包含隐藏文件和目录</p>
+<p><img src="/assets/articleImg/2019/image-4-1024x150.png" alt=""></p>
+<p>-A　　显示所有文件和目录，包含隐藏文件和目录，但是不包含“.”,“…”</p>
+<p><img src="/assets/articleImg/2019/image-5-1024x123.png" alt=""></p>
+<p>-t　　根据时间排序</p>
+<p>-l　　显示文件和目录的完整属性 等同于命令 ll</p>
+<p><img src="/assets/articleImg/2019/image-6-1024x867.png" alt=""></p>
+<p>完整属性信息包含七部分：</p>
+<p>第一部分：由10列组成，第一列（“d”表示目录，“l”表示链接文件，“-”表示普通文件）</p>
+<p>后九列，3个位一组，分为三组（“r”，read,可读；“w”,write,可写；“x”,execute,可执行）</p>
+<p>第一组：文件拥有者所拥有的权限</p>
+<p>第二组：文件拥有者所在群组成员所拥有的权限</p>
+<p>第三组：其他人所拥有的权限</p>
+<p>第二部分：节点，每增加一个硬链接，节点数加1</p>
+<p>第三部分：拥有着</p>
+<p>第四部分：群组（文件或者目录所在的群组）</p>
+<p>第五部分：大小（单位：B）</p>
+<p>第六部分：最新修改时间</p>
+<p>第七部分：文件名</p>
+<h2 id="4、vi-文件名-如果vi后面的文件夹不存在，则新建文件夹；如果存在，则修改">4、vi 文件名　如果vi后面的文件夹不存在，则新建文件夹；如果存在，则修改</h2>
+<p>vi详细步骤：</p>
+<p>（1）vi 文件名（进入一般模式）</p>
+<p><img src="/assets/articleImg/2019/image-10-1024x54.png" alt=""></p>
+<p><img src="/assets/articleImg/2019/image-11-1024x498.png" alt=""></p>
+<p>（2）按字母“i”(进入vi编辑模式，左下角出现insert)</p>
+<p><img src="/assets/articleImg/2019/image-12-1024x498.png" alt=""></p>
+<p>（3）对文件进行编辑</p>
+<p>（4）按“esc”（退出编辑模式，进入一般模式，左下角insert消失）</p>
+<p>（5）输入：（进入命令模式）wq 保存退出；q! 强制退出不保存；w 文件另存为</p>
+<p><img src="/assets/articleImg/2019/image-13-1024x498.png" alt=""></p>
+<h2 id="5、pwd-显示工作路径">5、pwd 显示工作路径</h2>
+<p><img src="/assets/articleImg/2019/image-14.png" alt=""></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p> Linux基本命令学习(一)-ifconfig、cd、ls、vi、pwd</p><p><a href="https://sunct.github.io/posts/ecf5933.html">https://sunct.github.io/posts/ecf5933.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>sunct</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2019-03-11</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2020-12-24</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/Linux/">Linux </a></div></div><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a><a class="a2a_button_facebook"></a><a class="a2a_button_twitter"></a><a class="a2a_button_telegram"></a><a class="a2a_button_whatsapp"></a><a class="a2a_button_reddit"></a></div><script src="https://static.addtoany.com/menu/page.js" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/assets/blogImg/zfb.png" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/assets/blogImg/wx.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/81990dd0.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item"> Linux基本命令学习(二)-mkdir、rm、rmdir、mv、cp</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/cb531db8.html"><span class="level-item"> MySQL对于千万级的大表要怎么优化</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            appId: "06juAlgdDriA3wwLyx7IMrUg-gzGzoHsz",
+            appKey: "05lUVQevJdobqJ2AaqOi093g",
+            
+            
+            
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            lang: "zh-CN",
+            
+            highlight: true,
+            
+            
+            
+            
+            
+            requiredFields: [],
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/assets/blogImg/avatar_2.jpeg" alt="Sunct"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Sunct</p><p class="is-size-6 is-block">爱摸鱼的猫</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>中国 北京</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">69</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">11</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">34</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/sunct" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/sunct"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://gitee.com/sunct" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Gitee</span></span><span class="level-right"><span class="level-item tag">gitee.com</span></span></a></li><li><a class="level is-mobile" href="https://blog.csdn.net/u010377516" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">CSDN</span></span><span class="level-right"><span class="level-item tag">blog.csdn.net</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><figure class="media-left"><a class="image" href="/posts/1c8636b0.html"><img src="/assets/articleImg/2019/timg-php.jpeg" alt="PHP多进程（3）信号"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-03-15T03:07:57.000Z">2021-03-15</time></p><p class="title"><a href="/posts/1c8636b0.html">PHP多进程（3）信号</a></p><p class="categories"><a href="/categories/PHP/">PHP</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/5a0a73c6.html"><img src="/assets/articleImg/2019/timg-php.jpeg" alt="PHP多进程（2）孤儿进程与僵尸进程"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-03-15T02:54:57.000Z">2021-03-15</time></p><p class="title"><a href="/posts/5a0a73c6.html">PHP多进程（2）孤儿进程与僵尸进程</a></p><p class="categories"><a href="/categories/PHP/">PHP</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/547b869.html"><img src="/assets/articleImg/2019/timg-php.jpeg" alt="PHP多进程（1）PHP多进程初探"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-03-15T02:45:57.000Z">2021-03-15</time></p><p class="title"><a href="/posts/547b869.html">PHP多进程（1）PHP多进程初探</a></p><p class="categories"><a href="/categories/PHP/">PHP</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/d9cf7021.html"><img src="/assets/articleImg/2019/timg-php.jpeg" alt="PHP判断两个数字是否是同符号"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-02-20T02:47:20.000Z">2021-02-20</time></p><p class="title"><a href="/posts/d9cf7021.html">PHP判断两个数字是否是同符号</a></p><p class="categories"><a href="/categories/PHP/">PHP</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/14ebfabe.html"><img src="/assets/articleImg/2021/github.png" alt="基于github手动同步fork过的项目"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-02-18T03:11:20.000Z">2021-02-18</time></p><p class="title"><a href="/posts/14ebfabe.html">基于github手动同步fork过的项目</a></p><p class="categories"><a href="/categories/%E6%9C%8D%E5%8A%A1/">服务</a></p></div></article></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=Sunct&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="Sunct" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div><p class="help">邮件订阅，更新早知道</p></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/assets/blogImg/cat_2.png" alt="sunct的博客" height="28"></a><p class="is-size-7"><span>&copy; 2024 sunct</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p><div><p id="hitokoto">:D 获取中...</p> <script src="https://v1.hitokoto.cn/?encode=js&amp;select=%23hitokoto" defer=""></script></div><iframe width="180" scrolling="no" height="30" frameBorder="0" allowTransparency="true" src="https://i.tianqi.com?c=code&amp;id=53&amp;icon=1&amp;site=12"></iframe></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/sunct/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

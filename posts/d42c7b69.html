@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>使用ext_skel，实现一个PHP扩展 - sunct的博客</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="孙三苗"><meta name="msapplication-TileImage" content="/assets/blogImg/cat_2.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="孙三苗"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta description="一、写在前面 本文是以PHP7.4 作为基础，讲解如何从零开始创建一个PHP扩展。本文主要讲解创建一个扩展的基本步骤都有哪些。示例中，我们将实现如下功能： 12345&amp;lt;?phpecho hello();?&amp;gt; 输出内容： 123$ php74 .&amp;#x2F;hello.php$ hello word 在扩展中实现一个hello 方法，调用hello 方法后，输出 hello word!。"><meta property="og:type" content="blog"><meta property="og:title" content="使用ext_skel，实现一个PHP扩展"><meta property="og:url" content="https://sunct.github.io/posts/d42c7b69.html"><meta property="og:site_name" content="sunct的博客"><meta property="og:description" content="一、写在前面 本文是以PHP7.4 作为基础，讲解如何从零开始创建一个PHP扩展。本文主要讲解创建一个扩展的基本步骤都有哪些。示例中，我们将实现如下功能： 12345&amp;lt;?phpecho hello();?&amp;gt; 输出内容： 123$ php74 .&amp;#x2F;hello.php$ hello word 在扩展中实现一个hello 方法，调用hello 方法后，输出 hello word!。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://sunct.github.io/assets/articleImg/2019/timg-php.jpeg"><meta property="article:published_time" content="2020-12-21T11:00:50.000Z"><meta property="article:modified_time" content="2021-01-06T07:49:16.269Z"><meta property="article:author" content="sunct"><meta property="article:tag" content="PHP"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/assets/articleImg/2019/timg-php.jpeg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://sunct.github.io/posts/d42c7b69.html"},"headline":"sunct的博客","image":[],"datePublished":"2020-12-21T11:00:50.000Z","dateModified":"2021-01-06T07:49:16.269Z","author":{"@type":"Person","name":"sunct"},"description":"一、写在前面 本文是以PHP7.4 作为基础，讲解如何从零开始创建一个PHP扩展。本文主要讲解创建一个扩展的基本步骤都有哪些。示例中，我们将实现如下功能： 12345&lt;?phpecho hello();?&gt; 输出内容： 123$ php74 .&#x2F;hello.php$ hello word 在扩展中实现一个hello 方法，调用hello 方法后，输出 hello word!。"}</script><link rel="canonical" href="https://sunct.github.io/posts/d42c7b69.html"><link rel="icon" href="/assets/blogImg/cat_2.png"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="sunct的博客" type="application/atom+xml">
+</head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/assets/blogImg/cat_2.png" alt="sunct的博客" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a><a class="navbar-item" href="/atom.xml">RSS</a><a class="navbar-item" target="_blank" rel="noopener" href="https://support.qq.com/products/302198">吐个槽</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/sunct"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2020-12-21T11:00:50.000Z" title="2020-12-21T11:00:50.000Z">2020-12-21</time>发表</span><span class="level-item"><time dateTime="2021-01-06T07:49:16.269Z" title="2021-01-06T07:49:16.269Z">2021-01-06</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/PHP/">PHP</a></span><span class="level-item">19 分钟读完 (大约2911个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">使用ext_skel，实现一个PHP扩展</h1><div class="content"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1>一、写在前面</h1>
+<p>本文是以<code>PHP7.4</code> 作为基础，讲解如何从零开始创建一个PHP扩展。本文主要讲解创建一个扩展的基本步骤都有哪些。示例中，我们将实现如下功能：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> hello();</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>输出内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ php74 .&#x2F;hello.php</span><br><span class="line"></span><br><span class="line">$ hello word</span><br></pre></td></tr></table></figure>
+<p>在扩展中实现一个<code>hello</code> 方法，调用<code>hello</code> 方法后，输出 <code>hello word!</code>。</p>
+<a id="more"></a>
+<h1>二、生成代码</h1>
+<p>PHP为我们提供了生成基本代码的工具 ext_skel.php 。这个工具在PHP源代码的<code>php-对应版本/ext/</code>目录下。</p>
+<p><img src="/assets/articleImg/2020/1608548910651.jpg" alt="ext目录"></p>
+<p>输入命令 <code>php ext_skel.php   --ext_skel.php --ext hello --author sunct --std</code>会出现以下效果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ php ext_skel.php   ext_skel.php --ext hello --author sunct --std</span><br><span class="line">Copying config scripts... done</span><br><span class="line">Copying sources... done</span><br><span class="line">Copying tests... done</span><br><span class="line"></span><br><span class="line">Success. The extension is now ready to be compiled. To do so, use the</span><br><span class="line">following steps:</span><br><span class="line"></span><br><span class="line">cd &#x2F;path&#x2F;to&#x2F;php-src&#x2F;hello</span><br><span class="line">phpize</span><br><span class="line">.&#x2F;configure</span><br><span class="line">make</span><br><span class="line"></span><br><span class="line">Don&#39;t forget to run tests once the compilation is done:</span><br><span class="line">make test</span><br><span class="line"></span><br><span class="line">Thank you for using PHP!</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果不加参数<code>--ext </code>,直接运行<code>php ext_skel.php </code>则报<code>Error</code>错误。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ php ext_skel.php </span><br><span class="line">Error: No extension name passed, use &quot;--ext &lt;name&gt;&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在 <code>ext</code>目录下便生成 <code>hello</code>目录。</p>
+<p><img src="/assets/articleImg/2020/1608549176941.jpg" alt="hello目录"></p>
+<p>PHP 扩展由几个文件组成，这些文件对所有扩展来说都是通用的。不同扩展之间，这些文件的很多细节是相似的，只是要费力去复制每个文件的内容。幸运的是，有脚本可以做所有的初始化工作，名为 ext_skel，自 PHP 4.0 起与其一起分发。</p>
+<p>以下是源包中的<code>json</code> 文件内容。</p>
+<p><img src="/assets/articleImg/2020/1608551810679.jpg" alt="源json目录"></p>
+<p>可选参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS</span><br><span class="line"></span><br><span class="line">  php ext_skel.php --ext &lt;name&gt; [--experimental] [--author &lt;name&gt;]</span><br><span class="line">                   [--dir &lt;path&gt;] [--std] [--onlyunix]</span><br><span class="line">                   [--onlywindows] [--help]</span><br><span class="line"></span><br><span class="line">  --ext &lt;name&gt;          The name of the extension defined as &lt;name&gt;  &#x2F;&#x2F;扩展名定义为 &lt;name&gt;</span><br><span class="line">  --experimental        Passed if this extension is experimental, this creates </span><br><span class="line">                        the EXPERIMENTAL file in the root of the extension &#x2F;&#x2F;如果此扩展名是实验性的，则通过扩展程序根目录中的EXPERIMENTAL文件</span><br><span class="line">  --author &lt;name&gt;       Your name, this is used if --std is passed and for the  </span><br><span class="line">                        CREDITS file &#x2F;&#x2F;您的名字，如果传递了--std，则CREDITS文件使用此名称</span><br><span class="line">  --dir &lt;path&gt;          Path to the directory for where extension should be</span><br><span class="line">                        created. Defaults to the directory of where this script</span><br><span class="line">                        lives</span><br><span class="line">  --std                 If passed, the standard header used in extensions that</span><br><span class="line">                        is included in the core, will be used</span><br><span class="line">  --onlyunix            Only generate configure scripts for Unix</span><br><span class="line">  --onlywindows         Only generate configure scripts for Windows</span><br><span class="line">  --help                This help</span><br></pre></td></tr></table></figure>
+<p>通常来说，开发一个新扩展时，仅需关注的参数是 <code>--ext name</code> 和 <code>--help</code>。除非已经熟悉扩展的结构; 指定此参数会造成 ext_skel 不会在生成的文件里省略很多有用的注释。<br>
+剩下的 --ext name 会将扩展的名称传给 <code>ext_skel</code>。“name” 是一个<code>全为小写字母的标识符</code>，仅包含<code>字母和下划线</code>，在 PHP 发行包的 <code>ext/</code> 文件夹下是<code>唯一</code>的。</p>
+<h1>三、修改config.m4配置文件</h1>
+<blockquote>
+<p>扩展的 config.m4 文件告诉 UNIX 构建系统哪些扩展 configure 选项是支持的，你需要哪些扩展库，以及哪些源文件要编译成它的一部分。对所有经常使用的 autoconf 宏，包括 PHP 特定的及 autoconf 内建的。</p>
+</blockquote>
+<p>config.m4的作用就是配合phpize工具生成configure文件。configure文件是用于环境检测的。检测扩展编译运行所需的环境是否满足。现在我们开始修改config.m4文件。</p>
+<p><img src="/assets/articleImg/2020/1608553571418.jpg" alt="config.m4文件"></p>
+<p>其中，dnl 是注释符号。</p>
+<p>上面的代码说，如果你所编写的扩展如果依赖其它的扩展或者lib库，需要去掉<code>PHP_ARG_WITH</code>相关代码的注释。否则，去掉 <code>PHP_ARG_ENABLE</code> 相关代码段的注释。我们编写的扩展不需要依赖其他的扩展和lib库。因此，我们去掉<code>PHP_ARG_ENABLE</code>前面的注释。</p>
+<p>上图生成的时候就已经指定是不依赖其他的扩展。</p>
+<h1>四、代码实现</h1>
+<p>修改hello.c文件。实现hello方法。</p>
+<p>在执行 <code>php ext_skel.php  --ext hello</code> 时，<code>hello.c</code>文件已经给我们生成了两个test方法：<code>hello_test1</code>和<code>hello_test2</code>。</p>
+<p>文件生成代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* &#123;&#123;&#123; void hello_test1()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">PHP_FUNCTION(hello_test1)</span><br><span class="line">&#123;</span><br><span class="line">	ZEND_PARSE_PARAMETERS_NONE();</span><br><span class="line"></span><br><span class="line">	php_printf(<span class="string">&quot;The extension %s is loaded and working!\r\n&quot;</span>, <span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* &#125;&#125;&#125; */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* &#123;&#123;&#123; string hello_test2( [ string $var ] )</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">PHP_FUNCTION(hello_test2)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">char</span> *var = <span class="string">&quot;World&quot;</span>;</span><br><span class="line">	<span class="keyword">size_t</span> var_len = <span class="keyword">sizeof</span>(<span class="string">&quot;World&quot;</span>) - <span class="number">1</span>;</span><br><span class="line">	zend_string *retval;</span><br><span class="line"></span><br><span class="line">	ZEND_PARSE_PARAMETERS_START(<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">		Z_PARAM_OPTIONAL</span><br><span class="line">		Z_PARAM_STRING(var, var_len)</span><br><span class="line">	ZEND_PARSE_PARAMETERS_END();</span><br><span class="line"></span><br><span class="line">	retval = strpprintf(<span class="number">0</span>, <span class="string">&quot;Hello %s&quot;</span>, var);</span><br><span class="line"></span><br><span class="line">	RETURN_STR(retval);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<blockquote>
+<p>执行函数<code>hello_test1()</code> 会输出<code>The extension hello is loaded and working!</code>，不可传参，否则<code>echo hello_test1('这是一个参数');</code>报Warning错误：<code>PHP Warning:  hello_test1() expects exactly 0 parameters, 1 given in /Users/sunct/code/php/hello.php on line 2</code>；</p>
+</blockquote>
+<blockquote>
+<p>执行函数<code>hello_test2()</code> 会输出<code>Hello World</code>，并且该函数可传参<code>hello_test2('这是一个参数')</code>，输出：<code>Hello 这是一个参数</code></p>
+</blockquote>
+<p>我们可以仿照写一个 <code>hello</code> 函数，放到函数<code>PHP_FUNCTION(hello_test2)</code>后面：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*新增函数*/</span></span><br><span class="line">PHP_FUNCTION(hello)</span><br><span class="line">&#123;</span><br><span class="line">     zend_string *strg;</span><br><span class="line">     strg = strpprintf(<span class="number">0</span>, <span class="string">&quot;hello word&quot;</span>);</span><br><span class="line">     RETURN_STR(strg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>用来输出 <code>hello word</code></p>
+<p>找到 PHP_FE_END  在上面增加如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PHP_FE(hello, <span class="literal">NULL</span>)</span><br></pre></td></tr></table></figure>
+<p>如图所示：</p>
+<p><img src="/assets/articleImg/2020/1608631199420.jpg" alt="代码片段"></p>
+<h1>五、编译安装</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd hello&#x2F;</span><br><span class="line">phpize</span><br><span class="line">.&#x2F;configure </span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/articleImg/2020/1608631370912.jpg" alt="执行 phpize 后文件结果"></p>
+<p><img src="/assets/articleImg/2020/1608631583382.jpg" alt="执行 ./configure 后文件结果"></p>
+<p>其中：<br>
+<code>./configure</code>根据自己环境的情况加参数即可。</p>
+<p>为了便于测试我使用：`./configure --prefix=/usr/local/php7 --without-iconv --with-apxs2 --enable-fpm --with-config-file-path=/usr/local/php7/etc;</p>
+<p>修改php.ini文件，增加如下代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extension = say.so</span><br></pre></td></tr></table></figure>
+<p>执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -m</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/articleImg/2020/1608623740624.jpg" alt="php -m 执行结果"></p>
+<p>如果没有出现<code>hello</code>，在使用当前PHP时，会出现以下Warning错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PHP Warning:  PHP Startup: Unable to load dynamic library &#39;hello.so&#39; (tried: &#x2F;usr&#x2F;local&#x2F;php7&#x2F;lib&#x2F;php&#x2F;extensions&#x2F;no-debug-non-zts-20190902&#x2F;hello.so (dlopen(&#x2F;usr&#x2F;local&#x2F;php7&#x2F;lib&#x2F;php&#x2F;extensions&#x2F;no-debug-non-zts-20190902&#x2F;hello.so, 9): image not found), &#x2F;usr&#x2F;local&#x2F;php7&#x2F;lib&#x2F;php&#x2F;extensions&#x2F;no-debug-non-zts-20190902&#x2F;hello.so.so (dlopen(&#x2F;usr&#x2F;local&#x2F;php7&#x2F;lib&#x2F;php&#x2F;extensions&#x2F;no-debug-non-zts-20190902&#x2F;hello.so.so, 9): image not found)) in Unknown on line 0</span><br></pre></td></tr></table></figure>
+<p>这说明<code>/usr/local/php7/lib/php/extensions/no-debug-non-zts-20190902/hello.so</code> 文件不存在，我们可以手动把生成的<code>hello.so</code>移到这里。<br>
+在我们开始编译开始执行后·，<code>hello</code> 文件夹下生成<code>modules</code>文件夹，里面就已生成<code>hello.so</code></p>
+<p><img src="/assets/articleImg/2020/1608624128941.jpg" alt="hello 文件夹下的modules"></p>
+<p>移到文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp ~/code/php/php-7.4.13/ext/hello/modules/hello.so   /usr/local/php7/lib/php/extensions/no-debug-non-zts-20190902/hello.so</span><br></pre></td></tr></table></figure>
+<p>查看phpinfo():</p>
+<p><img src="/assets/articleImg/2020/1608632901382.jpg" alt="查看phpinfo"></p>
+<p><img src="/assets/articleImg/2020/1608639767959.jpg" alt="查看phpinfo"></p>
+<h1>六、调用测试</h1>
+<p>写一个PHP文件，调用hello方法。看输出的内容是否符合预期。</p>
+<p>结果如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;\r\n执行 hello() ----:&quot;</span>.hello();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;\r\n执行 hello_test2() ----:&quot;</span>.hello_test2();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;\r\n执行 hello_test2(&#x27;这是一个参数&#x27;) ----:&quot;</span>.hello_test2(<span class="string">&#x27;这是一个参数&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;\r\n执行 hello_test1() ----:&quot;</span>.hello_test1();</span><br></pre></td></tr></table></figure>
+<p><img src="/assets/articleImg/2020/1608625181672.jpg" alt="测试结果"></p>
+<h1>七、※ 剖析文件</h1>
+<h2 id="1、config-m4">1、config.m4</h2>
+<p>UNIX构建系统配置</p>
+<h2 id="2、config-w32">2、config.w32</h2>
+<p>Windows构建系统配置</p>
+<h2 id="3、php-hello-h">3、php_hello.h</h2>
+<p>当将扩展作为静态模块构建到PHP二进制文件中时，构建系统将期望php_ 在扩展名之前添加一个头文件，该头文件包括一个指向扩展模块结构的指针的声明。就像任何标头一样，此文件通常包含其他宏，原型和全局变量。</p>
+<h2 id="4、hello-c">4、hello.c</h2>
+<p>主扩展源文件。按照惯例，该文件的名称是扩展名，但这不是必需的。该文件包含模块结构声明、INI条目、管理函数、用户空间函数和扩展的其他要求。</p>
+<p>PHP扩展的主要源文件包含C程序的一些结构。其中最重要的是zend_module结构，这是开始写一个新扩展时最先接触的。该结构包含大量信息，这些信息告诉Zend Engine扩展的依赖项，版本，回调和其他关键数据。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* &#123;&#123;&#123; hello_module_entry</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">zend_module_entry hello_module_entry = &#123;</span><br><span class="line">	STANDARD_MODULE_HEADER,</span><br><span class="line">	<span class="string">&quot;hello&quot;</span>,					<span class="comment">/* Extension name */</span></span><br><span class="line">	hello_functions,			<span class="comment">/* zend_function_entry */</span></span><br><span class="line">	<span class="literal">NULL</span>,							<span class="comment">/* PHP_MINIT - Module initialization */</span></span><br><span class="line">	<span class="literal">NULL</span>,							<span class="comment">/* PHP_MSHUTDOWN - Module shutdown */</span></span><br><span class="line">	PHP_RINIT(hello),			<span class="comment">/* PHP_RINIT - Request initialization */</span></span><br><span class="line">	<span class="literal">NULL</span>,							<span class="comment">/* PHP_RSHUTDOWN - Request shutdown */</span></span><br><span class="line">	PHP_MINFO(hello),			<span class="comment">/* PHP_MINFO - Module info */</span></span><br><span class="line">	PHP_HELLO_VERSION,		<span class="comment">/* Version */</span></span><br><span class="line">	STANDARD_MODULE_PROPERTIES</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/* &#125;&#125;&#125; */</span></span><br></pre></td></tr></table></figure>
+<p>模块结构字段值</p>
+<table>
+<tr>
+    <th>Field（字段）</th><th>Value（值）</th></th><th>Description（描述）</th>
+</tr>
+<tr>
+    <td>size <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_HEADER_EX`填充。
+">[2]</span></a></sup><sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_HEADER`填充。
+">[3]</span></a></sup></td><td>sizeof(zend_module_entry)</td><td>结构的字节大小。</td>
+</tr>
+<tr>
+<td>zend_api <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_HEADER_EX`填充。
+">[2]</span></a></sup><sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_HEADER`填充。
+">[3]</span></a></sup></td><td>ZEND_MODULE_API_NO</td><td>此模块针对的Zend API版本。</td>
+</tr>
+<tr>
+    <td>zend_debug <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_HEADER_EX`填充。
+">[2]</span></a></sup><sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_HEADER`填充。
+">[3]</span></a></sup></td><td>ZEND_DEBUG</td><td>指示模块是否在调试打开的情况下进行编译的标志。</td>
+</tr>
+<tr>
+    <td>zts <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_HEADER_EX`填充。
+">[2]</span></a></sup><sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_HEADER`填充。
+">[3]</span></a></sup></td><td>USING_ZTS</td><td>指示模块是否在启用ZTS（TSRM）的情况下进行编译的标志（请参阅内存管理）。</td>
+</tr>
+<tr>
+    <td>ini_entry <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_HEADER`填充。
+">[3]</span></a></sup></td><td>null</td><td>Zend在内部使用此指针来保持对模块声明的任何INI条目的非本地引用。</td>
+</tr>
+<tr>
+    <td>deps<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_HEADER`填充。
+">[3]</span></a></sup></td><td>null</td><td>指向模块依赖关系列表的指针。</td>
+</tr>
+<tr>
+    <td>name</td><td>"mymodule"</td><td>模块的名称。这是简称，例如"spl"或"standard"。</td>
+</tr>
+<tr>
+    <td>functions</td><td>mymodule_functions</td><td>指向模块功能表的指针，Zend使用该指针将模块中的功能公开给用户空间。</td>
+</tr>
+<tr>
+    <td>module_startup_func</td><td>PHP_MINIT(mymodule)</td><td>Zend将在模块第一次加载到PHP的特定实例时调用的一个回调函数。</td>
+</tr>
+<tr>
+    <td>module_shutdown_func</td><td>PHP_MSHUTDOWN(mymodule)</td><td>通常在最终关闭期间的一个回调函数，当模块从特定PHP实例卸载时，Zend将调用该函数。</td>
+</tr>
+<tr>
+    <td>request_startup_func</td><td>PHP_RINIT(mymodule)</td><td>Zend将在每个请求开始时调用一个回调函数。这个函数应该尽可能的短或者为空，因为调用这个函数对每个请求都有代价。</td>
+</tr>
+<tr>
+    <td>request_shutdown_func</td><td>PHP_RSHUTDOWN(mymodule)</td><td>Zend将在每个请求结束时调用的个回调函数。这个函数应该尽可能的短或者为空，因为调用这个函数对每个请求都有代价。|</td>
+</tr>
+<tr>
+    <td>info_func</td><td>PHP_MINFO(mymodule)</td><td>Zend将在调用`phpinfo()`函数时调用的回调函数。</td>
+</tr>
+<tr>
+    <td>version</td><td>NO_VERSION_YET</td><td>给出模块版本的字符串，由模块开发人员指定。建议版本号采用`version_compare()`期望的格式（例如"1.0.5-dev"）或CVS或SVN修订号（例如"$Rev: 322138 $"）。</td>
+</tr>
+<tr>
+    <td>globals_size <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES`填充。
+">[4]</span></a></sup><sup id="fnref:5"><a href="#fn:5" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`NO_MODULE_GLOBALS`填充。
+">[5]</span></a></sup><sup id="fnref:6"><a href="#fn:6" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`PHP_MODULE_GLOBALS`填充。
+">[6]</span></a></sup></td><td>sizeof(zend_mymodule_globals)</td><td>包含模块全局变量的数据结构的大小（如果有）。</td>
+</tr>
+<tr>
+    <td>globals_id_ptr <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES`填充。
+">[4]</span></a></sup><sup id="fnref:5"><a href="#fn:5" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`NO_MODULE_GLOBALS`填充。
+">[5]</span></a></sup><sup id="fnref:6"><a href="#fn:6" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`PHP_MODULE_GLOBALS`填充。
+">[6]</span></a></sup><sup id="fnref:7"><a href="#fn:7" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="仅当USING_ZTS是时，此字段存在true。
+">[7]</span></a></sup></td><td>＆mymodule_globals_id</td><td rowspan="2";>这两个字段中只有一个字段存在，具体取决于USING_ZTS常量是否为真。前者是TSRM分配表中模块全局变量的索引，后者是直接指向全局变量的指针。</td>
+</tr>
+<tr>
+    <td>globals_ptr <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES`填充。
+">[4]</span></a></sup><sup id="fnref:5"><a href="#fn:5" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`NO_MODULE_GLOBALS`填充。
+">[5]</span></a></sup><sup id="fnref:6"><a href="#fn:6" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`PHP_MODULE_GLOBALS`填充。
+">[6]</span></a></sup><sup id="fnref:8"><a href="#fn:8" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="仅当USING_ZTS是时，此字段存在false。
+">[8]</span></a></sup></td><td>&mymodule_globals_id</td>
+</tr>
+<tr>
+    <td>globals_ctor <sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES`填充。
+">[4]</span></a></sup><sup id="fnref:5"><a href="#fn:5" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`NO_MODULE_GLOBALS`填充。
+">[5]</span></a></sup><sup id="fnref:6"><a href="#fn:6" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`PHP_MODULE_GLOBALS`填充。
+">[6]</span></a></sup></td><td>PHP_GINIT(mymodule)</td><td>调用这个函数是为了在 `module_startup_func`之前初始化模块的全局变量。</td>
+</tr>
+<tr>
+    <td>globals_dtor <sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES`填充。
+">[4]</span></a></sup><sup id="fnref:5"><a href="#fn:5" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`NO_MODULE_GLOBALS`填充。
+">[5]</span></a></sup><sup id="fnref:6"><a href="#fn:6" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`PHP_MODULE_GLOBALS`填充。
+">[6]</span></a></sup></td><td>PHP_GSHUTDOWN(mymodule)</td><td>这个函数被调用是为了在`module_shutdown_func`之后释放模块的全局变量。</td>
+</tr>
+<tr>
+    <td>post_deactivate_func <sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES`填充。
+">[4]</span></a></sup></td><td>ZEND_MODULE_POST_ZEND_DEACTIVATE_N(mymodule)</td><td>这个函数在请求关闭后由Zend调用。很少被使用。</td>
+</tr>
+<tr>
+    <td>module_started <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:9"><a href="#fn:9" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES_EX`填充。">[9]</span></a></sup><sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES`填充。
+">[4]</span></a></sup></td><td>0</td><td rowspan="4";>这些字段用于Zend的内部跟踪信息。</td>
+</tr>
+<tr>
+    <td>type <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:9"><a href="#fn:9" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES_EX`填充。">[9]</span></a></sup><sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES`填充。
+">[4]</span></a></sup></td><td>0</td>
+</tr>
+<tr>
+    <td>handle <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:9"><a href="#fn:9" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES_EX`填充。">[9]</span></a></sup><sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES`填充。
+">[4]</span></a></sup></td><td>null</td>
+</tr>
+<tr>
+    <td>module_number <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此字段不适用于模块开发人员。
+">[1]</span></a></sup><sup id="fnref:9"><a href="#fn:9" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES_EX`填充。">[9]</span></a></sup><sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="该字段由`STANDARD_MODULE_PROPERTIES`填充。
+">[4]</span></a></sup></td><td>0</td>
+</tr>
+</table>
+<br/>
+<p>下一节：<a href="/posts/67d3d9f2.html">PHP的目录结构、设计理念以及核心架构</a><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">此字段不适用于模块开发人员。<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">该字段由<code>STANDARD_MODULE_HEADER_EX</code>填充。<a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">该字段由<code>STANDARD_MODULE_HEADER</code>填充。<a href="#fnref:3" rev="footnote"> ↩</a></span></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">4.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">该字段由<code>STANDARD_MODULE_PROPERTIES</code>填充。<a href="#fnref:4" rev="footnote"> ↩</a></span></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">5.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">该字段由<code>NO_MODULE_GLOBALS</code>填充。<a href="#fnref:5" rev="footnote"> ↩</a></span></li><li id="fn:6"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">6.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">该字段由<code>PHP_MODULE_GLOBALS</code>填充。<a href="#fnref:6" rev="footnote"> ↩</a></span></li><li id="fn:7"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">7.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">仅当USING_ZTS是时，此字段存在true。<a href="#fnref:7" rev="footnote"> ↩</a></span></li><li id="fn:8"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">8.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">仅当USING_ZTS是时，此字段存在false。<a href="#fnref:8" rev="footnote"> ↩</a></span></li><li id="fn:9"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">9.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">该字段由<code>STANDARD_MODULE_PROPERTIES_EX</code>填充。<a href="#fnref:9" rev="footnote"> ↩</a></span></li></ol></div></div></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>使用ext_skel，实现一个PHP扩展</p><p><a href="https://sunct.github.io/posts/d42c7b69.html">https://sunct.github.io/posts/d42c7b69.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>sunct</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2020-12-21</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2021-01-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/PHP/">PHP </a></div></div><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a><a class="a2a_button_facebook"></a><a class="a2a_button_twitter"></a><a class="a2a_button_telegram"></a><a class="a2a_button_whatsapp"></a><a class="a2a_button_reddit"></a></div><script src="https://static.addtoany.com/menu/page.js" defer></script></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3><div class="buttons is-centered"><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>支付宝</span><span class="qrcode"><img src="/assets/blogImg/zfb.png" alt="支付宝"></span></a><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>微信</span><span class="qrcode"><img src="/assets/blogImg/wx.png" alt="微信"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/84082f1e.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">2021年阴阳师式神统计一览表</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/a08a7e28.html"><span class="level-item">2020年阴阳师式神统计一览表</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/valine/1.4.14/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            appId: "06juAlgdDriA3wwLyx7IMrUg-gzGzoHsz",
+            appKey: "05lUVQevJdobqJ2AaqOi093g",
+            
+            
+            
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            lang: "zh-CN",
+            
+            highlight: true,
+            
+            
+            
+            
+            
+            requiredFields: [],
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/assets/blogImg/avatar_2.jpeg" alt="Sunct"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Sunct</p><p class="is-size-6 is-block">爱摸鱼的猫</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>中国 北京</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">69</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">11</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">34</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/sunct" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/sunct"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">1</span><span class="level-item">一、写在前面</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">2</span><span class="level-item">二、生成代码</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">3</span><span class="level-item">三、修改config.m4配置文件</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">4</span><span class="level-item">四、代码实现</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">5</span><span class="level-item">五、编译安装</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">6</span><span class="level-item">六、调用测试</span></span></a></li><li><a class="level is-mobile" href="#"><span class="level-left"><span class="level-item">7</span><span class="level-item">七、※ 剖析文件</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1、config-m4"><span class="level-left"><span class="level-item">7.1</span><span class="level-item">1、config.m4</span></span></a></li><li><a class="level is-mobile" href="#2、config-w32"><span class="level-left"><span class="level-item">7.2</span><span class="level-item">2、config.w32</span></span></a></li><li><a class="level is-mobile" href="#3、php-hello-h"><span class="level-left"><span class="level-item">7.3</span><span class="level-item">3、php_hello.h</span></span></a></li><li><a class="level is-mobile" href="#4、hello-c"><span class="level-left"><span class="level-item">7.4</span><span class="level-item">4、hello.c</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">链接</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://gitee.com/sunct" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Gitee</span></span><span class="level-right"><span class="level-item tag">gitee.com</span></span></a></li><li><a class="level is-mobile" href="https://blog.csdn.net/u010377516" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">CSDN</span></span><span class="level-right"><span class="level-item tag">blog.csdn.net</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><figure class="media-left"><a class="image" href="/posts/1c8636b0.html"><img src="/assets/articleImg/2019/timg-php.jpeg" alt="PHP多进程（3）信号"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-03-15T03:07:57.000Z">2021-03-15</time></p><p class="title"><a href="/posts/1c8636b0.html">PHP多进程（3）信号</a></p><p class="categories"><a href="/categories/PHP/">PHP</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/5a0a73c6.html"><img src="/assets/articleImg/2019/timg-php.jpeg" alt="PHP多进程（2）孤儿进程与僵尸进程"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-03-15T02:54:57.000Z">2021-03-15</time></p><p class="title"><a href="/posts/5a0a73c6.html">PHP多进程（2）孤儿进程与僵尸进程</a></p><p class="categories"><a href="/categories/PHP/">PHP</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/547b869.html"><img src="/assets/articleImg/2019/timg-php.jpeg" alt="PHP多进程（1）PHP多进程初探"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-03-15T02:45:57.000Z">2021-03-15</time></p><p class="title"><a href="/posts/547b869.html">PHP多进程（1）PHP多进程初探</a></p><p class="categories"><a href="/categories/PHP/">PHP</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/d9cf7021.html"><img src="/assets/articleImg/2019/timg-php.jpeg" alt="PHP判断两个数字是否是同符号"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-02-20T02:47:20.000Z">2021-02-20</time></p><p class="title"><a href="/posts/d9cf7021.html">PHP判断两个数字是否是同符号</a></p><p class="categories"><a href="/categories/PHP/">PHP</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/14ebfabe.html"><img src="/assets/articleImg/2021/github.png" alt="基于github手动同步fork过的项目"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-02-18T03:11:20.000Z">2021-02-18</time></p><p class="title"><a href="/posts/14ebfabe.html">基于github手动同步fork过的项目</a></p><p class="categories"><a href="/categories/%E6%9C%8D%E5%8A%A1/">服务</a></p></div></article></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">订阅更新</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=Sunct&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="Sunct" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="订阅"></div></div><p class="help">邮件订阅，更新早知道</p></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/assets/blogImg/cat_2.png" alt="sunct的博客" height="28"></a><p class="is-size-7"><span>&copy; 2024 sunct</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p><div><p id="hitokoto">:D 获取中...</p> <script src="https://v1.hitokoto.cn/?encode=js&amp;select=%23hitokoto" defer=""></script></div><iframe width="180" scrolling="no" height="30" frameBorder="0" allowTransparency="true" src="https://i.tianqi.com?c=code&amp;id=53&amp;icon=1&amp;site=12"></iframe></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/sunct/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
